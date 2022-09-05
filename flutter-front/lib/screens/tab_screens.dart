@@ -1,0 +1,270 @@
+import 'package:app_uteam/models/user.dart';
+import 'package:app_uteam/models/product.dart';
+import 'package:app_uteam/models/user_model.dart';
+import 'package:app_uteam/models/product_model.dart';
+import 'package:flutter/material.dart';
+import 'package:app_uteam/providers/user_form_provider.dart';
+import 'package:app_uteam/providers/product_form_provider.dart';
+import 'package:app_uteam/providers/user_list_provider.dart';
+import 'package:app_uteam/providers/product_list_provider.dart';
+import 'package:app_uteam/services/user_services.dart';
+import 'package:app_uteam/services/product_services.dart';
+import 'package:app_uteam/widgets/mi_user_card.dart';
+import 'package:app_uteam/widgets/product_card.dart';
+import 'package:provider/provider.dart';
+
+class TabScreen extends StatefulWidget {
+  TabScreen({Key? key}) : super(key: key);
+
+  @override
+  State<TabScreen> createState() => _TabScreenState();
+}
+
+class _TabScreenState extends State<TabScreen> {
+  @override
+  Widget build(BuildContext context) {
+    final userService = Provider.of<UserService>(context);
+    final productsService = Provider.of<ProductService>(context);
+
+    return ChangeNotifierProvider(
+      create: (_) => UserFormProvider(userService.selectedUser),
+      // (_) => ProductFormProvider(productsService.selectedProduct),
+
+      child: _TabScreenBody(
+          userService: userService, productsService: productsService),
+    );
+  }
+}
+
+// class _Tab2ScreenState extends State<TabScreen> {
+//   @override
+//   Widget build(BuildContext context) {
+//     final productsService = Provider.of<ProductService>(context);
+//     return ChangeNotifierProvider(
+//       create: (_) => ProductFormProvider(productsService.selectedProduct),
+//       child: _TabScreenBody(productsService: productsService),
+//     );
+//   }
+// }
+
+class _TabScreenBody extends StatefulWidget {
+  _TabScreenBody({
+    Key? key,
+    required this.userService,
+    required this.productsService,
+  }) : super(key: key);
+
+  UserService userService;
+  ProductService productsService;
+  @override
+  State<_TabScreenBody> createState() => _TabScreenBodyState();
+}
+
+// class _Tab2ScreenBody extends StatefulWidget {
+
+//   _Tab2ScreenBody({
+//     Key? key,
+//     required this.productsService,
+//   }) : super(key: key);
+
+//   ProductService productService;
+//   @override
+//   State<_TabScreenBody> createState() => _TabScreenBodyState();
+// }
+
+class _TabScreenBodyState extends State<_TabScreenBody> {
+  @override
+  Widget build(BuildContext context) {
+    UserService userService;
+    ProductService productsService;
+    final userListProvider = Provider.of<UserListProvider>(context);
+    final productListProvider = Provider.of<ProductListProvider>(context);
+
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Uteam points'),
+      ),
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Divider(indent: 2),
+            Row(
+              children: [
+                SizedBox(
+                  height: 50,
+                  width: 250,
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "Catalogo de canje",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Column(
+                  children: <Widget>[
+                    Container(
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(70))),
+                      child: SizedBox(
+                          height: 100,
+                          width: 180,
+                          child: Center(
+                            child: ListView.builder(
+                              itemCount: widget.userService.users.length,
+                              itemBuilder: (BuildContext context, int index) =>
+                                  GestureDetector(
+                                onTap: () {
+                                  widget.userService.selectedUser =
+                                      widget.userService.users[index].copy();
+                                  Navigator.pushNamed(
+                                    context,
+                                    'userPut',
+                                  );
+                                },
+                                child: MyUserCard(
+                                  user: widget.userService.users[index],
+                                ),
+                              ),
+                            ),
+                          )),
+                    )
+                  ],
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  width: 80,
+                  height: 80,
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 10, right: 5),
+                    child: Row(
+                      verticalDirection: VerticalDirection.down,
+                      children: [
+                        Column(
+                          // ignore: prefer_const_literals_to_create_immutables
+                          children: <Widget>[
+                            const CircleAvatar(
+                              radius: 30.0,
+                              backgroundColor: Colors.grey,
+                              backgroundImage: AssetImage('assets/user.png'),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                const Divider(
+                  indent: 1,
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 300,
+                  child: Container(
+                    color: Color.fromARGB(255, 238, 220, 241),
+                    child: const TextField(
+                      controller: null,
+                      decoration: InputDecoration(
+                        hintText: "Productos",
+                        icon: Icon(Icons.search,
+                            color: Color.fromARGB(
+                              255,
+                              175,
+                              171,
+                              171,
+                            )),
+                        suffixIcon: Icon(
+                          Icons.tune,
+                          size: 30.00,
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Divider(indent: 2),
+            Card(
+              color: Colors.blueGrey,
+              child: Container(
+                child: Image.asset("assets/painting.jpg"),
+              ),
+            ),
+            const Divider(
+              indent: 4,
+            ),
+            DefaultTabController(
+              length: 3,
+              child: Column(
+                children: const [
+                  Text(
+                    "Elige tu producto",
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.start,
+                  ),
+                  TabBar(
+                      indicator: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          color: Color(0xff5D4FB1)),
+                      labelColor: Color.fromARGB(255, 255, 255, 255),
+                      unselectedLabelColor: Color.fromARGB(255, 0, 0, 0),
+                      tabs: [
+                        Tab(text: "All"),
+                        Tab(text: "A tu alcance"),
+                        Tab(text: "Nuevos"),
+                      ]),
+                ],
+              ),
+            ),
+            const Divider(endIndent: 2),
+            SizedBox(
+              height: 700,
+              width: 350,
+              child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                itemCount: widget.productsService.products.length,
+                itemBuilder: (BuildContext context, int index) =>
+                    GestureDetector(
+                  onTap: () {
+                    widget.productsService.selectedProduct =
+                        widget.productsService.products[index].copy();
+                    Navigator.pushNamed(
+                      context,
+                      'AcercaDe',
+                    );
+                  },
+                  child: ProductCard(
+                    product: widget.productsService.products[index],
+                  ),
+                ),
+              ),
+              // child: Container(
+              //     decoration: const BoxDecoration(
+              //         color: Color.fromARGB(255, 150, 190, 209),
+              //         borderRadius: BorderRadius.all(Radius.circular(30)))),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
