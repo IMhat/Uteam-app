@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:app_uteam/screens/popular_recompensas.dart';
 import 'package:app_uteam/screens/products_screen.dart';
 import 'package:app_uteam/widgets/SmallText.dart';
@@ -47,32 +49,42 @@ class _HomePageBodyState extends State<HomePageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          color: Colors.white,
-          height: 150,
-          child: PageView.builder(
-              controller: pageController,
-              itemCount: 5,
-              itemBuilder: (context, position) {
-                return _buildPageItem(position);
-              }),
-        ),
-        DotsIndicator(
-          dotsCount: 5,
-          position: _currPageValue,
-          decorator: DotsDecorator(
-            activeColor: Color(0xff5D4FB1),
-            size: const Size.square(9.0),
-            activeSize: const Size(18.0, 9.0),
-            activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              
+              Container(
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 231, 170, 209),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                width: 200,
+                height: 150,
+                child: Image.asset("assets/paint1.png"),
+              ),
+              const Divider(
+                indent: 10,
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 231, 170, 209),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                width: 200,
+                height: 150,
+                child: Image.asset("assets/paint2.png"),
+              )
+            ],
           ),
         ),
+
         Container(
-          padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+          padding: const EdgeInsets.only(top: 5, left: 15, right: 15),
           margin: const EdgeInsets.only(top: 20, left: 15, right: 15),
           width: 300,
-          height: 80,
+          height: 60,
           color: Colors.white,
           child: const Text(
             "Objetivos a alcanzar",
@@ -109,7 +121,17 @@ class _HomePageBodyState extends State<HomePageBody> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Desafios"),
+              Text(
+                "Desafios",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    color: Color.fromARGB(255, 239, 53, 121)),
+              ),
+              Icon(
+                Icons.arrow_forward,
+                color: Colors.red,
+              )
             ],
           ),
           padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
@@ -117,7 +139,7 @@ class _HomePageBodyState extends State<HomePageBody> {
           width: 300,
           height: 80,
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: Color.fromARGB(255, 231, 170, 209),
               borderRadius: BorderRadius.all(Radius.circular(10)),
               boxShadow: [
                 BoxShadow(

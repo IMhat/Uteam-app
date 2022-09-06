@@ -98,9 +98,10 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
                   Text(
                     "300 Puntos",
                     style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.pinkAccent),
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      decorationColor: Colors.red,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ],
