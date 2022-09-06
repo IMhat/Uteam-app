@@ -19,8 +19,7 @@ import 'package:app_uteam/services/points_service.dart';
 import 'package:app_uteam/services/user_services.dart';
 import 'package:app_uteam/themes/app_theme.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:app_uteam/generated/l10n.dart';
+
 
 void main() => runApp(const AppState());
 

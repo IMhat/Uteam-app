@@ -64,28 +64,80 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Billetera'),
+        backgroundColor: Colors.white,
       ),
       backgroundColor: Colors.white,
-      body: Material(
-        child: Center(
-          child: ListView.builder(
-            //itemCount: taskListProvider.tasks.length,
-            itemCount: widget.pointsService.points.length,
-            itemBuilder: (BuildContext context, int index) => GestureDetector(
-              onTap: () {
-                widget.pointsService.selectedPoint =
-                    widget.pointsService.points[index].copy();
-                Navigator.pushNamed(
-                  context,
-                  'pointPut',
-                );
-              },
-              child: PointCard(
-                point: widget.pointsService.points[index],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: [
+                SizedBox(
+                  height: 50,
+                  width: 250,
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "Mi Billetera",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "300 Puntos",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.pinkAccent),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+              width: 280,
+              height: 120,
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 231, 170, 209),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 20, bottom: 20),
+              width: 350,
+              height: 900,
+              color: Colors.white,
+              child: Center(
+                child: ListView.builder(
+                  //itemCount: taskListProvider.tasks.length,
+                  itemCount: widget.pointsService.points.length,
+                  itemBuilder: (BuildContext context, int index) =>
+                      GestureDetector(
+                    onTap: () {
+                      widget.pointsService.selectedPoint =
+                          widget.pointsService.points[index].copy();
+                      Navigator.pushNamed(
+                        context,
+                        'pointPut',
+                      );
+                    },
+                    child: PointCard(
+                      point: widget.pointsService.points[index],
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

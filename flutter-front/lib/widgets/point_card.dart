@@ -15,20 +15,22 @@ class PointCard extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: Container(
-        margin: const EdgeInsets.only(top: 30, bottom: 50),
-        width: double.infinity,
-        height: 100,
-        //decoration: _cardBorders(),
+      child: SizedBox(
         child: Container(
-          child: _PointDetails(
-            // title: taskListProvider.tasks[i].title,
-            // subTitle: pointListProvider.points[i].description,
-            username: point.username,
-            description: point.description,
-            point: point.point,
-            // date: point.date,
-            id: point.id,
+          margin: const EdgeInsets.only(top: 0, bottom: 20),
+          width: double.infinity,
+          height: 100,
+          //decoration: _cardBorders(),
+          child: Container(
+            child: _PointDetails(
+              // title: taskListProvider.tasks[i].title,
+              // subTitle: pointListProvider.points[i].description,
+              username: point.username,
+              description: point.description,
+              point: point.point,
+              // date: point.date,
+              id: point.id,
+            ),
           ),
         ),
       ),
