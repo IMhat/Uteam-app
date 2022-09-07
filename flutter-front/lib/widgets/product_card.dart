@@ -102,25 +102,7 @@ class _ProductDetailsState extends State<_ProductDetails> {
               const Icon(Icons.person),
               const Text("Uteam"),
               Container(
-                padding: EdgeInsets.all(8.0),
-                width: 80,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Color(0xff5D4FB1),
-                  borderRadius: const BorderRadius.all(Radius.circular(32)),
-                ),
-                child: Column(
-                  children: <Widget>[
-                    Column(
-                      children: [
-                        Text(
-                          "Canjear",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        )
-                      ],
-                    )
-                  ],
-                ),
+                child: MyButtonCanje(),
               )
             ],
           ),
@@ -136,6 +118,39 @@ class _ProductDetailsState extends State<_ProductDetails> {
           //   style: const TextStyle(fontSize: 15, color: Colors.white),
           // ),
         ],
+      ),
+    );
+  }
+}
+
+class MyButtonCanje extends StatelessWidget {
+  const MyButtonCanje({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // The GestureDetector wraps the button.
+    return GestureDetector(
+      // When the child is tapped, show a snackbar.
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '',
+        );
+      },
+      // The custom button
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(begin: AlignmentDirectional.topEnd, colors: [
+            Color.fromARGB(255, 242, 133, 157),
+            Color.fromARGB(255, 167, 79, 211)
+          ]),
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: const Text(
+          'Canjear',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
     );
   }

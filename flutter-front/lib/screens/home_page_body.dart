@@ -1,20 +1,5 @@
-import 'dart:ui';
-
-import 'package:app_uteam/screens/popular_recompensas.dart';
-import 'package:app_uteam/screens/products_screen.dart';
-import 'package:app_uteam/widgets/SmallText.dart';
-import 'package:app_uteam/widgets/app_column.dart';
-import 'package:app_uteam/widgets/icon_and_text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:dots_indicator/dots_indicator.dart';
-
 import '../widgets/BigText.dart';
-
-import 'package:app_uteam/models/product.dart';
-import 'package:app_uteam/models/product_model.dart';
-import 'package:app_uteam/services/product_services.dart';
-import 'package:app_uteam/widgets/product_card.dart';
-import 'package:app_uteam/providers/product_list_provider.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({super.key});
@@ -54,7 +39,6 @@ class _HomePageBodyState extends State<HomePageBody> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              
               Container(
                 decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 231, 170, 209),
@@ -128,10 +112,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                     fontSize: 30,
                     color: Color.fromARGB(255, 239, 53, 121)),
               ),
-              Icon(
-                Icons.arrow_forward,
-                color: Colors.red,
-              )
+              MyButton()
             ],
           ),
           padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
@@ -271,6 +252,36 @@ class _HomePageBodyState extends State<HomePageBody> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class MyButton extends StatelessWidget {
+  const MyButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // The GestureDetector wraps the button.
+    return GestureDetector(
+      // When the child is tapped, show a snackbar.
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          'ManageTasks',
+        );
+      },
+      // The custom button
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: Icon(
+          Icons.arrow_forward,
+          color: Colors.red,
+        ),
+        //child: const Text('My Button'),
       ),
     );
   }

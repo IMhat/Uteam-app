@@ -58,13 +58,8 @@ class HomePage extends StatelessWidget {
                     Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(top: 45, left: 5),
-                          child: Icon(
-                            Icons.notifications_active_rounded,
-                            size: 40,
-                            color: Colors.orange,
-                          ),
-                        ),
+                            margin: const EdgeInsets.only(top: 45, left: 5),
+                            child: const MyButtonNotification()),
                       ],
                     ),
                     Center(
@@ -172,6 +167,37 @@ class HomePage extends StatelessWidget {
             // Expanded(child: SingleChildScrollView(child: AcercaDe())),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MyButtonNotification extends StatelessWidget {
+  const MyButtonNotification({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // The GestureDetector wraps the button.
+    return GestureDetector(
+      // When the child is tapped, show a snackbar.
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          'ManageTasks',
+        );
+      },
+      // The custom button
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: const Icon(
+          Icons.notifications_active_rounded,
+          size: 40,
+          color: Colors.orange,
+        ),
+        //child: const Text('My Button'),
       ),
     );
   }

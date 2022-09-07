@@ -42,32 +42,71 @@ class _UserScreenBodyState extends State<_UserScreenBody> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('Usuarios'),
+          title: const Text('Cuenta'),
         ),
-        body: Material(
-          child: Center(
-            child: ListView.builder(
-              //itemCount: taskListProvider.tasks.length,
-              itemCount: widget.userService.users.length,
-              itemBuilder: (BuildContext context, int index) => GestureDetector(
-                onTap: () {
-                  widget.userService.selectedUser =
-                      widget.userService.users[index].copy();
-                  Navigator.pushNamed(
-                    context,
-                    'userPut',
-                  );
-                },
-                child: UserCard(
-                  user: widget.userService.users[index],
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 250,
+                height: 100,
+                child: Text(
+                  "Cuenta",
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                  textAlign: TextAlign.center,
                 ),
               ),
-            ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 30.0,
+                    backgroundColor: Color.fromARGB(255, 225, 223, 223),
+                    backgroundImage: AssetImage('assets/user.png'),
+                  ),
+                ],
+              ),
+              Container(
+             child: ListView(
+               children: [
+                 SizedBox(height: 40),
+                 Row(
+                   children: [
+                     
+                   ],
+                 )
+               ],
+             ),
+              )
+            ],
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () => Navigator.pushNamed(context, 'usersPost'),
         ));
   }
 }
+
+// Container(
+//           child: Center(
+//             child: ListView.builder(
+//               //itemCount: taskListProvider.tasks.length,
+//               itemCount: widget.userService.users.length,
+//               itemBuilder: (BuildContext context, int index) => GestureDetector(
+//                 onTap: () {
+//                   widget.userService.selectedUser =
+//                       widget.userService.users[index].copy();
+//                   Navigator.pushNamed(
+//                     context,
+//                     'userPut',
+//                   );
+//                 },
+//                 child: UserCard(
+//                   user: widget.userService.users[index],
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ),

@@ -55,33 +55,62 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
     final taskListProvider = Provider.of<TaskListProvider>(context);
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Gestor de Tareas'),
-        ),
-        body: Material(
-          child: Center(
-            child: ListView.builder(
-              //itemCount: taskListProvider.tasks.length,
-              itemCount: widget.tasksService.tasks.length,
-              itemBuilder: (BuildContext context, int index) => GestureDetector(
-                onTap: () {
-                  widget.tasksService.selectedTask =
-                      widget.tasksService.tasks[index].copy();
-                  Navigator.pushNamed(
-                    context,
-                    'taskPut',
-                  );
-                },
-                child: TaskCard(
-                  task: widget.tasksService.tasks[index],
+      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: [
+                SizedBox(
+                  height: 50,
+                  width: 250,
+                  child: Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: const [
+                        Text(
+                          "Desafios Disponibles",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 20, bottom: 20),
+              width: 350,
+              height: 900,
+              color: Colors.white,
+              child: Center(
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  //itemCount: taskListProvider.tasks.length,
+                  itemCount: widget.tasksService.tasks.length,
+                  itemBuilder: (BuildContext context, int index) =>
+                      GestureDetector(
+                    onTap: () {
+                      widget.tasksService.selectedTask =
+                          widget.tasksService.tasks[index].copy();
+                      Navigator.pushNamed(
+                        context,
+                        'taskPut',
+                      );
+                    },
+                    child: TaskCard(
+                      task: widget.tasksService.tasks[index],
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () => Navigator.pushNamed(context, 'tasksPost'),
-        ));
+      ),
+    );
   }
 }

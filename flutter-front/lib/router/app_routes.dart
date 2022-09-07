@@ -1,6 +1,7 @@
 import 'package:app_uteam/models/models.dart';
 import 'package:app_uteam/pages/change_pages.dart';
 import 'package:app_uteam/screens/home.dart';
+import 'package:app_uteam/screens/my_task_screen.dart';
 import 'package:app_uteam/screens/product_details.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class AppRoutes {
         icon: Icons.manage_search_outlined,
         name: 'Gestor de Tareas',
         screen: ManageTaskScreen()),
+
     MenuOption(
         route: 'ManageProducts',
         icon: Icons.manage_search_outlined,
