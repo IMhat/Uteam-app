@@ -183,7 +183,7 @@ class MyButtonNotification extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          'ManageTasks',
+          'Notification',
         );
       },
       // The custom button

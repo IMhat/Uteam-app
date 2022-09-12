@@ -134,7 +134,7 @@ class MyButtonCanje extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          '',
+          'AcercaDe',
         );
       },
       // The custom button

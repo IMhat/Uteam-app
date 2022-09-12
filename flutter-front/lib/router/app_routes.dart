@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 //import '../screens/image_screens.dart';
 import '../screens/initial_screen.dart';
+import '../screens/notification_screen.dart';
 import '../screens/screens.dart';
 
 class AppRoutes {
@@ -18,6 +19,11 @@ class AppRoutes {
         icon: Icons.manage_search_outlined,
         name: 'Gestor de Tareas',
         screen: ManageTaskScreen()),
+    MenuOption(
+        route: 'Notification',
+        icon: Icons.manage_search_outlined,
+        name: 'Notification',
+        screen: NotificationScreen()),
 
     MenuOption(
         route: 'ManageProducts',

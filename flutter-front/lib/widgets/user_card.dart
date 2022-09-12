@@ -15,9 +15,9 @@ class UserCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
-        margin: const EdgeInsets.only(top: 30, bottom: 50),
-        width: double.infinity,
-        height: 100,
+        margin: const EdgeInsets.only(top: 25, left: 30, bottom: 50),
+        width: 80,
+        height: 80,
         //decoration: _cardBorders(),
         child: Stack(
           alignment: Alignment.bottomLeft,
@@ -60,7 +60,7 @@ class _UserDetailsState extends State<_UserDetails> {
       padding: const EdgeInsets.only(right: 50),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        width: 100,
+        width: 80,
         height: 70,
         decoration: const BoxDecoration(
           color: Color.fromARGB(255, 231, 170, 209),
@@ -72,7 +72,16 @@ class _UserDetailsState extends State<_UserDetails> {
             Text(
               widget.username.toString(),
               style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 15,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text(
+              widget.email.toString(),
+              style: const TextStyle(
+                  fontSize: 15,
                   color: Color.fromARGB(255, 0, 0, 0),
                   fontWeight: FontWeight.bold),
               maxLines: 1,

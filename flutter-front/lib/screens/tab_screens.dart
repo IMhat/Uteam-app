@@ -193,6 +193,9 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
                 )
               ],
             ),
+            SizedBox(
+              height: 5,
+            ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -262,7 +265,7 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
                         widget.productsService.products[index].copy();
                     Navigator.pushNamed(
                       context,
-                      'AcercaDe',
+                      '',
                     );
                   },
                   child: ProductCard(

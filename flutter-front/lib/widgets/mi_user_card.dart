@@ -91,6 +91,6 @@ class _MyUserCardDetailsState extends State<_MyUserCardDetails> {
   }
 
   BoxDecoration _buildBoxDecoration() => const BoxDecoration(
-      color: Color.fromARGB(255, 240, 221, 206),
+      color: Color.fromARGB(255, 231, 170, 209),
       borderRadius: BorderRadius.all(Radius.circular(20)));
 }

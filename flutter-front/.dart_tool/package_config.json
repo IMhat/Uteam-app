@@ -320,6 +320,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/syncfusion_flutter_core-20.2.48",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "syncfusion_flutter_sliders",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/syncfusion_flutter_sliders-20.2.48",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "synchronized",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/synchronized-3.0.0+2",
       "packageUri": "lib/",
@@ -368,7 +380,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-09-06T13:29:30.748806Z",
+  "generated": "2022-09-09T14:38:37.536537Z",
   "generator": "pub",
   "generatorVersion": "2.17.6"
 }

@@ -12,26 +12,22 @@ class TaskCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final taskListProvider =
         Provider.of<TaskListProvider>(context, listen: false);
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.only(top: 30, bottom: 50),
-          width: 250,
-          height: 150,
-          //decoration: _cardBorders(),
-          child: Stack(
-            alignment: Alignment.bottomLeft,
-            children: [
-              _TaskDetails(
-                //title: taskListProvider.tasks[i].title,
-                // subTitle: taskListProvider.tasks[i].description,
-                title: task.title,
-                subTitle: task.description,
-              ),
-            ],
+    return Container(
+      padding: const EdgeInsets.all(2.0),
+      margin: const EdgeInsets.only(top: 0, bottom: 50),
+      width: 200, height: 200,
+      //decoration: _cardBorders(),
+      child: Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          _TaskDetails(
+            //title: taskListProvider.tasks[i].title,
+            // subTitle: taskListProvider.tasks[i].description,
+            title: task.title,
+            subTitle: task.description,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -59,10 +55,10 @@ class _TaskDetailsState extends State<_TaskDetails> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      width: double.infinity,
+      width: 200,
       height: 200,
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 231, 170, 209),
+          color: const Color.fromARGB(255, 231, 170, 209),
           borderRadius: const BorderRadius.all(Radius.circular(20)),
           boxShadow: [
             BoxShadow(
@@ -89,8 +85,10 @@ class _TaskDetailsState extends State<_TaskDetails> {
                 fontSize: 15, color: Color.fromARGB(255, 9, 0, 0)),
           ),
           Container(
-            margin: EdgeInsets.only(top: 20, left: 65),
-            child: MyButtonBeginning(),
+            width: 130,
+            height: 40,
+            margin: const EdgeInsets.only(top: 0, left: 65),
+            child: const MyButtonBeginning(),
           )
         ],
       ),
@@ -114,22 +112,27 @@ class MyButtonBeginning extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          '',
+          'taskPut',
         );
       },
       // The custom button
       child: Container(
+        width: 130,
+        height: 30,
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
-          gradient: LinearGradient(begin: AlignmentDirectional.topEnd, colors: [
-            Color.fromARGB(255, 242, 133, 157),
-            Color.fromARGB(255, 167, 79, 211)
-          ]),
+          gradient: const LinearGradient(
+              begin: AlignmentDirectional.topEnd,
+              colors: [
+                Color.fromARGB(255, 242, 133, 157),
+                Color.fromARGB(255, 167, 79, 211)
+              ]),
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: const Text(
           'Empezar',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontSize: 10),
+          textAlign: TextAlign.center,
         ),
       ),
     );

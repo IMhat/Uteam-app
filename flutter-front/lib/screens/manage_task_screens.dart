@@ -87,19 +87,16 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
               height: 900,
               color: Colors.white,
               child: Center(
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
+                child: GridView.builder(
                   //itemCount: taskListProvider.tasks.length,
                   itemCount: widget.tasksService.tasks.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
                   itemBuilder: (BuildContext context, int index) =>
                       GestureDetector(
                     onTap: () {
                       widget.tasksService.selectedTask =
                           widget.tasksService.tasks[index].copy();
-                      Navigator.pushNamed(
-                        context,
-                        'taskPut',
-                      );
                     },
                     child: TaskCard(
                       task: widget.tasksService.tasks[index],
