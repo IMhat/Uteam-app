@@ -43,6 +43,8 @@ class _Navegacion extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.wallet), label: 'Billetera'),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_box), label: 'Cuenta'),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.account_box), label: 'admin'),
         ]);
   }
 }
@@ -58,12 +60,13 @@ class _Paginas extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
 
       children: [
-        HomePage1(),
+        const HomePage1(),
         TabScreen(),
         //MyTaskScreen(),
-        SearchScreen(),
+        const SearchScreen(),
         WalletScreen(),
-        UserScreen()
+        UserScreen(),
+        // AdminScreen()
       ],
     );
   }

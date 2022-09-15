@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:app_uteam/providers/user_form_provider.dart';
-
-import 'package:app_uteam/providers/user_list_provider.dart';
-import 'package:app_uteam/providers/product_list_provider.dart';
 import 'package:app_uteam/services/user_services.dart';
 import 'package:app_uteam/services/product_services.dart';
 import 'package:app_uteam/widgets/mi_user_card.dart';
@@ -71,11 +68,6 @@ class _TabScreenBody extends StatefulWidget {
 class _TabScreenBodyState extends State<_TabScreenBody> {
   @override
   Widget build(BuildContext context) {
-    UserService userService;
-    ProductService productsService;
-    final userListProvider = Provider.of<UserListProvider>(context);
-    final productListProvider = Provider.of<ProductListProvider>(context);
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -265,7 +257,7 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
                         widget.productsService.products[index].copy();
                     Navigator.pushNamed(
                       context,
-                      '',
+                      'AcercaDe',
                     );
                   },
                   child: ProductCard(

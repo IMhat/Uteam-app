@@ -1,16 +1,43 @@
-import 'dart:ui';
-
-import 'package:app_uteam/screens/home_page_body.dart';
-import 'package:app_uteam/screens/product_details.dart';
-import 'package:app_uteam/widgets/BigText.dart';
-import 'package:app_uteam/widgets/SmallText.dart';
+import 'package:app_uteam/screens/user_screens.dart';
+import 'package:app_uteam/widgets/mi_user_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+import '../providers/user_form_provider.dart';
+import '../services/user_services.dart';
+import '../widgets/user_card.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    final userService = Provider.of<UserService>(context);
+    return ChangeNotifierProvider(
+      create: (_) => UserFormProvider(userService.selectedUser),
+      child: _UserHomeBody(userService: userService),
+    );
+  }
+}
+
+class _UserHomeBody extends StatefulWidget {
+  _UserHomeBody({
+    Key? key,
+    required this.userService,
+  }) : super(key: key);
+
+  UserService userService;
+  @override
+  _HomePageUserState createState() => _HomePageUserState();
+}
+
+class _HomePageUserState extends State<_UserHomeBody> {
   // @override
-  // State<HomePage> createState() => _HomePageState();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,72 +46,81 @@ class HomePage extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: AlignmentDirectional.topEnd,
-                        colors: [
-                      Colors.deepPurple,
-                      Color.fromARGB(255, 245, 98, 130)
-                    ])),
-                height: 220,
-                margin: const EdgeInsets.only(top: 0, bottom: 15),
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Disponible",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "300 Puntos",
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                            margin: const EdgeInsets.only(top: 45, left: 5),
-                            child: const MyButtonNotification()),
-                      ],
-                    ),
-                    Center(
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 50, right: 5),
-                        child: Row(
-                          children: [
-                            Column(
-                              // ignore: prefer_const_literals_to_create_immutables
-                              children: <Widget>[
-                                const CircleAvatar(
-                                  radius: 25.0,
-                                  backgroundColor:
-                                      Color.fromARGB(255, 211, 211, 211),
-                                  backgroundImage:
-                                      AssetImage('assets/user.png'),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: AlignmentDirectional.topEnd,
+                      colors: [
+                    Colors.deepPurple,
+                    Color.fromARGB(255, 245, 98, 130)
+                  ])),
+              height: 220,
+              margin: const EdgeInsets.only(top: 0, bottom: 15),
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        "Disponible",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
-                    )
-                  ],
-                )),
+                      Container(
+                        margin: const EdgeInsets.only(top: 0, right: 25),
+                        width: 180,
+                        height: 150,
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          //itemCount: taskListProvider.tasks.length,
+                          itemCount: widget.userService.users.length,
+                          itemBuilder: (BuildContext context, int index) =>
+                              GestureDetector(
+                            onTap: () {
+                              widget.userService.selectedUser =
+                                  widget.userService.users[index].copy();
+                              Navigator.pushNamed(
+                                context,
+                                'userPut',
+                              );
+                            },
+                            child: MyUserCard(
+                              user: widget.userService.users[index],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                          margin: const EdgeInsets.only(top: 30, right: 10),
+                          child: const MyButtonNotification()),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 60, left: 300),
+              child: Row(
+                children: [
+                  Column(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: <Widget>[
+                      const CircleAvatar(
+                        radius: 25.0,
+                        backgroundColor: Color.fromARGB(255, 211, 211, 211),
+                        backgroundImage: AssetImage('assets/user.png'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
 
             Align(
               alignment: Alignment.bottomCenter,
@@ -114,7 +150,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text(
                             "Mis objetivos",
                             style: TextStyle(
@@ -137,23 +173,37 @@ class HomePage extends StatelessWidget {
                           const SizedBox(
                             width: 10,
                           ),
-                          const Text("60/100"),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Center(
-                            child: SizedBox(
-                              width: 150,
-                              height: 20,
-                              child: Container(
-                                color: Color.fromARGB(255, 243, 166, 230),
-                                child: const LinearProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation(
-                                      Color.fromARGB(255, 209, 174, 243)),
-                                  backgroundColor:
-                                      Color.fromARGB(255, 242, 176, 218),
-                                ),
-                              ),
+                          Container(
+                            width: 250,
+                            height: 35,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Stack(
+                              children: [
+                                LayoutBuilder(
+                                    builder: (context, constraints) =>
+                                        Container(
+                                          width: constraints.maxWidth * 0.5,
+                                          decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                  255, 222, 155, 195),
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                        )),
+                                Positioned.fill(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("5 Días"),
+                                      Icon(Icons.calendar_today)
+                                    ],
+                                  ),
+                                ))
+                              ],
                             ),
                           )
                         ],
@@ -202,3 +252,25 @@ class MyButtonNotification extends StatelessWidget {
     );
   }
 }
+
+
+
+// const Text("60/100"),
+//                           const SizedBox(
+//                             width: 10,
+//                           ),
+//                           Center(
+//                             child: SizedBox(
+//                               width: 150,
+//                               height: 20,
+//                               child: Container(
+//                                 color: const Color.fromARGB(255, 243, 166, 230),
+//                                 child: const LinearProgressIndicator(
+//                                   valueColor: AlwaysStoppedAnimation(
+//                                       Color.fromARGB(255, 209, 174, 243)),
+//                                   backgroundColor:
+//                                       Color.fromARGB(255, 242, 176, 218),
+//                                 ),
+//                               ),
+//                             ),
+//                           )

@@ -85,11 +85,11 @@ class _PointDetailsState extends State<_PointDetails> {
             Container(
               width: 50,
               height: 50,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 211, 210, 210),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.message,
                 color: Colors.green,
               ),
@@ -100,7 +100,7 @@ class _PointDetailsState extends State<_PointDetails> {
                   widget.description.toString(),
                   style: const TextStyle(fontSize: 20, color: Colors.black),
                 ),
-                Text(
+                const Text(
                   "Just now",
                   style: TextStyle(color: Colors.grey),
                 ),

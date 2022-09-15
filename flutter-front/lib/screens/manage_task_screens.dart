@@ -66,6 +66,7 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
                   height: 50,
                   width: 250,
                   child: Container(
+                    margin: EdgeInsets.only(left: 50),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -82,16 +83,15 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
               ],
             ),
             Container(
-              margin: const EdgeInsets.only(top: 20, bottom: 20),
+              margin: const EdgeInsets.only(top: 20, left: 40, bottom: 20),
               width: 350,
               height: 900,
               color: Colors.white,
               child: Center(
-                child: GridView.builder(
+                child: ListView.builder(
                   //itemCount: taskListProvider.tasks.length,
                   itemCount: widget.tasksService.tasks.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
+
                   itemBuilder: (BuildContext context, int index) =>
                       GestureDetector(
                     onTap: () {

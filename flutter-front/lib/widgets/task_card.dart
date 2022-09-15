@@ -1,7 +1,6 @@
 import 'package:app_uteam/models/models.dart';
-import 'package:app_uteam/providers/task_list_provider.dart';
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class TaskCard extends StatelessWidget {
   final Task task;
@@ -10,12 +9,10 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final taskListProvider =
-        Provider.of<TaskListProvider>(context, listen: false);
     return Container(
       padding: const EdgeInsets.all(2.0),
       margin: const EdgeInsets.only(top: 0, bottom: 50),
-      width: 200, height: 200,
+      width: 200, height: 300,
       //decoration: _cardBorders(),
       child: Stack(
         alignment: Alignment.bottomLeft,
@@ -31,13 +28,7 @@ class TaskCard extends StatelessWidget {
     );
   }
 
-  // BoxDecoration _cardBorders() => BoxDecoration(
-  //         color: Colors.white,
-  //         borderRadius: BorderRadius.circular(25),
-  //         boxShadow: [
-  //           BoxShadow(
-  //               color: Colors.black12, offset: Offset(0, 7), blurRadius: 10)
-  //         ]);
+
 }
 
 class _TaskDetails extends StatefulWidget {
@@ -51,12 +42,17 @@ class _TaskDetails extends StatefulWidget {
 }
 
 class _TaskDetailsState extends State<_TaskDetails> {
+  final elevatedButtonStyle = ElevatedButton.styleFrom(
+      shadowColor: Color.fromARGB(255, 54, 57, 244),
+      elevation: 10,
+      primary: Colors.deepPurple,
+      onPrimary: Colors.white);
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      width: 200,
-      height: 200,
+      width: 280,
+      height: 300,
       decoration: BoxDecoration(
           color: const Color.fromARGB(255, 231, 170, 209),
           borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -84,21 +80,41 @@ class _TaskDetailsState extends State<_TaskDetails> {
             style: const TextStyle(
                 fontSize: 15, color: Color.fromARGB(255, 9, 0, 0)),
           ),
-          Container(
-            width: 130,
-            height: 40,
-            margin: const EdgeInsets.only(top: 0, left: 65),
-            child: const MyButtonBeginning(),
-          )
+          const SizedBox(height: 40),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                style: elevatedButtonStyle,
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    'TaskDetail',
+                  );
+                },
+                child: const Text("Ver"),
+              ),
+              ElevatedButton(
+                style: elevatedButtonStyle,
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    'tasksPost',
+                  );
+                },
+                child: const Text("Empezar"),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 
-  BoxDecoration _buildBoxDecoration() => const BoxDecoration(
-      color: Colors.indigo,
-      borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(25), topRight: Radius.circular(25)));
+  // BoxDecoration _buildBoxDecoration() => const BoxDecoration(
+  //     color: Colors.indigo,
+  //     borderRadius: BorderRadius.only(
+  //         bottomLeft: Radius.circular(25), topRight: Radius.circular(25)));
 }
 
 class MyButtonBeginning extends StatelessWidget {
@@ -112,7 +128,7 @@ class MyButtonBeginning extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          'taskPut',
+          'tasksPost',
         );
       },
       // The custom button

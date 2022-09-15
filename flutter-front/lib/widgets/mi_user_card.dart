@@ -1,12 +1,5 @@
 import 'package:app_uteam/models/models.dart';
-import 'package:app_uteam/providers/user_list_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import 'package:app_uteam/models/models.dart';
-import 'package:app_uteam/providers/user_list_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class MyUserCard extends StatelessWidget {
   final User user;
@@ -15,8 +8,6 @@ class MyUserCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userListProvider =
-        Provider.of<UserListProvider>(context, listen: false);
     return Container(
       width: 80,
       height: 60,
@@ -65,7 +56,7 @@ class _MyUserCardDetailsState extends State<_MyUserCardDetails> {
           Text(
             widget.points.toString(),
             style: const TextStyle(
-                fontSize: 20, color: Color.fromARGB(255, 251, 110, 2)),
+                fontSize: 20, color: Color.fromARGB(255, 255, 0, 0)),
           ),
           Container(
             decoration: const BoxDecoration(
@@ -76,7 +67,7 @@ class _MyUserCardDetailsState extends State<_MyUserCardDetails> {
               "Puntos",
               style: TextStyle(
                 fontSize: 10,
-                color: const Color.fromARGB(255, 251, 110, 2),
+                color: Color.fromARGB(255, 252, 2, 2),
               ),
             ),
           )
@@ -91,6 +82,6 @@ class _MyUserCardDetailsState extends State<_MyUserCardDetails> {
   }
 
   BoxDecoration _buildBoxDecoration() => const BoxDecoration(
-      color: Color.fromARGB(255, 231, 170, 209),
+      color: Color.fromARGB(255, 232, 203, 221),
       borderRadius: BorderRadius.all(Radius.circular(20)));
 }
