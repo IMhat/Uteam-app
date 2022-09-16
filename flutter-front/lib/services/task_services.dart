@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class TaskService extends ChangeNotifier {
-  final String _baseUrl = '2qufsr9dx5.execute-api.us-east-1.amazonaws.com';
+  final String _baseUrl = 'smiley-appi.herokuapp.com';
   List<Task> tasks = [];
   late Task selectedTask;
   bool isLoading = true;
@@ -19,7 +19,7 @@ class TaskService extends ChangeNotifier {
 
   Future<String> updateTask(Task task) async {
     notifyListeners();
-    final url = Uri.https(_baseUrl, 'tasks/${task.id}');
+    final url = Uri.https(_baseUrl, '/api/tasks/${task.id}');
     final resp = await http.put(url, body: task.toJson());
     final decodeData = resp.body;
     final index = tasks.indexWhere((element) => element.id == task.id);
@@ -33,7 +33,7 @@ class TaskService extends ChangeNotifier {
 
   Future<String> deleteTask(Task task) async {
     notifyListeners();
-    final url = Uri.https(_baseUrl, 'tasks/${task.id}');
+    final url = Uri.https(_baseUrl, '/api/tasks/${task.id}');
     final resp = await http.delete(url, body: task.toJson());
     final decodeData = resp.body;
     //final index = tasks.indexWhere((element) => element.id == task.id);
@@ -45,12 +45,21 @@ class TaskService extends ChangeNotifier {
 
   Future<List<Task>> loadTasks() async {
     isLoading = true;
-    final url = Uri.https(_baseUrl, 'tasks');
+    final url = Uri.https(_baseUrl, '/api/tasks');
     final resp = await http.get(url);
-    final Map<String, dynamic> tasksMap = jsonDecode(resp.body);
+    final List<dynamic> tasksMap = jsonDecode(resp.body);
     final jsonData = jsonDecode(resp.body);
-    for (var item in jsonData["tasks"]) {
-      tasks.add(Task(item["title"], item["description"], item["id"]));
+
+    for (var item in jsonData) {
+      tasks.add(Task(
+          item["title"],
+          item["type"],
+          item["priority"],
+          item["description"],
+          item["user"],
+          item["points"],
+          item["done"],
+          item["id"]));
       // _dbProvider.getTodasLasTasks();
       // _dbProvider.nuevaTask(TaskModel(
       //     id: item["id"],
@@ -64,15 +73,21 @@ class TaskService extends ChangeNotifier {
     return tasks;
   }
 
-  Future<http.Response> saveTasks(String text, String text2) {
+  Future<http.Response> saveTasks(String text, String text2, String text3,
+      String text4, String text5, dynamic text6, dynamic text7) {
     return http.post(
-      Uri.parse('https://2qufsr9dx5.execute-api.us-east-1.amazonaws.com/tasks'),
+      Uri.parse('https://smiley-appi.herokuapp.com/api/tasks'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
         'title': text,
-        'description': text2,
+        'type': text2,
+        'priority': text3,
+        'description': text4,
+        'user': text5,
+        'points': text6,
+        'done': text7,
       }),
     );
   }

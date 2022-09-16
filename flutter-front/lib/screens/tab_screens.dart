@@ -1,12 +1,5 @@
-import 'package:app_uteam/models/user.dart';
-import 'package:app_uteam/models/product.dart';
-import 'package:app_uteam/models/user_model.dart';
-import 'package:app_uteam/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:app_uteam/providers/user_form_provider.dart';
-import 'package:app_uteam/providers/product_form_provider.dart';
-import 'package:app_uteam/providers/user_list_provider.dart';
-import 'package:app_uteam/providers/product_list_provider.dart';
 import 'package:app_uteam/services/user_services.dart';
 import 'package:app_uteam/services/product_services.dart';
 import 'package:app_uteam/widgets/mi_user_card.dart';
@@ -75,11 +68,6 @@ class _TabScreenBody extends StatefulWidget {
 class _TabScreenBodyState extends State<_TabScreenBody> {
   @override
   Widget build(BuildContext context) {
-    UserService userService;
-    ProductService productsService;
-    final userListProvider = Provider.of<UserListProvider>(context);
-    final productListProvider = Provider.of<ProductListProvider>(context);
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -113,44 +101,40 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
                   children: <Widget>[
-                    Container(
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(70))),
-                      child: SizedBox(
-                          height: 100,
-                          width: 180,
-                          child: Center(
-                            child: ListView.builder(
-                              itemCount: widget.userService.users.length,
-                              itemBuilder: (BuildContext context, int index) =>
-                                  GestureDetector(
-                                onTap: () {
-                                  widget.userService.selectedUser =
-                                      widget.userService.users[index].copy();
-                                  Navigator.pushNamed(
-                                    context,
-                                    'userPut',
-                                  );
-                                },
-                                child: MyUserCard(
-                                  user: widget.userService.users[index],
-                                ),
+                    SizedBox(
+                        height: 70,
+                        width: 180,
+                        child: Center(
+                          child: ListView.builder(
+                            itemCount: widget.userService.users.length,
+                            itemBuilder: (BuildContext context, int index) =>
+                                GestureDetector(
+                              onTap: () {
+                                widget.userService.selectedUser =
+                                    widget.userService.users[index].copy();
+                                Navigator.pushNamed(
+                                  context,
+                                  'userPut',
+                                );
+                              },
+                              child: MyUserCard(
+                                user: widget.userService.users[index],
                               ),
                             ),
-                          )),
-                    )
+                          ),
+                        ))
                   ],
                 ),
                 Container(
-                  margin: const EdgeInsets.only(right: 10),
-                  width: 80,
-                  height: 80,
+                  margin: const EdgeInsets.only(top: 0, right: 10),
+                  width: 70,
+                  height: 60,
                   child: Container(
-                    margin: const EdgeInsets.only(top: 10, right: 5),
+                    margin: const EdgeInsets.only(top: 0, right: 5),
                     child: Row(
                       verticalDirection: VerticalDirection.down,
                       children: [
@@ -159,7 +143,8 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
                           children: <Widget>[
                             const CircleAvatar(
                               radius: 30.0,
-                              backgroundColor: Colors.grey,
+                              backgroundColor:
+                                  Color.fromARGB(255, 225, 223, 223),
                               backgroundImage: AssetImage('assets/user.png'),
                             ),
                           ],
@@ -172,14 +157,13 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
             ),
             Column(
               children: <Widget>[
-                const Divider(
-                  indent: 1,
-                ),
                 SizedBox(
                   height: 50,
                   width: 300,
                   child: Container(
-                    color: Color.fromARGB(255, 238, 220, 241),
+                    decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 236, 222, 240),
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: const TextField(
                       controller: null,
                       decoration: InputDecoration(
@@ -201,11 +185,35 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
                 )
               ],
             ),
-            Divider(indent: 2),
-            Card(
-              color: Colors.blueGrey,
-              child: Container(
-                child: Image.asset("assets/painting.jpg"),
+            SizedBox(
+              height: 5,
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 231, 170, 209),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    width: 200,
+                    height: 150,
+                    child: Image.asset("assets/painting1.png"),
+                  ),
+                  const Divider(
+                    indent: 10,
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 231, 170, 209),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    width: 200,
+                    height: 150,
+                    child: Image.asset("assets/painting2.png"),
+                  )
+                ],
               ),
             ),
             const Divider(

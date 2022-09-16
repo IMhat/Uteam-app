@@ -1,12 +1,16 @@
 import 'package:app_uteam/models/models.dart';
 import 'package:app_uteam/pages/change_pages.dart';
+import 'package:app_uteam/screens/acept_task.dart';
 import 'package:app_uteam/screens/home.dart';
+import 'package:app_uteam/screens/my_task_screen.dart';
 import 'package:app_uteam/screens/product_details.dart';
 import 'package:flutter/material.dart';
 
 //import '../screens/image_screens.dart';
 import '../screens/initial_screen.dart';
+import '../screens/notification_screen.dart';
 import '../screens/screens.dart';
+import '../widgets/task_detail.dart';
 
 class AppRoutes {
   static const initialRoute = 'Initial';
@@ -17,6 +21,22 @@ class AppRoutes {
         icon: Icons.manage_search_outlined,
         name: 'Gestor de Tareas',
         screen: ManageTaskScreen()),
+    MenuOption(
+        route: 'AceptTasks',
+        icon: Icons.manage_search_outlined,
+        name: 'Tarea aceptada',
+        screen: AceptTask()),
+    MenuOption(
+        route: 'TaskDetail',
+        icon: Icons.manage_search_outlined,
+        name: 'Detalle de tarea',
+        screen: MyTaskDetail()),
+    MenuOption(
+        route: 'Notification',
+        icon: Icons.manage_search_outlined,
+        name: 'Notification',
+        screen: NotificationScreen()),
+
     MenuOption(
         route: 'ManageProducts',
         icon: Icons.manage_search_outlined,
@@ -107,11 +127,13 @@ class AppRoutes {
         icon: Icons.edit,
         name: 'Editar Productos',
         screen: const ProductPutScreen()),
-    MenuOption(
-        route: 'pointPut',
-        icon: Icons.edit,
-        name: 'Editar Puntaje',
-        screen: const PointPutScreen()),
+
+    // MenuOption(
+    //     route: 'pointPut',
+    //     icon: Icons.edit,
+    //     name: 'Editar Puntaje',
+    //     screen: const PointPutScreen()),
+
     MenuOption(
         route: 'userPut',
         icon: Icons.edit,

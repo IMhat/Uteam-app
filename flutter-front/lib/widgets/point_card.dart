@@ -15,20 +15,22 @@ class PointCard extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: Container(
-        margin: const EdgeInsets.only(top: 30, bottom: 50),
-        width: double.infinity,
-        height: 100,
-        //decoration: _cardBorders(),
+      child: SizedBox(
         child: Container(
-          child: _PointDetails(
-            // title: taskListProvider.tasks[i].title,
-            // subTitle: pointListProvider.points[i].description,
-            username: point.username,
-            description: point.description,
-            point: point.point,
-            // date: point.date,
-            id: point.id,
+          margin: const EdgeInsets.only(top: 0, bottom: 20),
+          width: double.infinity,
+          height: 100,
+          //decoration: _cardBorders(),
+          child: Container(
+            child: _PointDetails(
+              // title: taskListProvider.tasks[i].title,
+              // subTitle: pointListProvider.points[i].description,
+              username: point.username,
+              description: point.description,
+              point: point.point,
+              // date: point.date,
+              id: point.id,
+            ),
           ),
         ),
       ),
@@ -83,11 +85,11 @@ class _PointDetailsState extends State<_PointDetails> {
             Container(
               width: 50,
               height: 50,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 211, 210, 210),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.message,
                 color: Colors.green,
               ),
@@ -98,7 +100,7 @@ class _PointDetailsState extends State<_PointDetails> {
                   widget.description.toString(),
                   style: const TextStyle(fontSize: 20, color: Colors.black),
                 ),
-                Text(
+                const Text(
                   "Just now",
                   style: TextStyle(color: Colors.grey),
                 ),

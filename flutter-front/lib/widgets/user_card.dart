@@ -10,14 +10,12 @@ class UserCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userListProvider =
-        Provider.of<UserListProvider>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
-        margin: const EdgeInsets.only(top: 30, bottom: 50),
-        width: double.infinity,
-        height: 100,
+        margin: const EdgeInsets.only(top: 25, left: 30, bottom: 50),
+        width: 80,
+        height: 80,
         //decoration: _cardBorders(),
         child: Stack(
           alignment: Alignment.bottomLeft,
@@ -60,24 +58,32 @@ class _UserDetailsState extends State<_UserDetails> {
       padding: const EdgeInsets.only(right: 50),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        width: double.infinity,
+        width: 80,
         height: 70,
-        decoration: _buildBoxDecoration(),
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 231, 170, 209),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               widget.username.toString(),
               style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
+                  fontSize: 15,
+                  color: Color.fromARGB(255, 0, 0, 0),
                   fontWeight: FontWeight.bold),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
             Text(
               widget.email.toString(),
-              style: const TextStyle(fontSize: 15, color: Colors.white),
+              style: const TextStyle(
+                  fontSize: 15,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
@@ -85,8 +91,8 @@ class _UserDetailsState extends State<_UserDetails> {
     );
   }
 
-  BoxDecoration _buildBoxDecoration() => const BoxDecoration(
-      color: Colors.indigo,
-      borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(25), topRight: Radius.circular(25)));
+  // BoxDecoration _buildBoxDecoration() => const BoxDecoration(
+  //     color: Colors.indigo,
+  //     borderRadius: BorderRadius.only(
+  //         bottomLeft: Radius.circular(25), topRight: Radius.circular(25)));
 }

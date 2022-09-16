@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class UserService extends ChangeNotifier {
-  final String _baseUrl = '2qufsr9dx5.execute-api.us-east-1.amazonaws.com';
+  final String _baseUrl = 'smiley-appi.herokuapp.com';
   List<User> users = [];
   late User selectedUser;
   bool isLoading = true;
@@ -19,7 +19,7 @@ class UserService extends ChangeNotifier {
 
   Future<String> updateUser(User user) async {
     notifyListeners();
-    final url = Uri.https(_baseUrl, 'users/${user.id}');
+    final url = Uri.https(_baseUrl, '/api/users/${user.id}');
     final resp = await http.put(url, body: user.toJson());
     final decodeData = resp.body;
     final index = users.indexWhere((element) => element.id == user.id);
@@ -36,7 +36,7 @@ class UserService extends ChangeNotifier {
 
   Future<String> deleteUser(User user) async {
     notifyListeners();
-    final url = Uri.https(_baseUrl, 'users/${user.id}');
+    final url = Uri.https(_baseUrl, '/api/users/${user.id}');
     final resp = await http.delete(url, body: user.toJson());
     final decodeData = resp.body;
     //final index = tasks.indexWhere((element) => element.id == task.id);
@@ -48,13 +48,21 @@ class UserService extends ChangeNotifier {
 
   Future<List<User>> loadUsers() async {
     isLoading = true;
-    final url = Uri.https(_baseUrl, 'users');
+    final url = Uri.https(_baseUrl, '/api/users');
     final resp = await http.get(url);
-    final Map<String, dynamic> usersMap = jsonDecode(resp.body);
+    final List<dynamic> usersMap = jsonDecode(resp.body);
     final jsonData = jsonDecode(resp.body);
-    for (var item in jsonData["users"]) {
-      users.add(
-          User(item["username"], item["points"], item["email"], item["id"]));
+    for (var item in jsonData) {
+      users.add(User(
+          item["name"],
+          item["lastName"],
+          item["email"],
+          item["phone"],
+          item["type"],
+          item["userImage"],
+          item["due"],
+          item["points"],
+          item["id"]));
       // _dbProvider.getTodasLasTasks();
       // _dbProvider.nuevoUser(UserModel(
       //     id: item["id"],
@@ -87,16 +95,22 @@ class UserService extends ChangeNotifier {
   //   return user.id;
   // }
 
-  Future<http.Response> saveUsers(String text, String text2, String text3) {
+  Future<http.Response> saveUsers(String text, String text2, String text3,
+      dynamic text4, String text5, String text6, dynamic text7, dynamic text8) {
     return http.post(
-      Uri.parse('https://2qufsr9dx5.execute-api.us-east-1.amazonaws.com/users'),
+      Uri.parse('https://smiley-appi.herokuapp.com/api/users'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        'username': text,
-        'points': text3,
-        'email': text2,
+        'name': text,
+        'lastName': text2,
+        'email': text3,
+        'phone': text4,
+        'type': text5,
+        'userImage': text6,
+        'points': text7,
+        'due': text8,
       }),
     );
   }

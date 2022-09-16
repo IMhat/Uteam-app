@@ -56,7 +56,7 @@ class _MyTaskScreenBodyState extends State<_MyTaskScreenBody> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mis Tareas'),
+        title: const Text('Desafios'),
       ),
       body: Material(
         child: Center(

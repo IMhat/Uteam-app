@@ -18,7 +18,7 @@ class UteamImage extends StatelessWidget {
         child: Opacity(
           opacity: 0.9,
           child: ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(45), topRight: Radius.circular(45)),
               child: getImage(url)),
         ),
@@ -28,7 +28,7 @@ class UteamImage extends StatelessWidget {
 
   BoxDecoration _buildBoxDecoration() => BoxDecoration(
           color: Colors.black,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(45), topRight: Radius.circular(45)),
           boxShadow: [
             BoxShadow(

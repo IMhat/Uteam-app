@@ -1,1 +1,1 @@
-console.log("joya")
+console.log("6/9")

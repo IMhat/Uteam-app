@@ -1,9 +1,8 @@
 import 'package:app_uteam/screens/home1.dart';
 import 'package:app_uteam/screens/screens.dart';
+import 'package:app_uteam/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../screens/my_task_screen.dart';
 import '../screens/wallet_screens.dart';
 
 class TabsPage extends StatelessWidget {
@@ -40,12 +39,12 @@ class _Navegacion extends StatelessWidget {
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.store_mall_directory), label: 'Catalogo'),
-          BottomNavigationBarItem(icon: Icon(Icons.task), label: 'Desafio'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.admin_panel_settings), label: 'Admin'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Busqueda'),
           BottomNavigationBarItem(icon: Icon(Icons.wallet), label: 'Billetera'),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_box), label: 'Cuenta'),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.account_box), label: 'admin'),
         ]);
   }
 }
@@ -61,12 +60,13 @@ class _Paginas extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
 
       children: [
-        HomePage1(),
+        const HomePage1(),
         TabScreen(),
-        MyTaskScreen(),
-        AdminScreen(),
+        //MyTaskScreen(),
+        const SearchScreen(),
         WalletScreen(),
-        UserScreen()
+        UserScreen(),
+        // AdminScreen()
       ],
     );
   }

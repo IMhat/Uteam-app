@@ -1,14 +1,43 @@
-import 'package:app_uteam/screens/home_page_body.dart';
-import 'package:app_uteam/screens/product_details.dart';
-import 'package:app_uteam/widgets/BigText.dart';
-import 'package:app_uteam/widgets/SmallText.dart';
+import 'package:app_uteam/screens/user_screens.dart';
+import 'package:app_uteam/widgets/mi_user_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+import '../providers/user_form_provider.dart';
+import '../services/user_services.dart';
+import '../widgets/user_card.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    final userService = Provider.of<UserService>(context);
+    return ChangeNotifierProvider(
+      create: (_) => UserFormProvider(userService.selectedUser),
+      child: _UserHomeBody(userService: userService),
+    );
+  }
+}
+
+class _UserHomeBody extends StatefulWidget {
+  _UserHomeBody({
+    Key? key,
+    required this.userService,
+  }) : super(key: key);
+
+  UserService userService;
+  @override
+  _HomePageUserState createState() => _HomePageUserState();
+}
+
+class _HomePageUserState extends State<_UserHomeBody> {
   // @override
-  // State<HomePage> createState() => _HomePageState();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,65 +46,86 @@ class HomePage extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-                color: const Color(0xff5D4FB1),
-                height: 220,
-                margin: const EdgeInsets.only(top: 0, bottom: 15),
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Hola Uteam",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                        Row(
-                          children: [
-                            SmallText(
-                              text: "Completa objetivos",
-                              color: Colors.white,
-                            ),
-                            const Icon(
-                              Icons.task,
-                              color: Colors.white,
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                    Center(
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 80, right: 5),
-                        child: Row(
-                          verticalDirection: VerticalDirection.down,
-                          children: [
-                            Column(
-                              // ignore: prefer_const_literals_to_create_immutables
-                              children: <Widget>[
-                                const CircleAvatar(
-                                  radius: 25.0,
-                                  backgroundColor: Color(0xff5D4FB1),
-                                  backgroundImage:
-                                      AssetImage('assets/user.png'),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: AlignmentDirectional.topEnd,
+                      colors: [
+                    Colors.deepPurple,
+                    Color.fromARGB(255, 245, 98, 130)
+                  ])),
+              height: 220,
+              margin: const EdgeInsets.only(top: 0, bottom: 15),
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        "Disponible",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
-                    )
-                  ],
-                )),
+                      Container(
+                        margin: const EdgeInsets.only(top: 0, right: 25),
+                        width: 180,
+                        height: 150,
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          //itemCount: taskListProvider.tasks.length,
+                          itemCount: widget.userService.users.length,
+                          itemBuilder: (BuildContext context, int index) =>
+                              GestureDetector(
+                            onTap: () {
+                              widget.userService.selectedUser =
+                                  widget.userService.users[index].copy();
+                              Navigator.pushNamed(
+                                context,
+                                'userPut',
+                              );
+                            },
+                            child: MyUserCard(
+                              user: widget.userService.users[index],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                          margin: const EdgeInsets.only(top: 30, right: 10),
+                          child: const MyButtonNotification()),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 60, left: 300),
+              child: Row(
+                children: [
+                  Column(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: <Widget>[
+                      const CircleAvatar(
+                        radius: 25.0,
+                        backgroundColor: Color.fromARGB(255, 211, 211, 211),
+                        backgroundImage: AssetImage('assets/user.png'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
 
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: 120,
+                height: 110,
                 margin: const EdgeInsets.only(
                     top: 150, left: 30, right: 30, bottom: 20),
                 decoration: BoxDecoration(
@@ -96,45 +146,64 @@ class HomePage extends StatelessWidget {
                     right: 15,
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      BigText(
-                        text: "Completado hoy",
-                        color: Colors.black,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            "Mis objetivos",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey),
+                          ),
+                          Text(
+                            "Mis objetivos",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey),
+                          ),
+                        ],
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
-                          Wrap(
-                            children: List.generate(1, (index) {
-                              return const Icon(
-                                Icons.timelapse,
-                                size: 50,
-                                color: Colors.black,
-                              );
-                            }),
-                          ),
                           const SizedBox(
                             width: 10,
                           ),
-                          const Text("60/100"),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Center(
-                            child: SizedBox(
-                              width: 150,
-                              height: 20,
-                              child: Container(
-                                color: Colors.black,
-                                child: const LinearProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation(
-                                      Color.fromARGB(255, 13, 52, 83)),
-                                  backgroundColor: Colors.blueGrey,
-                                ),
-                              ),
+                          Container(
+                            width: 250,
+                            height: 35,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Stack(
+                              children: [
+                                LayoutBuilder(
+                                    builder: (context, constraints) =>
+                                        Container(
+                                          width: constraints.maxWidth * 0.5,
+                                          decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                  255, 222, 155, 195),
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                        )),
+                                Positioned.fill(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("5 Días"),
+                                      Icon(Icons.calendar_today)
+                                    ],
+                                  ),
+                                ))
+                              ],
                             ),
                           )
                         ],
@@ -153,128 +222,55 @@ class HomePage extends StatelessWidget {
   }
 }
 
+class MyButtonNotification extends StatelessWidget {
+  const MyButtonNotification({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // The GestureDetector wraps the button.
+    return GestureDetector(
+      // When the child is tapped, show a snackbar.
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          'Notification',
+        );
+      },
+      // The custom button
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: const Icon(
+          Icons.notifications_active_rounded,
+          size: 40,
+          color: Colors.orange,
+        ),
+        //child: const Text('My Button'),
+      ),
+    );
+  }
+}
 
 
 
-
-
-
-
-
-
-// import 'package:app_uteam/screens/home_page_body.dart';
-// import 'package:app_uteam/screens/product_details.dart';
-// import 'package:app_uteam/widgets/BigText.dart';
-// import 'package:app_uteam/widgets/SmallText.dart';
-// import 'package:flutter/material.dart';
-
-// class HomePage extends StatelessWidget {
-//   const HomePage({super.key});
-
-//   // @override
-//   // State<HomePage> createState() => _HomePageState();
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         backgroundColor: Colors.white,
-//         body: Column(
-//           children: [
-//             Container(
-//               child: Container(
-//                   margin: EdgeInsets.only(top: 45, bottom: 15),
-//                   padding: EdgeInsets.only(left: 20, right: 20),
-//                   child: Row(
-//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                     children: [
-//                       Column(
-//                         children: [
-//                           BigText(
-//                             text: "Hola Uteam",
-//                             size: 30,
+// const Text("60/100"),
+//                           const SizedBox(
+//                             width: 10,
 //                           ),
-//                           Row(
-//                             children: [
-//                               SmallText(
-//                                 text: "dev",
-//                                 color: Colors.black,
+//                           Center(
+//                             child: SizedBox(
+//                               width: 150,
+//                               height: 20,
+//                               child: Container(
+//                                 color: const Color.fromARGB(255, 243, 166, 230),
+//                                 child: const LinearProgressIndicator(
+//                                   valueColor: AlwaysStoppedAnimation(
+//                                       Color.fromARGB(255, 209, 174, 243)),
+//                                   backgroundColor:
+//                                       Color.fromARGB(255, 242, 176, 218),
+//                                 ),
 //                               ),
-//                               Icon(Icons.arrow_drop_down_rounded)
-//                             ],
+//                             ),
 //                           )
-//                         ],
-//                       ),
-//                       Center(
-//                         child: Container(
-//                           width: 45,
-//                           height: 45,
-//                           child: Icon(Icons.person_outline_sharp,
-//                               color: Colors.white),
-//                           decoration: BoxDecoration(
-//                             borderRadius: BorderRadius.circular(15),
-//                             color: Colors.blue,
-//                           ),
-//                         ),
-//                       )
-//                     ],
-//                   )),
-//             ),
-//             Expanded(child: SingleChildScrollView(child: HomePageBody())),
-//             // Expanded(child: SingleChildScrollView(child: AcercaDe())),
-//           ],
-//         ));
-//   }
-// }
-
-// class _HomePageState extends State<HomePage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         backgroundColor: Colors.white,
-//         body: Column(
-//           children: [
-//             Container(
-//               child: Container(
-//                   margin: EdgeInsets.only(top: 45, bottom: 15),
-//                   padding: EdgeInsets.only(left: 20, right: 20),
-//                   child: Row(
-//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                     children: [
-//                       Column(
-//                         children: [
-//                           BigText(
-//                             text: "Hola Uteam",
-//                             size: 30,
-//                           ),
-//                           Row(
-//                             children: [
-//                               SmallText(
-//                                 text: "dev",
-//                                 color: Colors.black,
-//                               ),
-//                               Icon(Icons.arrow_drop_down_rounded)
-//                             ],
-//                           )
-//                         ],
-//                       ),
-//                       Center(
-//                         child: Container(
-//                           width: 45,
-//                           height: 45,
-//                           child: Icon(Icons.person_outline_sharp,
-//                               color: Colors.white),
-//                           decoration: BoxDecoration(
-//                             borderRadius: BorderRadius.circular(15),
-//                             color: Colors.blue,
-//                           ),
-//                         ),
-//                       )
-//                     ],
-//                   )),
-//             ),
-//             Expanded(child: SingleChildScrollView(child: HomePageBody())),
-//             // Expanded(child: SingleChildScrollView(child: AcercaDe())),
-//           ],
-//         ));
-//   }
-// }
-

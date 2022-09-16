@@ -1,18 +1,5 @@
-import 'package:app_uteam/screens/popular_recompensas.dart';
-import 'package:app_uteam/screens/products_screen.dart';
-import 'package:app_uteam/widgets/SmallText.dart';
-import 'package:app_uteam/widgets/app_column.dart';
-import 'package:app_uteam/widgets/icon_and_text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:dots_indicator/dots_indicator.dart';
-
 import '../widgets/BigText.dart';
-
-import 'package:app_uteam/models/product.dart';
-import 'package:app_uteam/models/product_model.dart';
-import 'package:app_uteam/services/product_services.dart';
-import 'package:app_uteam/widgets/product_card.dart';
-import 'package:app_uteam/providers/product_list_provider.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({super.key});
@@ -43,36 +30,60 @@ class _HomePageBodyState extends State<HomePageBody> {
     pageController.dispose();
   }
 
+  final LinearGradient _gradient = const LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.center,
+      colors: <Color>[
+        Colors.deepPurple,
+        Colors.red,
+        Color.fromARGB(255, 169, 58, 183),
+      ]);
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          color: Colors.white,
-          height: 150,
-          child: PageView.builder(
-              controller: pageController,
-              itemCount: 5,
-              itemBuilder: (context, position) {
-                return _buildPageItem(position);
-              }),
-        ),
-        DotsIndicator(
-          dotsCount: 5,
-          position: _currPageValue,
-          decorator: DotsDecorator(
-            activeColor: Color(0xff5D4FB1),
-            size: const Size.square(9.0),
-            activeSize: const Size(18.0, 9.0),
-            activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 231, 170, 209),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                width: 260,
+                height: 150,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const MyButtonBeginning(),
+                    Image.asset("assets/paint1.png"),
+                  ],
+                ),
+              ),
+              const Divider(
+                indent: 10,
+              ),
+              Container(
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 231, 170, 209),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  width: 260,
+                  height: 150,
+                  child: Image.asset("assets/paint2.png"))
+            ],
           ),
         ),
+
         Container(
-          padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+          padding: const EdgeInsets.only(top: 5, left: 15, right: 15),
           margin: const EdgeInsets.only(top: 20, left: 15, right: 15),
           width: 300,
-          height: 80,
+          height: 60,
           color: Colors.white,
           child: const Text(
             "Objetivos a alcanzar",
@@ -109,7 +120,21 @@ class _HomePageBodyState extends State<HomePageBody> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Desafios"),
+              Container(
+                child: ShaderMask(
+                  shaderCallback: (Rect rect) {
+                    return _gradient.createShader(rect);
+                  },
+                  child: Text(
+                    "Desafios",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+              MyButton()
             ],
           ),
           padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
@@ -117,8 +142,8 @@ class _HomePageBodyState extends State<HomePageBody> {
           width: 300,
           height: 80,
           decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: const Color.fromARGB(255, 231, 170, 209),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey[850]!.withOpacity(0.29),
@@ -217,9 +242,9 @@ class _HomePageBodyState extends State<HomePageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              color: Color.fromARGB(255, 137, 205, 236),
-              padding: EdgeInsets.only(top: 15, left: 15, right: 15),
-              margin: EdgeInsets.only(top: 20, left: 15, right: 15),
+              color: const Color.fromARGB(255, 137, 205, 236),
+              padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+              margin: const EdgeInsets.only(top: 20, left: 15, right: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -249,6 +274,67 @@ class _HomePageBodyState extends State<HomePageBody> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class MyButton extends StatelessWidget {
+  const MyButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // The GestureDetector wraps the button.
+    return GestureDetector(
+      // When the child is tapped, show a snackbar.
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          'ManageTasks',
+        );
+      },
+      // The custom button
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+
+        child: Icon(
+          Icons.arrow_forward,
+          color: Colors.red,
+        ),
+        //child: const Text('My Button'),
+      ),
+    );
+  }
+}
+
+class MyButtonBeginning extends StatelessWidget {
+  const MyButtonBeginning({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // The GestureDetector wraps the button.
+    return GestureDetector(
+      // When the child is tapped, show a snackbar.
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          'ManageTasks',
+        );
+      },
+      // The custom button
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(begin: AlignmentDirectional.topEnd, colors: [
+            Color.fromARGB(255, 242, 133, 157),
+            Color.fromARGB(255, 167, 79, 211)
+          ]),
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: const Text(
+          'Empezar',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
     );
   }
