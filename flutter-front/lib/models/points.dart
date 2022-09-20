@@ -2,13 +2,13 @@ import 'dart:convert';
 // import 'dart:ffi';
 
 class Point {
-  late String? username;
-  late String? description;
-  late String? point;
+  late String? user;
+  late String? actualBalance;
+  late String? transactions;
   // late dynamic date;
   late String? id;
   // late Bool? done;
-  Point(this.username, this.description, this.point, this.id
+  Point(this.user, this.actualBalance, this.transactions, this.id
       // this.done,
       );
 
@@ -16,24 +16,24 @@ class Point {
 
   String toJson() => json.encode(toMap());
   Point.fromMap(Map<String, dynamic> map) {
-    username = map['username'];
-    description = map['description'];
-    point = map['point'];
+    user = map['user'];
+    actualBalance = map['actualBalance'];
+    transactions = map['transactions'];
     // date = map['date'];
     id = map['id'];
     // done = map['done'];
   }
 
   Map<String, dynamic> toMap() => {
-        "username": username,
-        "description": description,
-        "point": point,
+        "user": user,
+        "actualBalance": actualBalance,
+        "transactions": transactions,
         // "date": date,
         "id": id
         // "done": done,
       };
 
-  Point copy() => Point(username, description, point, id
+  Point copy() => Point(user, actualBalance, transactions, id
       // done,
 
       );

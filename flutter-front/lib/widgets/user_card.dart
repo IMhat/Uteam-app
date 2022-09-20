@@ -23,8 +23,8 @@ class UserCard extends StatelessWidget {
             _UserDetails(
               //title: taskListProvider.tasks[i].title,
               // subTitle: taskListProvider.tasks[i].description,
-              username: user.username,
-              email: user.email,
+              name: user.name,
+              points: user.points,
             ),
           ],
         ),
@@ -42,10 +42,10 @@ class UserCard extends StatelessWidget {
 }
 
 class _UserDetails extends StatefulWidget {
-  final String? username;
-  final String? email;
+  final String? name;
+  final String? points;
 
-  const _UserDetails({this.username, this.email});
+  const _UserDetails({this.name, this.points});
 
   @override
   State<_UserDetails> createState() => _UserDetailsState();
@@ -68,7 +68,7 @@ class _UserDetailsState extends State<_UserDetails> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              widget.username.toString(),
+              widget.name.toString(),
               style: const TextStyle(
                   fontSize: 15,
                   color: Color.fromARGB(255, 0, 0, 0),
@@ -77,7 +77,7 @@ class _UserDetailsState extends State<_UserDetails> {
               overflow: TextOverflow.ellipsis,
             ),
             Text(
-              widget.email.toString(),
+              widget.points.toString(),
               style: const TextStyle(
                   fontSize: 15,
                   color: Color.fromARGB(255, 0, 0, 0),

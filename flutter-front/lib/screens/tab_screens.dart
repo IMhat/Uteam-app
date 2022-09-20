@@ -106,8 +106,8 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
                 Column(
                   children: <Widget>[
                     SizedBox(
-                        height: 70,
-                        width: 180,
+                        height: 90,
+                        width: 250,
                         child: Center(
                           child: ListView.builder(
                             itemCount: widget.userService.users.length,

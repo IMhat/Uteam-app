@@ -1,11 +1,9 @@
-import 'package:app_uteam/screens/user_screens.dart';
 import 'package:app_uteam/widgets/mi_user_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../providers/user_form_provider.dart';
 import '../services/user_services.dart';
-import '../widgets/user_card.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

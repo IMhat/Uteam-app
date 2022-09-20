@@ -38,7 +38,7 @@ class _WalletScreenState extends State<WalletScreen> {
 
     final pointsService = Provider.of<PointService>(context);
     return ChangeNotifierProvider(
-      create: (_) => PointFormProvider(pointsService.selectedPoint),
+      create: (_) => PointFormProvider(pointsService.selectedPoints),
       child: _WalletScreenBody(pointsService: pointsService),
     );
   }
@@ -124,7 +124,7 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
                   itemBuilder: (BuildContext context, int index) =>
                       GestureDetector(
                     onTap: () {
-                      widget.pointsService.selectedPoint =
+                      widget.pointsService.selectedPoints =
                           widget.pointsService.points[index].copy();
                       Navigator.pushNamed(
                         context,

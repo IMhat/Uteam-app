@@ -1,13 +1,7 @@
-import 'dart:ui';
-
 import 'package:app_uteam/models/models.dart';
-
 import 'package:flutter/material.dart';
-
-import '../screens/app_icon.dart';
 import 'BigText.dart';
 import 'SmallText.dart';
-import 'app_column.dart';
 import 'icon_and_text_widget.dart';
 
 class ProductDetailCard extends StatelessWidget {
@@ -30,7 +24,7 @@ class ProductDetailCard extends StatelessWidget {
             top: 60,
           ),
           child: _ProductDetailCard(
-            productName: product.productName,
+            title: product.title,
             productImage: product.productImage,
             description: product.description,
             points: product.points,
@@ -49,7 +43,7 @@ class ProductDetailCard extends StatelessWidget {
 }
 
 class _ProductDetailCard extends StatefulWidget {
-  final String? productName;
+  final String? title;
   final String? productImage;
   final String? description;
   final dynamic points;
@@ -57,7 +51,7 @@ class _ProductDetailCard extends StatefulWidget {
   // final String? createAt;
 
   const _ProductDetailCard({
-    this.productName,
+    this.title,
     this.productImage,
     this.description,
     this.points,
@@ -119,27 +113,27 @@ class _ProductDetailCardState extends State<_ProductDetailCard> {
                             // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               BigText(
-                                text: widget.productName.toString(),
+                                text: widget.title.toString(),
                                 size: 26,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               SmallText(
                                 text: "Recompensa",
                                 color: Colors.black,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  IconAndTextWidget(
+                                  const IconAndTextWidget(
                                       icon: Icons.circle_sharp,
                                       text: "Normal",
                                       iconColor: Colors.blue),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 55,
                                   ),
                                   IconAndTextWidget(

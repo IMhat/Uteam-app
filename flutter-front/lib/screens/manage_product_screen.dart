@@ -52,8 +52,6 @@ class _ManageProductScreenBody extends StatefulWidget {
 class _ManageProductScreenBodyState extends State<_ManageProductScreenBody> {
   @override
   Widget build(BuildContext context) {
-    ProductService productService;
-    final productListProvider = Provider.of<ProductListProvider>(context);
 
     return Scaffold(
         appBar: AppBar(

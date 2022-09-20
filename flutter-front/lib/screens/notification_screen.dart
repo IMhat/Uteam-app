@@ -39,7 +39,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
     final pointsService = Provider.of<PointService>(context);
     return ChangeNotifierProvider(
-      create: (_) => PointFormProvider(pointsService.selectedPoint),
+      create: (_) => PointFormProvider(pointsService.selectedPoints),
       child: _NotificationScreenBody(pointsService: pointsService),
     );
   }
@@ -101,7 +101,7 @@ class _NotificationScreenBodyState extends State<_NotificationScreenBody> {
                   itemBuilder: (BuildContext context, int index) =>
                       GestureDetector(
                     onTap: () {
-                      widget.pointsService.selectedPoint =
+                      widget.pointsService.selectedPoints =
                           widget.pointsService.points[index].copy();
                       Navigator.pushNamed(
                         context,

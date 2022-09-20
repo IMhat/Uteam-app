@@ -25,12 +25,12 @@ class AppRoutes {
         route: 'AceptTasks',
         icon: Icons.manage_search_outlined,
         name: 'Tarea aceptada',
-        screen: AceptTask()),
-    MenuOption(
-        route: 'TaskDetail',
-        icon: Icons.manage_search_outlined,
-        name: 'Detalle de tarea',
-        screen: MyTaskDetail()),
+        screen: AceptTaskScreen()),
+    // MenuOption(
+    //     route: 'TaskDetail',
+    //     icon: Icons.manage_search_outlined,
+    //     name: 'Detalle de tarea',
+    //     screen: MyTaskDetail()),
     MenuOption(
         route: 'Notification',
         icon: Icons.manage_search_outlined,
@@ -97,26 +97,26 @@ class AppRoutes {
         icon: Icons.login_outlined,
         name: 'Pantalla de Inicio',
         screen: const InitialScreen()),
-    MenuOption(
-        route: 'tasksPost',
-        icon: Icons.list_alt_outlined,
-        name: 'Agregar Tareas',
-        screen: const TaskPostScreen()),
-    MenuOption(
-        route: 'productsPost',
-        icon: Icons.list_alt_outlined,
-        name: 'Agregar Productos',
-        screen: const ProductPostScreen()),
+    // MenuOption(
+    //     route: 'tasksPost',
+    //     icon: Icons.list_alt_outlined,
+    //     name: 'Agregar Tareas',
+    //     screen: const TaskPostScreen()),
+    // MenuOption(
+    //     route: 'productsPost',
+    //     icon: Icons.list_alt_outlined,
+    //     name: 'Agregar Productos',
+    //     screen: const ProductPostScreen()),
     MenuOption(
         route: 'pointsPost',
         icon: Icons.list_alt_outlined,
         name: 'Agregar Puntos',
         screen: const PointPostScreen()),
-    MenuOption(
-        route: 'usersPost',
-        icon: Icons.list_alt_outlined,
-        name: 'Agregar Usuarios',
-        screen: const UserPostScreen()),
+    // MenuOption(
+    //     route: 'usersPost',
+    //     icon: Icons.list_alt_outlined,
+    //     name: 'Agregar Usuarios',
+    //     screen: const UserPostScreen()),
     MenuOption(
         route: 'taskPut',
         icon: Icons.edit,
@@ -127,11 +127,13 @@ class AppRoutes {
         icon: Icons.edit,
         name: 'Editar Productos',
         screen: const ProductPutScreen()),
-    MenuOption(
-        route: 'pointPut',
-        icon: Icons.edit,
-        name: 'Editar Puntaje',
-        screen: const PointPutScreen()),
+
+    // MenuOption(
+    //     route: 'pointPut',
+    //     icon: Icons.edit,
+    //     name: 'Editar Puntaje',
+    //     screen: const PointPutScreen()),
+
     MenuOption(
         route: 'userPut',
         icon: Icons.edit,

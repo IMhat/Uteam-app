@@ -3,17 +3,21 @@ import 'dart:ffi';
 
 class Product {
   late String id;
-  late String productName;
+  late String title;
+  late String type;
   late String productImage;
   late String description;
   late dynamic points;
+  late dynamic due;
   // late String createAt;
   Product(
     this.id,
-    this.productName,
+    this.title,
+    this.type,
     this.productImage,
     this.description,
     this.points,
+    this.due,
     //  this.createAt
   );
   factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
@@ -21,23 +25,28 @@ class Product {
   String toJson() => json.encode(toMap());
   Product.fromMap(Map<String, dynamic> map) {
     id = map['id'];
-    productName = map['productName'];
+    title = map['title'];
+    type = map['type'];
     productImage = map['productImage'];
     description = map['description'];
     points = map['points'];
+    due = map['due'];
     // createAt = map['createAt'];
   }
 
   Map<String, dynamic> toMap() => {
         "id": id,
-        "productName": productName,
+        "title": title,
+        "type": type,
         "productImage": productImage,
         "description": description,
         "points": points,
+        "due": due,
         // "createAt": createAt
       };
 
-  Product copy() => Product(id, productName, productImage, description, points);
+  Product copy() =>
+      Product(id, title, type, productImage, description, points, due);
 
   then(Null Function(dynamic value) param0) {}
 }

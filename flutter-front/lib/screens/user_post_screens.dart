@@ -15,9 +15,9 @@ class UserPostScreen extends StatefulWidget {
 }
 
 class _UserPostScreenState extends State<UserPostScreen> {
-  final TextEditingController _tituloController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-  final TextEditingController _pointsController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  //final TextEditingController _pointsController = TextEditingController();
   late UserModel userModel;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
@@ -50,7 +50,7 @@ class _UserPostScreenState extends State<UserPostScreen> {
                     children: [
                       const SizedBox(height: 10),
                       TextFormField(
-                        controller: _tituloController,
+                        controller: _nameController,
                         decoration: InputDecorations.authInputDecoration(
                             hintText: 'Nombre de usuario',
                             labelText: 'username'),
@@ -61,15 +61,15 @@ class _UserPostScreenState extends State<UserPostScreen> {
                         },
                       ),
                       const SizedBox(height: 30),
-                      TextFormField(
-                        controller: _pointsController,
-                        decoration: InputDecorations.authInputDecoration(
-                            hintText: 'Puntos del usuario',
-                            labelText: 'Puntos'),
-                      ),
+                      // TextFormField(
+                      //   controller: _pointsController,
+                      //   decoration: InputDecorations.authInputDecoration(
+                      //       hintText: 'Puntos del usuario',
+                      //       labelText: 'Puntos'),
+                      // ),
                       const SizedBox(height: 30),
                       TextFormField(
-                          controller: _descriptionController,
+                          controller: _emailController,
                           decoration: InputDecorations.authInputDecoration(
                               hintText: 'Email del usuario',
                               labelText: 'Email'),
@@ -88,21 +88,21 @@ class _UserPostScreenState extends State<UserPostScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.save_outlined),
-          onPressed: () async {
-            if (_formKey.currentState!.validate()) {
-              await UserService().saveUsers(_tituloController.text,
-                  _descriptionController.text, _pointsController.text);
-              final userListProvider =
-                  Provider.of<UserListProvider>(context, listen: false);
-              userListProvider.nuevoUser(_tituloController.text,
-                  _descriptionController.text, _pointsController.text);
-            }
-            userServiceProvider.users = [];
-            userServiceProvider.loadUsers();
-            Navigator.of(context).pop();
-          }),
+      // floatingActionButton: FloatingActionButton(
+      //     child: const Icon(Icons.save_outlined),
+      //     onPressed: () async {
+      //       if (_formKey.currentState!.validate()) {
+      //         await UserService().saveUsers(_nameController.text,
+      //             _emailController.text);
+      //         final userListProvider =
+      //             Provider.of<UserListProvider>(context, listen: false);
+      //         userListProvider.nuevoUser(_nameController.text,
+      //             _emailController.text);
+      //       }
+      //       userServiceProvider.users = [];
+      //       userServiceProvider.loadUsers();
+      //       Navigator.of(context).pop();
+      //     }),
     );
   }
 }

@@ -25,9 +25,9 @@ class PointCard extends StatelessWidget {
             child: _PointDetails(
               // title: taskListProvider.tasks[i].title,
               // subTitle: pointListProvider.points[i].description,
-              username: point.username,
-              description: point.description,
-              point: point.point,
+              //username: point.username,
+              //description: point.description,
+              //point: point.point,
               // date: point.date,
               id: point.id,
             ),

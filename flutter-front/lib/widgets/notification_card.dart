@@ -25,9 +25,9 @@ class NotificationCard extends StatelessWidget {
             child: _NotificationDetails(
               // title: taskListProvider.tasks[i].title,
               // subTitle: pointListProvider.points[i].description,
-              username: point.username,
-              description: point.description,
-              point: point.point,
+             // username: point.username,
+             // description: point.description,
+             // point: point.point,
               // date: point.date,
               id: point.id,
             ),

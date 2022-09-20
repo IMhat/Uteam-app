@@ -63,8 +63,8 @@ class _ProductPutScreenBodyState extends State<_ProductPutScreenBody> {
                     children: [
                       const SizedBox(height: 10),
                       TextFormField(
-                        initialValue: product.productName,
-                        onChanged: (value) => product.productName = value,
+                        initialValue: product.title,
+                        onChanged: (value) => product.title = value,
                         decoration: InputDecorations.authInputDecoration(
                             hintText: "", labelText: 'Nombre del Producto'),
                         validator: (value) {

@@ -9,14 +9,14 @@ class MyUserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 80,
+      width: 150,
       height: 60,
       padding: const EdgeInsets.symmetric(horizontal: 50),
       margin: const EdgeInsets.only(top: 0, right: 5),
       child: _MyUserCardDetails(
         //title: taskListProvider.tasks[i].title,
         // subTitle: taskListProvider.tasks[i].description,
-        // username: user.username,
+        name: user.name,
         points: user.points,
         //email: user.email,
       ),
@@ -25,11 +25,11 @@ class MyUserCard extends StatelessWidget {
 }
 
 class _MyUserCardDetails extends StatefulWidget {
-  // final String? username;
-  final String? points;
+  final String? name;
+  final dynamic points;
   //final String? email;
 
-  const _MyUserCardDetails({this.points});
+  const _MyUserCardDetails({this.points, this.name});
 
   @override
   State<_MyUserCardDetails> createState() => _MyUserCardDetailsState();
@@ -45,7 +45,7 @@ class _MyUserCardDetailsState extends State<_MyUserCardDetails> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Text(
-          //   widget.username.toString(),
+          //   widget.name.toString(),
           //   style: const TextStyle(
           //       fontSize: 20,
           //       color: Color.fromARGB(255, 252, 252, 252),

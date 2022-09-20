@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
+  static ThemeData get basic => ThemeData(
+    fontFamily: Font.poppins,
+  );
   static const Color primary = Colors.deepPurple;
   static final ThemeData lightTheme = ThemeData.light().copyWith(
       primaryColor: Colors.deepPurple,
@@ -14,4 +17,8 @@ class AppTheme {
       primaryColor: Colors.deepPurple,
       appBarTheme: const AppBarTheme(color: primary, elevation: 0),
       scaffoldBackgroundColor: Colors.black);
+}
+
+class Font {
+  static var poppins;
 }

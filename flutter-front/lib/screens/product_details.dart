@@ -1,23 +1,7 @@
-import 'package:app_uteam/screens/app_icon.dart';
-import 'package:app_uteam/widgets/app_column.dart';
-import 'package:app_uteam/widgets/exandable_text_widget.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/BigText.dart';
-import '../widgets/SmallText.dart';
-import '../widgets/icon_and_text_widget.dart';
-
-import 'package:app_uteam/models/models.dart';
-import 'package:app_uteam/models/product_model.dart';
-import 'package:app_uteam/providers/db_provider.dart';
 import 'package:app_uteam/providers/product_form_provider.dart';
-import 'package:app_uteam/providers/product_list_provider.dart';
 import 'package:app_uteam/services/product_services.dart';
-import 'package:app_uteam/widgets/product_card.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
-
 import '../services/product_services.dart';
 import '../widgets/product_detail_card.dart';
 
@@ -61,38 +45,14 @@ class _AcercaDeBody extends StatefulWidget {
 class _AcercaDeBodyState extends State<_AcercaDeBody> {
   @override
   Widget build(BuildContext context) {
-    ProductService productService;
-    final productListProvider = Provider.of<ProductListProvider>(context);
-
-    final productServiceProvider = Provider.of<ProductService>(context);
-
-    final productForm = Provider.of<ProductFormProvider>(context);
-    final product = productForm.product;
-
     return Scaffold(
       // appBar: AppBar(
       //   title: const Text('Productos'),
       // ),
       body: Material(
         child: Center(
-          child: ProductDetailCard(
-              product: widget.productsService.selectedProduct),
-          // child: ListView.builder(
-          //   //itemCount: taskListProvider.tasks.length,
-          //   itemCount: widget.productsService.products.length,
-          //   itemBuilder: (BuildContext context, int index) => GestureDetector(
-          //     // onTap: () {
-          //     //   widget.productsService.selectedProduct =
-          //     //       widget.productsService.products[index].copy();
-          //     //   // Navigator.pushNamed(
-          //     //   //   context,
-          //     //   //   'ProductPut',
-          //     //   // );
-          //     // },
-          //     child: ProductDetailCard(
-          //         product: widget.productsService.products[index]),
-          //   ),
-          // ),
+          child: ProductDetailCard(product: widget.productsService.selectedProduct),
+        
         ),
       ),
       // floatingActionButton: FloatingActionButton(

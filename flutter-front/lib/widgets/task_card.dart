@@ -1,12 +1,16 @@
 import 'package:app_uteam/models/models.dart';
-
 import 'package:flutter/material.dart';
 
-class TaskCard extends StatelessWidget {
+class TaskCard extends StatefulWidget {
   final Task task;
 
   const TaskCard({Key? key, required this.task}) : super(key: key);
 
+  @override
+  State<TaskCard> createState() => _TaskCardState();
+}
+
+class _TaskCardState extends State<TaskCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,15 +24,13 @@ class TaskCard extends StatelessWidget {
           _TaskDetails(
             //title: taskListProvider.tasks[i].title,
             // subTitle: taskListProvider.tasks[i].description,
-            title: task.title,
-            subTitle: task.description,
+            title: widget.task.title,
+            subTitle: widget.task.description,
           ),
         ],
       ),
     );
   }
-
-
 }
 
 class _TaskDetails extends StatefulWidget {
@@ -84,26 +86,26 @@ class _TaskDetailsState extends State<_TaskDetails> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ElevatedButton(
-                style: elevatedButtonStyle,
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    'TaskDetail',
-                  );
-                },
-                child: const Text("Ver"),
-              ),
-              ElevatedButton(
-                style: elevatedButtonStyle,
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    'tasksPost',
-                  );
-                },
-                child: const Text("Empezar"),
-              ),
+              // ElevatedButton(
+              //   style: elevatedButtonStyle,
+              //   onPressed: () {
+              //     Navigator.pushNamed(
+              //       context,
+              //       'TaskDetail',
+              //     );
+              //   },
+              //   child: const Text("Ver"),
+              // ),
+              // ElevatedButton(
+              //   style: elevatedButtonStyle,
+              //   onPressed: () {
+              //     Navigator.pushNamed(
+              //       context,
+              //       'tasksPost',
+              //     );
+              //   },
+              //   child: const Text("Empezar"),
+              // ),
             ],
           ),
         ],
