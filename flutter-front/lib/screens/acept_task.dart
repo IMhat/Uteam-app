@@ -1,11 +1,10 @@
-
+import 'package:app_uteam/widgets/buttonaceptreject.dart';
 import 'package:app_uteam/widgets/task_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/task_form_provider.dart';
 import '../services/task_services.dart';
-
 
 class AceptTaskScreen extends StatefulWidget {
   AceptTaskScreen({Key? key}) : super(key: key);
@@ -48,11 +47,40 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      backgroundColor: Colors.white,
-      body: Center(
-        child: MyTaskDetail(task: widget.tasksService.selectedTask),
-      )
-    );
+        appBar: AppBar(),
+        backgroundColor: Colors.white,
+        body: Stack(
+          children: [
+            MyTaskDetail(task: widget.tasksService.selectedTask),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                width: 260,
+                height: 50,
+                margin: const EdgeInsets.only(
+                    top: 10, left: 30, right: 30, bottom: 0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Color(0xFFe8e88888888),
+                          blurRadius: 10.0,
+                          offset: Offset(0, 5)),
+                      BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
+                      BoxShadow(color: Colors.white, offset: Offset(5, 0))
+                    ]),
+                child: Container(
+                  padding: const EdgeInsets.only(
+                    top: 0,
+                    left: 15,
+                    right: 15,
+                  ),
+                  child: ButtonsAceptReject(),
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }

@@ -1,9 +1,11 @@
 import 'package:app_uteam/models/models.dart';
 import 'package:app_uteam/pages/change_pages.dart';
 import 'package:app_uteam/screens/acept_task.dart';
+import 'package:app_uteam/screens/challenge_acept.dart';
 import 'package:app_uteam/screens/home.dart';
 import 'package:app_uteam/screens/my_task_screen.dart';
 import 'package:app_uteam/screens/product_details.dart';
+import 'package:app_uteam/screens/progres_task_view.dart';
 import 'package:flutter/material.dart';
 
 //import '../screens/image_screens.dart';
@@ -26,11 +28,16 @@ class AppRoutes {
         icon: Icons.manage_search_outlined,
         name: 'Tarea aceptada',
         screen: AceptTaskScreen()),
-    // MenuOption(
-    //     route: 'TaskDetail',
-    //     icon: Icons.manage_search_outlined,
-    //     name: 'Detalle de tarea',
-    //     screen: MyTaskDetail()),
+    MenuOption(
+        route: 'ChallengeAcepted',
+        icon: Icons.manage_search_outlined,
+        name: 'Challenge acepted',
+        screen: ChallengeAcepted()),
+    MenuOption(
+        route: 'ProgresTaskView',
+        icon: Icons.manage_search_outlined,
+        name: 'Progreso Tarea',
+        screen: ProgresTaskView()),    
     MenuOption(
         route: 'Notification',
         icon: Icons.manage_search_outlined,

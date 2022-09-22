@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../services/task_services.dart';
 
 class ManageTaskScreen extends StatefulWidget {
-  ManageTaskScreen({Key? key}) : super(key: key);
+  const ManageTaskScreen({Key? key}) : super(key: key);
 
   @override
   State<ManageTaskScreen> createState() => _ManageTaskScreenState();
@@ -53,30 +53,25 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Row(
-              children: [
-                SizedBox(
-                  height: 50,
-                  width: 250,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 50),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: const [
-                        Text(
-                          "Desafios Disponibles",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                  ),
+            SizedBox(
+              height: 50,
+              width: 250,
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Mis desafíos",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                    )
+                  ],
                 ),
-              ],
+              ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 20, left: 40, bottom: 20),
+              margin: const EdgeInsets.only(top: 20, left: 20, bottom: 20),
               width: 350,
               height: 900,
               color: Colors.white,

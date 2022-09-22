@@ -15,8 +15,8 @@ class _TaskCardState extends State<TaskCard> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(2.0),
-      margin: const EdgeInsets.only(top: 0, bottom: 50),
-      width: 200, height: 300,
+      margin: const EdgeInsets.only(top: 0, bottom: 10),
+      width: 200, height: 150,
       //decoration: _cardBorders(),
       child: Stack(
         alignment: Alignment.bottomLeft,
@@ -25,7 +25,8 @@ class _TaskCardState extends State<TaskCard> {
             //title: taskListProvider.tasks[i].title,
             // subTitle: taskListProvider.tasks[i].description,
             title: widget.task.title,
-            subTitle: widget.task.description,
+            type: widget.task.type,
+            //subTitle: widget.task.description,
           ),
         ],
       ),
@@ -35,28 +36,33 @@ class _TaskCardState extends State<TaskCard> {
 
 class _TaskDetails extends StatefulWidget {
   final String? title;
-  final String? subTitle;
+  final String? type;
+  //final String? subTitle;
 
-  const _TaskDetails({this.title, this.subTitle});
+  const _TaskDetails({
+    this.title,
+    this.type,
+  });
 
   @override
   State<_TaskDetails> createState() => _TaskDetailsState();
 }
 
 class _TaskDetailsState extends State<_TaskDetails> {
-  final elevatedButtonStyle = ElevatedButton.styleFrom(
-      shadowColor: Color.fromARGB(255, 54, 57, 244),
-      elevation: 10,
-      primary: Colors.deepPurple,
-      onPrimary: Colors.white);
+  //Estilo de ElevatedButton
+  // final elevatedButtonStyle = ElevatedButton.styleFrom(
+  //     shadowColor: const Color.fromARGB(255, 54, 57, 244),
+  //     elevation: 10,
+  //     primary: Colors.deepPurple,
+  //     onPrimary: Colors.white);
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      width: 280,
-      height: 300,
+      width: 320,
+      height: 140,
       decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 231, 170, 209),
+          color: const Color.fromARGB(255, 237, 236, 237),
           borderRadius: const BorderRadius.all(Radius.circular(20)),
           boxShadow: [
             BoxShadow(
@@ -77,37 +83,39 @@ class _TaskDetailsState extends State<_TaskDetails> {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          Text(
-            widget.subTitle.toString(),
-            style: const TextStyle(
-                fontSize: 15, color: Color.fromARGB(255, 9, 0, 0)),
-          ),
-          const SizedBox(height: 40),
+          SizedBox(height: 10),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // ElevatedButton(
-              //   style: elevatedButtonStyle,
-              //   onPressed: () {
-              //     Navigator.pushNamed(
-              //       context,
-              //       'TaskDetail',
-              //     );
-              //   },
-              //   child: const Text("Ver"),
-              // ),
-              // ElevatedButton(
-              //   style: elevatedButtonStyle,
-              //   onPressed: () {
-              //     Navigator.pushNamed(
-              //       context,
-              //       'tasksPost',
-              //     );
-              //   },
-              //   child: const Text("Empezar"),
-              // ),
+              Icon(Icons.today_outlined),
+              Text("2 hours ago"),
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                ),
+                width: 150,
+                height: 45,
+                decoration: BoxDecoration(
+                    color: Colors.green,
+                    border: Border.all(
+                        color: const Color.fromARGB(255, 255, 251, 251)),
+                    borderRadius: BorderRadius.circular(50)),
+                child: Text(
+                  widget.type.toString(),
+                  style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 0, 0, 0)),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ],
-          ),
+          )
+          // Text(
+          //   widget.subTitle.toString(),
+          //   style: const TextStyle(
+          //       fontSize: 15, color: Color.fromARGB(255, 9, 0, 0)),
+          // ),
         ],
       ),
     );
@@ -133,7 +141,7 @@ class MyButtonBeginning extends StatelessWidget {
           'tasksPost',
         );
       },
-      // The custom button
+
       child: Container(
         width: 130,
         height: 30,
@@ -156,3 +164,24 @@ class MyButtonBeginning extends StatelessWidget {
     );
   }
 }
+
+// ElevatedButton(
+//   style: elevatedButtonStyle,
+//   onPressed: () {
+//     Navigator.pushNamed(
+//       context,
+//       'TaskDetail',
+//     );
+//   },
+//   child: const Text("Ver"),
+// ),
+// ElevatedButton(
+//   style: elevatedButtonStyle,
+//   onPressed: () {
+//     Navigator.pushNamed(
+//       context,
+//       'tasksPost',
+//     );
+//   },
+//   child: const Text("Empezar"),
+// ),

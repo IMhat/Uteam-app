@@ -10,7 +10,7 @@ class UserListProvider extends ChangeNotifier {
   //set tasks(List<TaskModel> tasks) {}
 
   Future<UserModel> nuevoUser(
-      String username, String email, String points) async {
+      String username, String email, dynamic points) async {
     final nuevoUser =
         UserModel(username: username, email: email, points: points);
     //final id = (await DBProvider.db.nuevaTask(nuevaTask));
