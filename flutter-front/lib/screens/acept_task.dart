@@ -64,7 +64,7 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
                     color: Colors.white,
                     boxShadow: const [
                       BoxShadow(
-                          color: Color(0xFFe8e88888888),
+                          color: Color.fromARGB(135, 144, 142, 142),
                           blurRadius: 10.0,
                           offset: Offset(0, 5)),
                       BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
@@ -76,7 +76,7 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
                     left: 15,
                     right: 15,
                   ),
-                  child: ButtonsAceptReject(),
+                  child: const ButtonsAceptReject(),
                 ),
               ),
             ),

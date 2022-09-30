@@ -1,4 +1,4 @@
-import 'package:app_uteam/widgets/mi_user_card.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/user_form_provider.dart';
@@ -45,9 +45,16 @@ class _HomePageUserState extends State<_UserHomeBody> {
             Container(
               decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                      begin: AlignmentDirectional.topEnd,
+                      begin: AlignmentDirectional.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [
+                    0.2,
+                    0.4,
+                    0.8
+                  ],
                       colors: [
-                    Colors.deepPurple,
+                    Color.fromARGB(255, 124, 104, 206),
+                    Color.fromARGB(255, 165, 92, 179),
                     Color.fromARGB(255, 245, 98, 130)
                   ])),
               height: 220,
@@ -56,51 +63,54 @@ class _HomePageUserState extends State<_UserHomeBody> {
               child: Row(
                 children: [
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
-                        "Disponible",
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "Hello, Uteam",
                         style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 0, right: 25),
-                        width: 180,
-                        height: 150,
-                        child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          //itemCount: taskListProvider.tasks.length,
-                          itemCount: widget.userService.users.length,
-                          itemBuilder: (BuildContext context, int index) =>
-                              GestureDetector(
-                            onTap: () {
-                              widget.userService.selectedUser =
-                                  widget.userService.users[index].copy();
-                              Navigator.pushNamed(
-                                context,
-                                'userPut',
-                              );
-                            },
-                            child: MyUserCard(
-                              user: widget.userService.users[index],
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                          margin: const EdgeInsets.only(top: 30, right: 10),
-                          child: const MyButtonNotification()),
+                      Text(
+                        "Tenes 300 puntos",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      // Container(
+                      //   margin: const EdgeInsets.only(top: 0, right: 25),
+                      //   width: 180,
+                      //   height: 150,
+                      //   child: ListView.builder(
+                      //     physics: const NeverScrollableScrollPhysics(),
+                      //     //itemCount: taskListProvider.tasks.length,
+                      //     itemCount: widget.userService.users.length,
+                      //     itemBuilder: (BuildContext context, int index) =>
+                      //         GestureDetector(
+                      //       onTap: () {
+                      //         widget.userService.selectedUser =
+                      //             widget.userService.users[index].copy();
+                      //         Navigator.pushNamed(
+                      //           context,
+                      //           'userPut',
+                      //         );
+                      //       },
+                      //       child: MyUserCard(
+                      //         user: widget.userService.users[index],
+                      //       ),
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   ),
                 ],
               ),
             ),
+            Container(
+                margin: const EdgeInsets.only(top: 40, left: 220),
+                child: const MyButtonNotification()),
             Container(
               margin: const EdgeInsets.only(top: 60, left: 300),
               child: Row(
@@ -126,15 +136,16 @@ class _HomePageUserState extends State<_UserHomeBody> {
                 margin: const EdgeInsets.only(
                     top: 150, left: 30, right: 30, bottom: 20),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(40),
+                    color: Color.fromARGB(255, 250, 249, 249),
                     boxShadow: const [
                       BoxShadow(
                           color: Color(0xFFe8e88888888),
                           blurRadius: 10.0,
                           offset: Offset(0, 5)),
-                      BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
-                      BoxShadow(color: Colors.white, offset: Offset(5, 0))
+                      BoxShadow(
+                        color: Color.fromARGB(255, 233, 232, 232),
+                      ),
                     ]),
                 child: Container(
                   padding: const EdgeInsets.only(
@@ -142,69 +153,40 @@ class _HomePageUserState extends State<_UserHomeBody> {
                     left: 15,
                     right: 15,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            "Mis objetivos",
+                            "Hoy",
                             style: TextStyle(
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.grey),
+                                color: Color.fromARGB(255, 0, 0, 0)),
                           ),
+                          SizedBox(height: 10),
                           Text(
-                            "Mis objetivos",
+                            "2/10 Desafios",
                             style: TextStyle(
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.grey),
+                                color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          const SizedBox(
-                            width: 10,
+                      Opacity(
+                        opacity: 0.7,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 40, bottom: 5),
+                          height: 100,
+                          width: 100,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Image.asset("assets/home.jpeg"),
                           ),
-                          Container(
-                            width: 250,
-                            height: 35,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(50)),
-                            child: Stack(
-                              children: [
-                                LayoutBuilder(
-                                    builder: (context, constraints) =>
-                                        Container(
-                                          width: constraints.maxWidth * 0.5,
-                                          decoration: BoxDecoration(
-                                              color: const Color.fromARGB(
-                                                  255, 222, 155, 195),
-                                              borderRadius:
-                                                  BorderRadius.circular(50)),
-                                        )),
-                                Positioned.fill(
-                                    child: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("5 Días"),
-                                      Icon(Icons.calendar_today)
-                                    ],
-                                  ),
-                                ))
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -242,7 +224,7 @@ class MyButtonNotification extends StatelessWidget {
         child: const Icon(
           Icons.notifications_active_rounded,
           size: 40,
-          color: Colors.orange,
+          color: Color.fromARGB(255, 255, 255, 255),
         ),
         //child: const Text('My Button'),
       ),
@@ -269,5 +251,40 @@ class MyButtonNotification extends StatelessWidget {
 //                                       Color.fromARGB(255, 242, 176, 218),
 //                                 ),
 //                               ),
+//                             ),
+//                           )
+
+// barra de progreso
+//  Container(
+//                             width: 250,
+//                             height: 35,
+//                             decoration: BoxDecoration(
+//                                 border: Border.all(color: Colors.black),
+//                                 borderRadius: BorderRadius.circular(50)),
+//                             child: Stack(
+//                               children: [
+//                                 LayoutBuilder(
+//                                     builder: (context, constraints) =>
+//                                         Container(
+//                                           width: constraints.maxWidth * 0.5,
+//                                           decoration: BoxDecoration(
+//                                               color: const Color.fromARGB(
+//                                                   255, 222, 155, 195),
+//                                               borderRadius:
+//                                                   BorderRadius.circular(50)),
+//                                         )),
+//                                 Positioned.fill(
+//                                     child: Padding(
+//                                   padding: const EdgeInsets.all(5.0),
+//                                   child: Row(
+//                                     mainAxisAlignment:
+//                                         MainAxisAlignment.spaceBetween,
+//                                     children: [
+//                                       Text("5 Días"),
+//                                       Icon(Icons.calendar_today)
+//                                     ],
+//                                   ),
+//                                 ))
+//                               ],
 //                             ),
 //                           )

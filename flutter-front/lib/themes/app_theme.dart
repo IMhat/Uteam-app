@@ -9,7 +9,7 @@ class AppTheme {
       primaryColor: Colors.deepPurple,
       appBarTheme: const AppBarTheme(color: primary, elevation: 0),
       scaffoldBackgroundColor: Colors.grey[300],
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: Colors.indigo, elevation: 0),
       iconTheme: const IconThemeData());
 
@@ -17,6 +17,7 @@ class AppTheme {
       primaryColor: Colors.deepPurple,
       appBarTheme: const AppBarTheme(color: primary, elevation: 0),
       scaffoldBackgroundColor: Colors.black);
+      
 }
 
 class Font {

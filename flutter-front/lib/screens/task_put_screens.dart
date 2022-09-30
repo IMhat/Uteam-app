@@ -1,4 +1,5 @@
 import 'package:app_uteam/providers/task_form_provider.dart';
+import 'package:app_uteam/screens/progres_task.dart';
 import 'package:app_uteam/services/task_services.dart';
 import 'package:app_uteam/ui/input_decorations.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,7 @@ class _TaskPutScreenBodyState extends State<_TaskPutScreenBody> {
     final taskForm = Provider.of<TaskFormProvider>(context);
     final task = taskForm.task;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Editar Tarea'),
@@ -51,45 +53,56 @@ class _TaskPutScreenBodyState extends State<_TaskPutScreenBody> {
             const SizedBox(
               height: 10,
             ),
+            // Container(
+            //   width: 350,
+            //   height: 400,
+            //   child: ProgresTask(task: task),
+            // ),
             Container(
+              margin: EdgeInsets.only(top: 10),
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              width: double.infinity,
+              width: 350,
               decoration: _buildBoxDecoration(),
               child: Form(
                   key: taskForm.formKey,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     children: [
-                      const SizedBox(height: 10),
+                      Container(
+                        width: 350,
+                        height: 400,
+                        child: ProgresTask(task: task),
+                      ),
+                      // const SizedBox(height: 10),
                       TextFormField(
-                        initialValue: task.title,
-                        onChanged: (value) => task.title = value,
+                        initialValue: task.type,
+                        onChanged: (value) => task.type = value,
                         decoration: InputDecorations.authInputDecoration(
-                            hintText: "", labelText: 'Titulo'),
+                            hintText: "", labelText: 'Progreso'),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'El titulo es obligatorio';
                           }
                         },
                       ),
-                      const SizedBox(height: 30),
-                      TextFormField(
-                        initialValue: task.description,
-                        onChanged: (value) => task.description = value,
-                        decoration: InputDecorations.authInputDecoration(
-                            hintText: "", labelText: 'Descripcion'),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'La descripcion es obligatoria';
-                          }
-                        },
-                      ),
-                      const SizedBox(height: 30),
+                      // const SizedBox(height: 30),
+                      // TextFormField(
+                      //   initialValue: task.description,
+                      //   onChanged: (value) => task.description = value,
+                      //   decoration: InputDecorations.authInputDecoration(
+                      //       hintText: "", labelText: 'Descripcion'),
+                      //   validator: (value) {
+                      //     if (value == null || value.isEmpty) {
+                      //       return 'La descripcion es obligatoria';
+                      //     }
+                      //   },
+                      // ),
+                      // const SizedBox(height: 30),
                     ],
                   )),
             ),
             const SizedBox(
-              height: 100,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -99,6 +112,7 @@ class _TaskPutScreenBodyState extends State<_TaskPutScreenBody> {
                     child: const Icon(Icons.save_outlined),
                     onPressed: () async {
                       if (!taskForm.isValidForm()) return;
+                      print("hola");
                       await widget.taskService.updateTask(taskForm.task);
                       taskServiceProvider.tasks = [];
                       taskServiceProvider.loadTasks();
@@ -112,8 +126,10 @@ class _TaskPutScreenBodyState extends State<_TaskPutScreenBody> {
                       color: Colors.red[300],
                     ),
                     onPressed: () async {
+                      print("hola delete");
                       if (!taskForm.isValidForm()) return;
-                      await widget.taskService.deleteTask(taskForm.task);
+
+                      // await widget.taskService.deleteTask(taskForm.task);
                       // taskServiceProvider.loadTasks();
                       taskServiceProvider.tasks = [];
                       taskServiceProvider.loadTasks();

@@ -7,7 +7,7 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final elevatedButtonStyle = ElevatedButton.styleFrom(
-        shadowColor: Color.fromARGB(255, 54, 57, 244),
+        shadowColor: const Color.fromARGB(255, 54, 57, 244),
         elevation: 10,
         primary: Colors.deepPurple,
         onPrimary: Colors.white);

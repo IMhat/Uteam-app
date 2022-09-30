@@ -10,8 +10,6 @@ class PointCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pointListProvider =
-        Provider.of<PointListProvider>(context, listen: false);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),

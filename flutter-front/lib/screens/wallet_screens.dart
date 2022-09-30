@@ -1,19 +1,9 @@
-import 'package:app_uteam/models/models.dart';
-
-import 'package:app_uteam/models/points_model.dart';
-import 'package:app_uteam/providers/db_provider.dart';
-
 import 'package:app_uteam/providers/point_form_provider.dart';
-
-import 'package:app_uteam/providers/point_list_provider.dart';
-
 import 'package:app_uteam/services/points_service.dart';
-
 import 'package:app_uteam/widgets/point_card.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
+
 
 import '../services/points_service.dart';
 
@@ -58,9 +48,9 @@ class _WalletScreenBody extends StatefulWidget {
 class _WalletScreenBodyState extends State<_WalletScreenBody> {
   @override
   Widget build(BuildContext context) {
-    PointService pointService;
+    //PointService pointService;
 
-    final pointListProvider = Provider.of<PointListProvider>(context);
+   //final pointListProvider = Provider.of<PointListProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -92,9 +82,14 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
               ],
             ),
             Container(
+              width: 280,
+              height: 120,
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 231, 170, 209),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
                     "300 Puntos",
                     style: TextStyle(
@@ -106,11 +101,6 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
                   ),
                 ],
               ),
-              width: 280,
-              height: 120,
-              decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 231, 170, 209),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
             ),
             Container(
               margin: const EdgeInsets.only(top: 20, bottom: 20),
@@ -119,6 +109,8 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
               color: Colors.white,
               child: Center(
                 child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
                   //itemCount: taskListProvider.tasks.length,
                   itemCount: widget.pointsService.points.length,
                   itemBuilder: (BuildContext context, int index) =>

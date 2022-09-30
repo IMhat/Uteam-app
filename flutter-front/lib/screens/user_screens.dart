@@ -63,6 +63,7 @@ class _UserScreenBodyState extends State<_UserScreenBody> {
                   height: 150,
                   child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
                     //itemCount: taskListProvider.tasks.length,
                     itemCount: widget.userService.users.length,
                     itemBuilder: (BuildContext context, int index) =>
@@ -88,85 +89,88 @@ class _UserScreenBodyState extends State<_UserScreenBody> {
                 ),
               ],
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 0, left: 20, bottom: 20),
-              width: 320,
-              height: 500,
-              child: ListView(
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.only(top: 0, bottom: 20),
-                    width: 100,
-                    height: 80,
-                    decoration: _cardBorders(),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        Text(
-                          "Favourite",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.start,
-                        ),
-                        Icon(Icons.no_encryption_gmailerrorred)
-                      ],
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                margin: const EdgeInsets.only(top: 0, left: 20, bottom: 20),
+                width: 320,
+                height: 500,
+                child: ListView(
+                  children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.only(top: 0, bottom: 20),
+                      width: 100,
+                      height: 80,
+                      decoration: _cardBorders(),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: const [
+                          Text(
+                            "Favourite",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.start,
+                          ),
+                          Icon(Icons.no_encryption_gmailerrorred)
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 0, bottom: 20),
-                    width: 100,
-                    height: 80,
-                    decoration: _cardBorders(),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        Text(
-                          "Edit Account",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.start,
-                        ),
-                        Icon(Icons.edit)
-                      ],
+                    Container(
+                      margin: const EdgeInsets.only(top: 0, bottom: 20),
+                      width: 100,
+                      height: 80,
+                      decoration: _cardBorders(),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: const [
+                          Text(
+                            "Edit Account",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.start,
+                          ),
+                          Icon(Icons.edit)
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 0, bottom: 20),
-                    width: 100,
-                    height: 80,
-                    decoration: _cardBorders(),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        Text(
-                          "Settings and Privacy",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.start,
-                        ),
-                        Icon(Icons.settings)
-                      ],
+                    Container(
+                      margin: const EdgeInsets.only(top: 0, bottom: 20),
+                      width: 100,
+                      height: 80,
+                      decoration: _cardBorders(),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: const [
+                          Text(
+                            "Settings and Privacy",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.start,
+                          ),
+                          Icon(Icons.settings)
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 0, bottom: 20),
-                    width: 100,
-                    height: 80,
-                    decoration: _cardBorders(),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        Text(
-                          "Help",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.start,
-                        ),
-                        Icon(Icons.help_outlined)
-                      ],
+                    Container(
+                      margin: const EdgeInsets.only(top: 0, bottom: 20),
+                      width: 100,
+                      height: 80,
+                      decoration: _cardBorders(),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: const [
+                          Text(
+                            "Help",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.start,
+                          ),
+                          Icon(Icons.help_outlined)
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             )
           ],

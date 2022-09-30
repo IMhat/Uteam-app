@@ -1,7 +1,5 @@
 import 'package:app_uteam/models/models.dart';
-import 'package:app_uteam/providers/point_list_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class NotificationCard extends StatelessWidget {
   final Point point;
@@ -10,9 +8,6 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pointListProvider =
-        Provider.of<PointListProvider>(context, listen: false);
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: SizedBox(
@@ -25,9 +20,9 @@ class NotificationCard extends StatelessWidget {
             child: _NotificationDetails(
               // title: taskListProvider.tasks[i].title,
               // subTitle: pointListProvider.points[i].description,
-             // username: point.username,
-             // description: point.description,
-             // point: point.point,
+              // username: point.username,
+              // description: point.description,
+              // point: point.point,
               // date: point.date,
               id: point.id,
             ),
@@ -53,7 +48,8 @@ class _NotificationDetails extends StatefulWidget {
   // final dynamic date;
   final String? id;
 
-  const _NotificationDetails({this.username, this.description, this.point, this.id});
+  const _NotificationDetails(
+      {this.username, this.description, this.point, this.id});
 
   @override
   State<_NotificationDetails> createState() => _NotificationDetailsState();
@@ -85,11 +81,11 @@ class _NotificationDetailsState extends State<_NotificationDetails> {
             Container(
               width: 50,
               height: 50,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 211, 210, 210),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.message,
                 color: Colors.green,
               ),
@@ -100,7 +96,7 @@ class _NotificationDetailsState extends State<_NotificationDetails> {
                   widget.description.toString(),
                   style: const TextStyle(fontSize: 20, color: Colors.black),
                 ),
-                Text(
+                const Text(
                   "Just now",
                   style: TextStyle(color: Colors.grey),
                 ),

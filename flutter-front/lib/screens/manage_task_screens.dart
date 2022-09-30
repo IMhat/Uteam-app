@@ -53,30 +53,97 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(
-              height: 50,
-              width: 250,
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Mis desafíos",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-                    )
-                  ],
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 20),
+                const Text(
+                  "Mis desafíos",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                 ),
-              ),
+                Container(
+                  margin: const EdgeInsets.only(top: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(
+                          top: 10,
+                        ),
+                        width: 100,
+                        height: 45,
+                        decoration: BoxDecoration(
+                            color: Colors.green,
+                            border: Border.all(
+                                color:
+                                    const Color.fromARGB(255, 255, 251, 251)),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: const Text(
+                          "All",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(
+                          top: 10,
+                        ),
+                        width: 120,
+                        height: 45,
+                        decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 255, 98, 0),
+                            border: Border.all(
+                                color:
+                                    const Color.fromARGB(255, 255, 251, 251)),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: const Text(
+                          "En progreso",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(
+                          top: 10,
+                        ),
+                        width: 120,
+                        height: 45,
+                        decoration: BoxDecoration(
+                            color: Colors.green,
+                            border: Border.all(
+                                color:
+                                    const Color.fromARGB(255, 255, 251, 251)),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: const Text(
+                          "Finalizado",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
             Container(
-              margin: const EdgeInsets.only(top: 20, left: 20, bottom: 20),
+              margin: const EdgeInsets.only(top: 30, left: 20, bottom: 20),
               width: 350,
               height: 900,
               color: Colors.white,
               child: Center(
                 child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
                   //itemCount: taskListProvider.tasks.length,
                   itemCount: widget.tasksService.tasks.length,
 

@@ -46,7 +46,7 @@ class _ExpandableTextWidetState extends State<ExpandableTextWidet> {
                   onTap: () {},
                   child: Row(children: [
                     SmallText(text: "Show more", color: Colors.black),
-                    Icon(Icons.arrow_drop_down, color: Colors.black),
+                    const Icon(Icons.arrow_drop_down, color: Colors.black),
                   ]),
                 )
               ],

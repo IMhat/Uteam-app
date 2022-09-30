@@ -10,7 +10,7 @@ class UteamImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
       child: Container(
         decoration: _buildBoxDecoration(),
         width: double.infinity,
@@ -34,7 +34,7 @@ class UteamImage extends StatelessWidget {
             BoxShadow(
                 color: Colors.black.withOpacity(0.05),
                 blurRadius: 10,
-                offset: Offset(0, 5))
+                offset: const Offset(0, 5))
           ]);
 
   Widget getImage(String? picture) {

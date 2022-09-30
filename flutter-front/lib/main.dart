@@ -1,10 +1,6 @@
-import 'package:app_uteam/screens/home.dart';
 import 'package:app_uteam/screens/home1.dart';
-import 'package:app_uteam/screens/product_details.dart';
 import 'package:app_uteam/services/image_services.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:dio/dio.dart';

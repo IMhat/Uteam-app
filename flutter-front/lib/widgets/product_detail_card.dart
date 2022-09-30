@@ -199,17 +199,10 @@ class _ProductDetailCardState extends State<_ProductDetailCard> {
                                             bottom: 20,
                                             left: 40,
                                             right: 10),
-                                        child: Text(
-                                          "Canjear",
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
-                                            color: Color(0xff5D4FB1),
+                                            color: const Color(0xff5D4FB1),
                                             boxShadow: [
                                               BoxShadow(
                                                 color: Colors.grey[850]!
@@ -218,6 +211,13 @@ class _ProductDetailCardState extends State<_ProductDetailCard> {
                                                 blurRadius: 10,
                                               )
                                             ]),
+                                        child: const Text(
+                                          "Canjear",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       )
                                     ],
                                   ),

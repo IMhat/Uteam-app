@@ -100,7 +100,7 @@ class _ProductDetailsState extends State<_ProductDetails> {
               const Icon(Icons.person),
               const Text("Uteam"),
               Container(
-                child: MyButtonCanje(),
+                child: const MyButtonCanje(),
               )
             ],
           ),
@@ -139,7 +139,7 @@ class MyButtonCanje extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
-          gradient: LinearGradient(begin: AlignmentDirectional.topEnd, colors: [
+          gradient: const LinearGradient(begin: AlignmentDirectional.topEnd, colors: [
             Color.fromARGB(255, 242, 133, 157),
             Color.fromARGB(255, 167, 79, 211)
           ]),

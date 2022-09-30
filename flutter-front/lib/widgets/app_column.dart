@@ -18,19 +18,19 @@ class AppColumn extends StatelessWidget {
           text: text,
           size: 26,
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         SmallText(
           text: "Recompensa",
           color: Colors.black,
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [
+          children: const [
             IconAndTextWidget(
                 icon: Icons.circle_sharp,
                 text: "Normal",

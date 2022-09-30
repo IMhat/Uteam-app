@@ -8,9 +8,9 @@ class ImageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Container(
-          margin: EdgeInsets.only(top: 30, bottom: 50),
+          margin: const EdgeInsets.only(top: 30, bottom: 50),
           width: double.infinity,
           height: 400,
           decoration: _CardBorders(),
@@ -25,7 +25,7 @@ class ImageCard extends StatelessWidget {
   BoxDecoration _CardBorders() => BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(25),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black12,
               blurRadius: 10,
@@ -45,7 +45,7 @@ class _BlackgroundImage extends StatelessWidget {
         child: Container(
           width: double.infinity,
           height: 400,
-          child: FadeInImage(
+          child: const FadeInImage(
             placeholder: AssetImage('assets/jar-loading.gif'),
             image: NetworkImage('https://via.placeholder.com/400x300/f6f6f6'),
             fit: BoxFit.cover,

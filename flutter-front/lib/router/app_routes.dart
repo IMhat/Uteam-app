@@ -79,11 +79,11 @@ class AppRoutes {
     //     icon: Icons.image,
     //     name: 'Pantalla de Imagenes',
     //     screen: ImageScreen()),
-    // MenuOption(
-    //     route: 'register',
-    //     icon: Icons.app_registration,
-    //     name: 'Register Screen',
-    //     screen: const RegisterScreen()),
+    MenuOption(
+        route: 'register',
+        icon: Icons.app_registration,
+        name: 'Register Screen',
+        screen: const RegisterScreen()),
     // MenuOption(
     //     route: 'AcercaDe',
     //     icon: Icons.home,

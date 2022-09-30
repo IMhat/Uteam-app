@@ -17,9 +17,9 @@ class HomePage1 extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            child: Expanded(child: HomePage()),
+            child: const Expanded(child: HomePage()),
           ),
-          Expanded(child: SingleChildScrollView(child: HomePageBody())),
+          const Expanded(child: SingleChildScrollView(child: HomePageBody())),
 
           // Expanded(child: SingleChildScrollView(child: AcercaDe())),
         ],

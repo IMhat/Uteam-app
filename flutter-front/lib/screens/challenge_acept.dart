@@ -8,6 +8,7 @@ class ChallengeAcepted extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(),
       body: Container(
           margin: const EdgeInsets.only(
             top: 50,
@@ -15,14 +16,14 @@ class ChallengeAcepted extends StatelessWidget {
           child: Column(
             children: [
               Container(child: Image.asset("assets/desafioaceptado.jpeg")),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "Tarea Aceptada",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 100),
+              const SizedBox(height: 100),
               Container(
-                child: MyButtonObjetives(),
+                child: const MyButtonObjetives(),
               )
             ],
           )),

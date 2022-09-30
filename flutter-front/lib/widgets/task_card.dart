@@ -71,51 +71,70 @@ class _TaskDetailsState extends State<_TaskDetails> {
               blurRadius: 10,
             )
           ]),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Text(
-            widget.title.toString(),
-            style: const TextStyle(
-                fontSize: 20,
-                color: Color.fromARGB(255, 7, 0, 0),
-                fontWeight: FontWeight.bold),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(Icons.today_outlined),
-              Text("2 hours ago"),
-              Container(
-                padding: const EdgeInsets.only(
-                  top: 10,
-                ),
-                width: 150,
-                height: 45,
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    border: Border.all(
-                        color: const Color.fromARGB(255, 255, 251, 251)),
-                    borderRadius: BorderRadius.circular(50)),
-                child: Text(
-                  widget.type.toString(),
-                  style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 0, 0, 0)),
-                  textAlign: TextAlign.center,
-                ),
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.only(top: 5),
+                    width: 10,
+                    height: 10,
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 255, 251, 251)),
+                        borderRadius: BorderRadius.circular(50)),
+                  ),
+                  Text(
+                    widget.title.toString(),
+                    style: const TextStyle(
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 7, 0, 0),
+                        fontWeight: FontWeight.bold),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const Icon(Icons.today_outlined),
+                  const Text("2 hours ago"),
+                  Container(
+                    margin: const EdgeInsets.only(left: 30),
+                    padding: const EdgeInsets.only(
+                      top: 10,
+                    ),
+                    width: 150,
+                    height: 45,
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 255, 251, 251)),
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Text(
+                      widget.type.toString(),
+                      style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 0, 0, 0)),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              )
+              // Text(
+              //   widget.subTitle.toString(),
+              //   style: const TextStyle(
+              //       fontSize: 15, color: Color.fromARGB(255, 9, 0, 0)),
+              // ),
             ],
-          )
-          // Text(
-          //   widget.subTitle.toString(),
-          //   style: const TextStyle(
-          //       fontSize: 15, color: Color.fromARGB(255, 9, 0, 0)),
-          // ),
+          ),
         ],
       ),
     );

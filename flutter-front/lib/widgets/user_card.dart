@@ -1,7 +1,6 @@
 import 'package:app_uteam/models/models.dart';
-import 'package:app_uteam/providers/user_list_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 
 class UserCard extends StatelessWidget {
   final User user;

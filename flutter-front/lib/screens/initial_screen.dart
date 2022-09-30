@@ -1,5 +1,4 @@
 import 'package:app_uteam/providers/login_form_provider.dart';
-import 'package:app_uteam/ui/input_decorations.dart';
 import 'package:app_uteam/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +21,10 @@ class InitialScreen extends StatelessWidget {
               child: Image.asset("assets/logouteam.png")),
           Container(
             margin: const EdgeInsets.only(top: 70),
-            child: Text(
+            width: 250,
+            height: 80,
+            color: Colors.white,
+            child: const Text(
               "Crea tu cuenta para ganar puntos",
               style: TextStyle(
                   fontSize: 25,
@@ -30,13 +32,13 @@ class InitialScreen extends StatelessWidget {
                   color: Color(0xff5D4FB1)),
               textAlign: TextAlign.center,
             ),
-            width: 250,
-            height: 80,
-            color: Colors.white,
           ),
           Container(
             margin: const EdgeInsets.only(top: 0),
-            child: Text(
+            width: 250,
+            height: 80,
+            color: Colors.white,
+            child: const Text(
               "Con la app podrás registrarte y obtener puntos",
               style: TextStyle(
                   fontSize: 15,
@@ -44,9 +46,6 @@ class InitialScreen extends StatelessWidget {
                   color: Color(0xff5D4FB1)),
               textAlign: TextAlign.center,
             ),
-            width: 250,
-            height: 80,
-            color: Colors.white,
           ),
           const SizedBox(
             height: 50,
@@ -94,7 +93,7 @@ class _InitialScreenForm extends StatelessWidget {
                     )),
                 onPressed: () {
                   if (!loginForm.isValidForm()) return;
-                  Navigator.pushReplacementNamed(context, 'login');
+                  Navigator.pushReplacementNamed(context, 'register');
                 }),
             MaterialButton(
                 shape: RoundedRectangleBorder(

@@ -55,7 +55,7 @@ class _LoginSuperior extends StatelessWidget {
   BoxDecoration _buildBoxDecoration() => const BoxDecoration(
           gradient: LinearGradient(colors: [
         Color.fromARGB(255, 213, 212, 212),
-        Color.fromARGB(255, 130, 130, 131)
+        Color.fromARGB(255, 180, 180, 181)
       ]));
 }
 

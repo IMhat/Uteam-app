@@ -18,8 +18,11 @@ class TaskService extends ChangeNotifier {
 
   Future<String> updateTask(Task task) async {
     notifyListeners();
+    print("task.id:" + task.id);
     final url = Uri.https(_baseUrl, '/api/tasks/${task.id}');
     final resp = await http.put(url, body: task.toJson());
+    print("entrada: " + task.toJson());
+    print("respuesta: " + resp.body);
     final decodeData = resp.body;
     final index = tasks.indexWhere((element) => element.id == task.id);
     tasks[index] = task;

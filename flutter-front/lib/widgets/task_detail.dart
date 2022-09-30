@@ -50,7 +50,7 @@ class _TaskDetails extends StatefulWidget {
 
 class _TaskDetailsState extends State<_TaskDetails> {
   final elevatedButtonStyle = ElevatedButton.styleFrom(
-      shadowColor: Color.fromARGB(255, 54, 57, 244),
+      shadowColor: const Color.fromARGB(255, 54, 57, 244),
       elevation: 10,
       primary: Colors.deepPurple,
       onPrimary: Colors.white);
@@ -181,28 +181,6 @@ class _TaskDetailsState extends State<_TaskDetails> {
             ),
             const SizedBox(height: 10),
             Container(
-              padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-              width: 350,
-              height: 40,
-              decoration: BoxDecoration(
-                  border:
-                      Border.all(color: const Color.fromARGB(255, 0, 21, 255)),
-                  borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                children: [
-                  Text("¡¡Si completas el desafío sumarás "),
-                  Text(
-                    widget.points.toString(),
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 255, 0, 0),
-                    ),
-                  ),
-                  Text(" puntos!!"),
-                ],
-              ),
-            ),
-            Container(
                 padding: const EdgeInsets.only(left: 0),
                 width: 500,
                 height: 70,
@@ -215,14 +193,15 @@ class _TaskDetailsState extends State<_TaskDetails> {
                       height: 45,
                       child: Column(
                         children: [
-                          Text(
+                          const Text(
                             "Team-fotos.jpg",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.bold),
                           ),
                           Text(
                             widget.user.toString(),
-                            style: TextStyle(fontSize: 15, color: Colors.grey),
+                            style: const TextStyle(
+                                fontSize: 15, color: Colors.grey),
                           )
                         ],
                       ),
@@ -252,10 +231,36 @@ class _TaskDetailsState extends State<_TaskDetails> {
                     Icon(Icons.emoji_emotions_outlined),
                     Icon(Icons.attach_file),
                     Icon(Icons.today_outlined),
-                    Text("vence 10/10/22"),
+                    Text(
+                      "vence 10/10/22",
+                      style: TextStyle(color: Colors.red),
+                    ),
                     Icon(Icons.person_add)
                   ],
                 )),
+            Container(
+              margin: const EdgeInsets.only(left: 100),
+              child: Row(
+                children: [
+                  Text(
+                    widget.points.toString(),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 27, 112, 248),
+                    ),
+                  ),
+                  const Text(
+                    " Puntos",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 27, 112, 248)),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 60),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
