@@ -128,9 +128,8 @@ class _TaskPutScreenBodyState extends State<_TaskPutScreenBody> {
                     onPressed: () async {
                       print("hola delete");
                       if (!taskForm.isValidForm()) return;
-
-                      // await widget.taskService.deleteTask(taskForm.task);
-                      // taskServiceProvider.loadTasks();
+                      await widget.taskService.deleteTask(taskForm.task);
+                      taskServiceProvider.loadTasks();
                       taskServiceProvider.tasks = [];
                       taskServiceProvider.loadTasks();
                       Navigator.of(context).pop();

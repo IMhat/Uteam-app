@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/user_form_provider.dart';
@@ -53,9 +52,9 @@ class _HomePageUserState extends State<_UserHomeBody> {
                     0.8
                   ],
                       colors: [
-                    Color.fromARGB(255, 124, 104, 206),
+                    (Color(0xff7F00F0)),
                     Color.fromARGB(255, 165, 92, 179),
-                    Color.fromARGB(255, 245, 98, 130)
+                    Color.fromARGB(255, 247, 90, 114)
                   ])),
               height: 220,
               margin: const EdgeInsets.only(top: 0, bottom: 15),

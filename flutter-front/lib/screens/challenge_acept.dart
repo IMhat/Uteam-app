@@ -42,7 +42,7 @@ class MyButtonObjetives extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          'ProgresTaskView',
+          'taskPut',
         );
       },
       // The custom button

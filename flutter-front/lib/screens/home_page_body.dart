@@ -50,7 +50,7 @@ class _HomePageBodyState extends State<HomePageBody> {
             children: [
               Container(
                 decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 215, 182, 226),
+                  color: Color(0xffCFBDF8),
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
                 width: 280,
@@ -86,7 +86,7 @@ class _HomePageBodyState extends State<HomePageBody> {
               ),
               Container(
                   decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 215, 182, 226),
+                    color: Color(0xffCFBDF8),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   width: 310,

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:app_uteam/models/models.dart';
-
+import 'package:app_uteam/models/task_model.dart';
+import 'package:app_uteam/providers/db_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
