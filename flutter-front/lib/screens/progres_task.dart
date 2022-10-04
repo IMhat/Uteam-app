@@ -17,8 +17,6 @@ class _ProgresTaskState extends State<ProgresTask> {
   @override
   Widget build(BuildContext context) {
     final taskServiceProvider = Provider.of<TaskService>(context);
-    final taskForm = Provider.of<TaskFormProvider>(context);
-
     return Container(
       //decoration: _cardBorders(),
       child: Stack(
@@ -36,13 +34,15 @@ class _ProgresTaskState extends State<ProgresTask> {
             onTap: () {
               setState(() {
                 // widget.task.type = "Done";
-                print("mundo");
-                widget.task.type = "Done";
-                taskServiceProvider.updateTask(widget.task);
+                // print("primer print");
+                // widget.task.type = "Done";
+                // print(widget.task);
+
+                // taskServiceProvider.updateTask(widget.task);
               });
               print("mundo");
               widget.task.type = "Done";
-              taskServiceProvider.updateTask(taskForm.task.done);
+              taskServiceProvider.updateTask(widget.task);
             },
           ),
         ],
@@ -54,7 +54,7 @@ class _ProgresTaskState extends State<ProgresTask> {
 class _TaskProgres extends StatefulWidget {
   final String? title;
   final String? subTitle;
-  final dynamic type;
+  final String? type;
   final String? user;
   final dynamic points;
 
