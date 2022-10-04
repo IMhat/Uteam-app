@@ -1,21 +1,11 @@
-import 'package:app_uteam/models/models.dart';
+import 'package:app_uteam/providers/wallet_form_provider.dart';
+import 'package:app_uteam/screens/transaction_screen.dart';
+import 'package:app_uteam/services/wallet_services.dart';
 
-import 'package:app_uteam/models/points_model.dart';
-import 'package:app_uteam/providers/db_provider.dart';
-
-import 'package:app_uteam/providers/point_form_provider.dart';
-
-import 'package:app_uteam/providers/point_list_provider.dart';
-
-import 'package:app_uteam/services/points_service.dart';
-
-import 'package:app_uteam/widgets/point_card.dart';
+import 'package:app_uteam/widgets/wallet_card.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
-
-import '../services/points_service.dart';
 
 class WalletScreen extends StatefulWidget {
   WalletScreen({Key? key}) : super(key: key);
@@ -36,10 +26,11 @@ class _WalletScreenState extends State<WalletScreen> {
     //DBProvider.db.getTodasLasTasks().then((print));
     //DBProvider.db.deleteAllTasks();
 
-    final pointsService = Provider.of<PointService>(context);
+    final walletService = Provider.of<WalletService>(context);
+
     return ChangeNotifierProvider(
-      create: (_) => PointFormProvider(pointsService.selectedPoint),
-      child: _WalletScreenBody(pointsService: pointsService),
+      create: (_) => WalletFormProvider(walletService.selectedWallet),
+      child: _WalletScreenBody(walletService: walletService),
     );
   }
 }
@@ -47,10 +38,10 @@ class _WalletScreenState extends State<WalletScreen> {
 class _WalletScreenBody extends StatefulWidget {
   _WalletScreenBody({
     Key? key,
-    required this.pointsService,
+    required this.walletService,
   }) : super(key: key);
 
-  PointService pointsService;
+  WalletService walletService;
   @override
   State<_WalletScreenBody> createState() => _WalletScreenBodyState();
 }
@@ -58,9 +49,9 @@ class _WalletScreenBody extends StatefulWidget {
 class _WalletScreenBodyState extends State<_WalletScreenBody> {
   @override
   Widget build(BuildContext context) {
-    PointService pointService;
+    //PointService pointService;
 
-    final pointListProvider = Provider.of<PointListProvider>(context);
+    //final pointListProvider = Provider.of<PointListProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -91,27 +82,27 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
                 ),
               ],
             ),
-            Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "300 Puntos",
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      decorationColor: Colors.red,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-              width: 280,
-              height: 120,
-              decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 231, 170, 209),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-            ),
+            // Container(
+            //   width: 280,
+            //   height: 120,
+            //   decoration: const BoxDecoration(
+            //       color: Color.fromARGB(255, 231, 170, 209),
+            //       borderRadius: BorderRadius.all(Radius.circular(10))),
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: const [
+            //       Text(
+            //         "300 Puntos",
+            //         style: TextStyle(
+            //           fontSize: 30,
+            //           fontWeight: FontWeight.bold,
+            //           decorationColor: Colors.red,
+            //         ),
+            //         textAlign: TextAlign.center,
+            //       ),
+            //     ],
+            //   ),
+            // ),
             Container(
               margin: const EdgeInsets.only(top: 20, bottom: 20),
               width: 350,
@@ -119,25 +110,28 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
               color: Colors.white,
               child: Center(
                 child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
                   //itemCount: taskListProvider.tasks.length,
-                  itemCount: widget.pointsService.points.length,
+                  itemCount: widget.walletService.wallet.length,
                   itemBuilder: (BuildContext context, int index) =>
                       GestureDetector(
                     onTap: () {
-                      widget.pointsService.selectedPoint =
-                          widget.pointsService.points[index].copy();
-                      Navigator.pushNamed(
-                        context,
-                        'pointPut',
-                      );
+                      widget.walletService.selectedWallet =
+                          widget.walletService.wallet[index].copy();
+                      // Navigator.pushNamed(
+                      //   context,
+                      //   'pointPut',
+                      // );
                     },
-                    child: PointCard(
-                      point: widget.pointsService.points[index],
+                    child: WalletCard(
+                      wallet: widget.walletService.wallet[index],
                     ),
                   ),
                 ),
               ),
             ),
+            TransactionScreen()
           ],
         ),
       ),

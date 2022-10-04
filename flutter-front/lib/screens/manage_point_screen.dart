@@ -38,7 +38,7 @@ class _ManagePointScreenState extends State<ManagePointScreen> {
 
     final pointsService = Provider.of<PointService>(context);
     return ChangeNotifierProvider(
-      create: (_) => PointFormProvider(pointsService.selectedPoint),
+      create: (_) => PointFormProvider(pointsService.selectedPoints),
       child: _ManagePointScreenBody(pointsService: pointsService),
     );
   }
@@ -74,7 +74,7 @@ class _ManagePointScreenBodyState extends State<_ManagePointScreenBody> {
               itemCount: widget.pointsService.points.length,
               itemBuilder: (BuildContext context, int index) => GestureDetector(
                 onTap: () {
-                  widget.pointsService.selectedPoint =
+                  widget.pointsService.selectedPoints =
                       widget.pointsService.points[index].copy();
                   Navigator.pushNamed(
                     context,

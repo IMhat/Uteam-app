@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:app_uteam/models/models.dart';
-
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
@@ -19,7 +16,8 @@ class ProductCard extends StatelessWidget {
           alignment: Alignment.bottomLeft,
           children: [
             _ProductDetails(
-              productName: product.productName,
+              title: product.title,
+              //productName: product.productName,
               productImage: product.productImage,
               description: product.description,
               points: product.points,
@@ -41,7 +39,7 @@ class ProductCard extends StatelessWidget {
 }
 
 class _ProductDetails extends StatefulWidget {
-  final String? productName;
+  final String? title;
   final String? productImage;
   final String? description;
   final dynamic points;
@@ -49,7 +47,7 @@ class _ProductDetails extends StatefulWidget {
   // final String? createAt;
 
   const _ProductDetails({
-    this.productName,
+    this.title,
     this.productImage,
     this.description,
     this.points,
@@ -91,7 +89,7 @@ class _ProductDetailsState extends State<_ProductDetails> {
           Column(
             children: [
               Text(
-                widget.productName.toString(),
+                widget.title.toString(),
                 style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
@@ -102,7 +100,7 @@ class _ProductDetailsState extends State<_ProductDetails> {
               const Icon(Icons.person),
               const Text("Uteam"),
               Container(
-                child: MyButtonCanje(),
+                child: const MyButtonCanje(),
               )
             ],
           ),
@@ -141,7 +139,7 @@ class MyButtonCanje extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
-          gradient: LinearGradient(begin: AlignmentDirectional.topEnd, colors: [
+          gradient: const LinearGradient(begin: AlignmentDirectional.topEnd, colors: [
             Color.fromARGB(255, 242, 133, 157),
             Color.fromARGB(255, 167, 79, 211)
           ]),

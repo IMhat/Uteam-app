@@ -25,15 +25,21 @@ class LoginScreen extends StatelessWidget {
             ]),
           ),
           const SizedBox(height: 50),
-          TextButton(
-            onPressed: () =>
-                Navigator.pushReplacementNamed(context, 'register'),
-            child: const Text(
-              'Crear una nueva cuenta',
-              style: TextStyle(
-                fontSize: 18,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text("No tienes cuenta?"),
+              TextButton(
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, 'register'),
+                child: const Text(
+                  'Registrate',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
           const SizedBox(height: 50),
         ],
@@ -55,9 +61,9 @@ class _LoginForm extends StatelessWidget {
               autocorrect: false,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecorations.authInputDecoration(
-                  hintText: 'jonh.doe@gmail.com',
-                  labelText: 'Correo electronico',
-                  prefixIcon: Icons.alternate_email_sharp),
+                  hintText: 'Uteam@gmail.com',
+                  labelText: 'Email',
+                  prefixIcon: Icons.email_outlined),
               onChanged: (value) => loginForm.email = value,
               validator: (value) {
                 String pattern =
@@ -78,8 +84,8 @@ class _LoginForm extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecorations.authInputDecoration(
                   hintText: '******',
-                  labelText: 'Contraseña',
-                  prefixIcon: Icons.lock_clock_outlined),
+                  labelText: 'Password',
+                  prefixIcon: Icons.lock_rounded),
               onChanged: (value) => loginForm.password = value,
               validator: (value) {
                 return (value != null && value.length >= 6)
@@ -87,19 +93,33 @@ class _LoginForm extends StatelessWidget {
                     : 'La contraseña debe tener al menos 6 caracteres';
               },
             ),
+            Container(
+              margin: const EdgeInsets.only(left: 90),
+              child: TextButton(
+                  onPressed: () {},
+                  child: const Text("olvidaste la contraseña?")),
+            ),
             const SizedBox(height: 30),
             MaterialButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
                 disabledColor: Colors.grey,
                 elevation: 0,
-                color: Colors.deepPurple,
                 child: Container(
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                          begin: AlignmentDirectional.topEnd,
+                          colors: [
+                            Color.fromARGB(255, 242, 133, 157),
+                            Color.fromARGB(255, 167, 79, 211),
+                          ]),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 80, vertical: 15),
+                        horizontal: 50, vertical: 20),
                     child: const Text(
-                      'Ingresar',
-                      style: TextStyle(color: Colors.white),
+                      'Iniciar Sesion',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     )),
                 onPressed: () {
                   if (!loginForm.isValidForm()) return;

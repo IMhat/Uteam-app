@@ -1,10 +1,7 @@
-import 'package:app_uteam/screens/home.dart';
 import 'package:app_uteam/screens/home1.dart';
-import 'package:app_uteam/screens/product_details.dart';
 import 'package:app_uteam/services/image_services.dart';
+import 'package:app_uteam/services/transaction_services.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:dio/dio.dart';
@@ -20,6 +17,8 @@ import 'package:app_uteam/services/user_services.dart';
 import 'package:app_uteam/themes/app_theme.dart';
 import 'package:provider/provider.dart';
 
+import 'services/wallet_services.dart';
+
 void main() => runApp(const AppState());
 
 class AppState extends StatelessWidget {
@@ -30,6 +29,8 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => TaskService()),
+        ChangeNotifierProvider(create: (_) => WalletService()),
+        ChangeNotifierProvider(create: (_) => TransactionService()),
         ChangeNotifierProvider(create: (_) => ProductService()),
         ChangeNotifierProvider(create: (_) => PointService()),
         ChangeNotifierProvider(create: (_) => TaskListProvider()),

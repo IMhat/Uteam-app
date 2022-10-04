@@ -1,13 +1,11 @@
-import 'package:app_uteam/models/models.dart';
-import 'package:app_uteam/models/product_model.dart';
-import 'package:app_uteam/providers/db_provider.dart';
+
 import 'package:app_uteam/providers/product_form_provider.dart';
 import 'package:app_uteam/providers/product_list_provider.dart';
 import 'package:app_uteam/services/product_services.dart';
 import 'package:app_uteam/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
+
 
 import '../services/product_services.dart';
 

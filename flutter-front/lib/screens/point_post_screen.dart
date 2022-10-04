@@ -1,6 +1,4 @@
 import 'package:app_uteam/models/points_model.dart';
-import 'package:app_uteam/providers/db_provider.dart';
-import 'package:app_uteam/providers/point_form_provider.dart';
 import 'package:app_uteam/providers/point_list_provider.dart';
 import 'package:app_uteam/services/points_service.dart';
 import 'package:app_uteam/ui/input_decorations.dart';

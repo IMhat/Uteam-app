@@ -62,8 +62,8 @@ class _UserPutScreenBodyState extends State<_UserPutScreenBody> {
                     children: [
                       const SizedBox(height: 10),
                       TextFormField(
-                        initialValue: user.username,
-                        onChanged: (value) => user.username = value,
+                        initialValue: user.name,
+                        onChanged: (value) => user.name = value,
                         decoration: InputDecorations.authInputDecoration(
                             hintText: "", labelText: 'Username'),
                         validator: (value) {

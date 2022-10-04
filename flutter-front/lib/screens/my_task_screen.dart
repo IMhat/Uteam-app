@@ -1,13 +1,9 @@
-import 'package:app_uteam/models/models.dart';
-import 'package:app_uteam/models/task_model.dart';
-import 'package:app_uteam/providers/db_provider.dart';
 import 'package:app_uteam/providers/task_form_provider.dart';
-import 'package:app_uteam/providers/task_list_provider.dart';
 import 'package:app_uteam/services/task_services.dart';
 import 'package:app_uteam/widgets/task_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
+
 
 import '../services/task_services.dart';
 
@@ -51,8 +47,6 @@ class _MyTaskScreenBody extends StatefulWidget {
 class _MyTaskScreenBodyState extends State<_MyTaskScreenBody> {
   @override
   Widget build(BuildContext context) {
-    TaskService taskService;
-    final taskListProvider = Provider.of<TaskListProvider>(context);
 
     return Scaffold(
       appBar: AppBar(

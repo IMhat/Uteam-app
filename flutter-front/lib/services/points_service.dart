@@ -12,7 +12,7 @@ class PointService extends ChangeNotifier {
 
   List<Point> userPoints = [];
 
-  late Point selectedPoint;
+  late Point selectedPoints;
 
   bool isLoading = true;
   bool isSaving = false;

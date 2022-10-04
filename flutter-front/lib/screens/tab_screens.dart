@@ -77,7 +77,7 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Divider(indent: 2),
+            const Divider(indent: 2),
             Row(
               children: [
                 SizedBox(
@@ -106,8 +106,8 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
                 Column(
                   children: <Widget>[
                     SizedBox(
-                        height: 70,
-                        width: 180,
+                        height: 90,
+                        width: 250,
                         child: Center(
                           child: ListView.builder(
                             itemCount: widget.userService.users.length,
@@ -185,7 +185,7 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             SingleChildScrollView(

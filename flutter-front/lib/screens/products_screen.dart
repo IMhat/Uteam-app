@@ -1,5 +1,3 @@
-import 'package:app_uteam/models/user.dart';
-import 'package:app_uteam/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:app_uteam/providers/user_form_provider.dart';
 import 'package:app_uteam/providers/user_list_provider.dart';
@@ -61,7 +59,7 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
                   child: Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           "Catalogo de canje",
                           style: TextStyle(
@@ -98,18 +96,18 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
             ),
             Column(
               children: <Widget>[
-                Divider(endIndent: 2),
+                const Divider(endIndent: 2),
                 SizedBox(
                   height: 70,
                   width: 300,
                   child: Container(
-                    child: TextField(
+                    color: const Color.fromARGB(255, 189, 211, 233),
+                    child: const TextField(
                       controller: null,
                       decoration: InputDecoration(
                           icon: Icon(Icons.search,
                               color: Color.fromARGB(255, 175, 171, 171))),
                     ),
-                    color: Color.fromARGB(255, 189, 211, 233),
                   ),
                 )
               ],
@@ -119,7 +117,7 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
               children: [
                 Column(
                   children: <Widget>[
-                    Divider(endIndent: 2),
+                    const Divider(endIndent: 2),
                     SizedBox(
                         height: 200,
                         width: 300,
@@ -148,7 +146,7 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
             ),
             Column(
               children: <Widget>[
-                Divider(endIndent: 2),
+                const Divider(endIndent: 2),
                 SizedBox(
                   height: 100,
                   width: 300,
@@ -161,7 +159,7 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
             ),
             Column(
               children: <Widget>[
-                Divider(endIndent: 2),
+                const Divider(endIndent: 2),
                 SizedBox(
                   height: 150,
                   width: 300,
@@ -174,7 +172,7 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
             ),
             Column(
               children: <Widget>[
-                Divider(endIndent: 2),
+                const Divider(endIndent: 2),
                 SizedBox(
                   height: 150,
                   width: 300,

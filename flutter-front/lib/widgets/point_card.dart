@@ -10,8 +10,6 @@ class PointCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pointListProvider =
-        Provider.of<PointListProvider>(context, listen: false);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
@@ -25,9 +23,9 @@ class PointCard extends StatelessWidget {
             child: _PointDetails(
               // title: taskListProvider.tasks[i].title,
               // subTitle: pointListProvider.points[i].description,
-              username: point.username,
-              description: point.description,
-              point: point.point,
+              //username: point.username,
+              //description: point.description,
+              //point: point.point,
               // date: point.date,
               id: point.id,
             ),

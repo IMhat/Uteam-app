@@ -1,9 +1,11 @@
 import 'package:app_uteam/models/models.dart';
 import 'package:app_uteam/pages/change_pages.dart';
 import 'package:app_uteam/screens/acept_task.dart';
+import 'package:app_uteam/screens/challenge_acept.dart';
 import 'package:app_uteam/screens/home.dart';
 import 'package:app_uteam/screens/my_task_screen.dart';
 import 'package:app_uteam/screens/product_details.dart';
+import 'package:app_uteam/screens/progres_task_view.dart';
 import 'package:flutter/material.dart';
 
 //import '../screens/image_screens.dart';
@@ -25,12 +27,17 @@ class AppRoutes {
         route: 'AceptTasks',
         icon: Icons.manage_search_outlined,
         name: 'Tarea aceptada',
-        screen: AceptTask()),
+        screen: AceptTaskScreen()),
     MenuOption(
-        route: 'TaskDetail',
+        route: 'ChallengeAcepted',
         icon: Icons.manage_search_outlined,
-        name: 'Detalle de tarea',
-        screen: MyTaskDetail()),
+        name: 'Challenge acepted',
+        screen: ChallengeAcepted()),
+    MenuOption(
+        route: 'ProgresTaskView',
+        icon: Icons.manage_search_outlined,
+        name: 'Progreso Tarea',
+        screen: ProgresTaskView()),    
     MenuOption(
         route: 'Notification',
         icon: Icons.manage_search_outlined,
@@ -72,11 +79,11 @@ class AppRoutes {
     //     icon: Icons.image,
     //     name: 'Pantalla de Imagenes',
     //     screen: ImageScreen()),
-    // MenuOption(
-    //     route: 'register',
-    //     icon: Icons.app_registration,
-    //     name: 'Register Screen',
-    //     screen: const RegisterScreen()),
+    MenuOption(
+        route: 'register',
+        icon: Icons.app_registration,
+        name: 'Register Screen',
+        screen: const RegisterScreen()),
     // MenuOption(
     //     route: 'AcercaDe',
     //     icon: Icons.home,
@@ -97,26 +104,26 @@ class AppRoutes {
         icon: Icons.login_outlined,
         name: 'Pantalla de Inicio',
         screen: const InitialScreen()),
-    MenuOption(
-        route: 'tasksPost',
-        icon: Icons.list_alt_outlined,
-        name: 'Agregar Tareas',
-        screen: const TaskPostScreen()),
-    MenuOption(
-        route: 'productsPost',
-        icon: Icons.list_alt_outlined,
-        name: 'Agregar Productos',
-        screen: const ProductPostScreen()),
+    // MenuOption(
+    //     route: 'tasksPost',
+    //     icon: Icons.list_alt_outlined,
+    //     name: 'Agregar Tareas',
+    //     screen: const TaskPostScreen()),
+    // MenuOption(
+    //     route: 'productsPost',
+    //     icon: Icons.list_alt_outlined,
+    //     name: 'Agregar Productos',
+    //     screen: const ProductPostScreen()),
     MenuOption(
         route: 'pointsPost',
         icon: Icons.list_alt_outlined,
         name: 'Agregar Puntos',
         screen: const PointPostScreen()),
-    MenuOption(
-        route: 'usersPost',
-        icon: Icons.list_alt_outlined,
-        name: 'Agregar Usuarios',
-        screen: const UserPostScreen()),
+    // MenuOption(
+    //     route: 'usersPost',
+    //     icon: Icons.list_alt_outlined,
+    //     name: 'Agregar Usuarios',
+    //     screen: const UserPostScreen()),
     MenuOption(
         route: 'taskPut',
         icon: Icons.edit,
