@@ -53,87 +53,72 @@ class _TransactionScreenBodyState extends State<_TransactionScreenBody> {
 
     //final pointListProvider = Provider.of<PointListProvider>(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-      ),
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: [
-                SizedBox(
-                  height: 50,
-                  width: 250,
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Mis Trasacciones",
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 80,
+            width: 250,
+            child: Container(
+              margin: const EdgeInsets.only(top: 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const [
+                  Text(
+                    "Mis Trasacciones",
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+                  )
+                ],
+              ),
             ),
-            // Container(
-            //   width: 280,
-            //   height: 120,
-            //   decoration: const BoxDecoration(
-            //       color: Color.fromARGB(255, 231, 170, 209),
-            //       borderRadius: BorderRadius.all(Radius.circular(10))),
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: const [
-            //       Text(
-            //         "300 Puntos",
-            //         style: TextStyle(
-            //           fontSize: 30,
-            //           fontWeight: FontWeight.bold,
-            //           decorationColor: Colors.red,
-            //         ),
-            //         textAlign: TextAlign.center,
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            Container(
-              margin: const EdgeInsets.only(top: 20, bottom: 20),
-              width: 450,
-              height: 900,
-              color: Colors.white,
-              child: Center(
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  //itemCount: taskListProvider.tasks.length,
-                  itemCount: widget.transactionService.transactions.length,
-                  itemBuilder: (BuildContext context, int index) =>
-                      GestureDetector(
-                    onTap: () {
-                      widget.transactionService.selectedTransaction =
-                          widget.transactionService.transactions[index].copy();
-                      // Navigator.pushNamed(
-                      //   context,
-                      //   'pointPut',
-                      // );
-                    },
-                    child: TransactionCard(
-                      transaction:
-                          widget.transactionService.transactions[index],
-                    ),
+          ),
+          // Container(
+          //   width: 280,
+          //   height: 120,
+          //   decoration: const BoxDecoration(
+          //       color: Color.fromARGB(255, 231, 170, 209),
+          //       borderRadius: BorderRadius.all(Radius.circular(10))),
+          //   child: Column(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: const [
+          //       Text(
+          //         "300 Puntos",
+          //         style: TextStyle(
+          //           fontSize: 30,
+          //           fontWeight: FontWeight.bold,
+          //           decorationColor: Colors.red,
+          //         ),
+          //         textAlign: TextAlign.center,
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          Container(
+            child: Center(
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                //itemCount: taskListProvider.tasks.length,
+                itemCount: widget.transactionService.transactions.length,
+                itemBuilder: (BuildContext context, int index) =>
+                    GestureDetector(
+                  onTap: () {
+                    widget.transactionService.selectedTransaction =
+                        widget.transactionService.transactions[index].copy();
+                    // Navigator.pushNamed(
+                    //   context,
+                    //   'pointPut',
+                    // );
+                  },
+                  child: TransactionCard(
+                    transaction: widget.transactionService.transactions[index],
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -15,7 +15,7 @@ class WalletCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(top: 25, left: 30, bottom: 50),
         width: 500,
-        height: 80,
+        height: 100,
         //decoration: _cardBorders(),
         child: Stack(
           alignment: Alignment.bottomLeft,
@@ -52,38 +52,64 @@ class _UserDetails extends StatefulWidget {
 }
 
 class _UserDetailsState extends State<_UserDetails> {
+  final LinearGradient _gradient = const LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: <Color>[
+        (Color(0xff7F00F0)),
+        Color.fromARGB(255, 165, 92, 179),
+        Color.fromARGB(255, 247, 90, 98)
+      ]);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 50),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        width: 80,
-        height: 70,
+        width: 300,
+        height: 200,
         decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 231, 170, 209),
+          color: Color(0xffCFBDF8),
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              widget.name.toString(),
-              style: const TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.bold),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            ShaderMask(
+              shaderCallback: (Rect rect) {
+                return _gradient.createShader(rect);
+              },
+              child: Text(
+                widget.name.toString(),
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.white),
+              ),
             ),
-            Text(
-              widget.points.toString(),
-              style: const TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.bold),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            ShaderMask(
+              shaderCallback: (Rect rect) {
+                return _gradient.createShader(rect);
+              },
+              child: Text(
+                widget.points.toString(),
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.white),
+              ),
+            ),
+            ShaderMask(
+              shaderCallback: (Rect rect) {
+                return _gradient.createShader(rect);
+              },
+              child: const Text(
+                "Puntos",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.white),
+              ),
             ),
           ],
         ),

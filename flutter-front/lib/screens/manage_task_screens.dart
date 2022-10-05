@@ -138,10 +138,10 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
             Container(
               margin: const EdgeInsets.only(top: 30, left: 20, bottom: 20),
               width: 350,
-              height: 900,
               color: Colors.white,
               child: Center(
                 child: ListView.builder(
+                  shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   //itemCount: taskListProvider.tasks.length,

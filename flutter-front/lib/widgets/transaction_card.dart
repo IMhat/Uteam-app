@@ -11,25 +11,19 @@ class TransactionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Container(
-        margin: const EdgeInsets.only(top: 25, left: 30, bottom: 50),
-        width: 500,
-        height: 80,
-        //decoration: _cardBorders(),
-        child: Stack(
-          alignment: Alignment.bottomLeft,
-          children: [
-            _UserDetails(
-              //title: taskListProvider.tasks[i].title,
-              // subTitle: taskListProvider.tasks[i].description,
-              name: transaction.trnxSummary,
-              points: transaction.amount,
-              summary: transaction.summary,
-            ),
-          ],
-        ),
+    return Container(
+      height: 150,
+      child: Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          _UserDetails(
+            //title: taskListProvider.tasks[i].title,
+            // subTitle: taskListProvider.tasks[i].description,
+            name: transaction.trnxSummary,
+            points: transaction.amount,
+            summary: transaction.summary,
+          ),
+        ],
       ),
     );
   }
@@ -57,45 +51,83 @@ class _UserDetails extends StatefulWidget {
 class _UserDetailsState extends State<_UserDetails> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 50),
+    return Center(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        width: 80,
-        height: 70,
-        decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 231, 170, 209),
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        width: 340,
+        height: 140,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey[850]!.withOpacity(0.29),
+                offset: const Offset(-10, 10),
+                blurRadius: 10,
+              )
+            ]),
+        child: Row(
           children: [
-            Text(
-              widget.name.toString(),
-              style: const TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.bold),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 200, 198, 198),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey[850]!.withOpacity(0.29),
+                      offset: const Offset(-10, 10),
+                      blurRadius: 10,
+                    )
+                  ]),
+              child: const Icon(
+                Icons.message_rounded,
+                size: 35,
+                color: Colors.green,
+              ),
             ),
-            Text(
-              widget.points.toString(),
-              style: const TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.bold),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Text(
-              widget.summary.toString(),
-              style: const TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.bold),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            const SizedBox(width: 40),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.name.toString(),
+                  style: const TextStyle(
+                      fontSize: 12,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.bold),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Row(
+                  children: [
+                    const Text("Obtuviste"),
+                    const SizedBox(width: 5),
+                    Text(
+                      widget.points.toString(),
+                      style: const TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.bold),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(width: 5),
+                    const Text("Puntos"),
+                  ],
+                ),
+                Text(
+                  widget.summary.toString(),
+                  style: const TextStyle(
+                      fontSize: 16,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.bold),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
           ],
         ),

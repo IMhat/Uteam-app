@@ -35,14 +35,14 @@ class _ProgresTaskState extends State<ProgresTask> {
             //change state of type
             onTap: () {
               setState(() {
-                // widget.task.type = "Done";
+                widget.task.type = "done";
                 print("mundo");
-                widget.task.type = "Done";
+                widget.task.type = "done";
                 taskServiceProvider.updateTask(widget.task);
               });
-              print("mundo");
-              widget.task.type = "Done";
-              taskServiceProvider.updateTask(taskForm.task.done);
+
+              // widget.task.type = "done";
+              // taskServiceProvider.updateTask(taskForm.task.done);
             },
           ),
         ],
@@ -88,7 +88,7 @@ class _TaskProgresState extends State<_TaskProgres> {
     return ChangeNotifierProvider(
       create: (_) => taskServiceProvider,
       child: Scaffold(
-        //appBar: AppBar(),
+        appBar: AppBar(),
         backgroundColor: const Color.fromARGB(255, 218, 114, 110),
         body: SingleChildScrollView(
           child: Column(
@@ -129,7 +129,7 @@ class _TaskProgresState extends State<_TaskProgres> {
                 decoration: _cardBorders(),
                 margin: const EdgeInsetsDirectional.only(top: 10),
                 width: 500,
-                height: 650,
+                height: 680,
                 child: Container(
                   margin: const EdgeInsets.only(top: 30, bottom: 20),
                   width: 100,
@@ -321,11 +321,6 @@ class _TaskProgresState extends State<_TaskProgres> {
                                     widget.onTap();
                                   });
                                 },
-                                style: OutlinedButton.styleFrom(
-                                  backgroundColor:
-                                      const Color.fromARGB(255, 0, 130, 153),
-                                  elevation: 10,
-                                ),
                               ),
                             ),
                           ],

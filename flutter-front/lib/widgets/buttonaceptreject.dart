@@ -55,16 +55,10 @@ class MyButtonReject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // The GestureDetector wraps the button.
-    return GestureDetector(
-      // When the child is tapped, show a snackbar.
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '',
-        );
-      },
+    return TextButton(onPressed: (){},
+     child:
       // The custom button
-      child: Container(
+       Container(
         padding: const EdgeInsets.all(7.0),
         width: 90,
         height: 35,
@@ -81,3 +75,7 @@ class MyButtonReject extends StatelessWidget {
     );
   }
 }
+
+// Navigator.pushNamed(
+//           context,
+//           'ChallengeAcepted',

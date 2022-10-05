@@ -61,26 +61,22 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Row(
-              children: [
-                SizedBox(
-                  height: 50,
-                  width: 250,
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Mi Billetera",
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                  ),
+            SizedBox(
+              height: 50,
+              width: 250,
+              child: Container(
+                margin: const EdgeInsets.only(top: 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Mi Billetera",
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+                    )
+                  ],
                 ),
-              ],
+              ),
             ),
             // Container(
             //   width: 280,
@@ -104,12 +100,12 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
             //   ),
             // ),
             Container(
-              margin: const EdgeInsets.only(top: 20, bottom: 20),
-              width: 350,
-              height: 900,
+              margin: const EdgeInsets.only(top: 40, bottom: 20, left: 50),
+              width: 500,
               color: Colors.white,
               child: Center(
                 child: ListView.builder(
+                  shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   //itemCount: taskListProvider.tasks.length,
