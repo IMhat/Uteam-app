@@ -73,7 +73,7 @@ class _UserDetailsState extends State<_UserDetails> {
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ShaderMask(
               shaderCallback: (Rect rect) {
@@ -83,7 +83,7 @@ class _UserDetailsState extends State<_UserDetails> {
                 widget.name.toString(),
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                    fontSize: 25,
                     color: Colors.white),
               ),
             ),
@@ -96,6 +96,18 @@ class _UserDetailsState extends State<_UserDetails> {
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
+                    color: Colors.white),
+              ),
+            ),
+            ShaderMask(
+              shaderCallback: (Rect rect) {
+                return _gradient.createShader(rect);
+              },
+              child: const Text(
+                "Puntos",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                     color: Colors.white),
               ),
             ),

@@ -66,35 +66,68 @@ class _UserDetailsState extends State<_UserDetails> {
                 blurRadius: 10,
               )
             ]),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            Text(
-              widget.name.toString(),
-              style: const TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.bold),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 200, 198, 198),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey[850]!.withOpacity(0.29),
+                      offset: const Offset(-10, 10),
+                      blurRadius: 10,
+                    )
+                  ]),
+              child: const Icon(
+                Icons.message_rounded,
+                size: 35,
+                color: Colors.green,
+              ),
             ),
-            Text(
-              widget.points.toString(),
-              style: const TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.bold),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Text(
-              widget.summary.toString(),
-              style: const TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.bold),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            const SizedBox(width: 40),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.name.toString(),
+                  style: const TextStyle(
+                      fontSize: 12,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.bold),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Row(
+                  children: [
+                    const Text("Obtuviste"),
+                    const SizedBox(width: 5),
+                    Text(
+                      widget.points.toString(),
+                      style: const TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.bold),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(width: 5),
+                    const Text("Puntos"),
+                  ],
+                ),
+                Text(
+                  widget.summary.toString(),
+                  style: const TextStyle(
+                      fontSize: 16,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.bold),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
           ],
         ),
