@@ -35,14 +35,14 @@ class _ProgresTaskState extends State<ProgresTask> {
             //change state of type
             onTap: () {
               setState(() {
-                // widget.task.type = "Done";
-                // print("mundo");
-                // widget.task.type = "Done";
-                // taskServiceProvider.updateTask(widget.task);
+                widget.task.type = "done";
+                print("mundo");
+                widget.task.type = "done";
+                taskServiceProvider.updateTask(widget.task);
               });
 
-              widget.task.type = "done";
-              taskServiceProvider.updateTask(taskForm.task.done);
+              // widget.task.type = "done";
+              // taskServiceProvider.updateTask(taskForm.task.done);
             },
           ),
         ],
