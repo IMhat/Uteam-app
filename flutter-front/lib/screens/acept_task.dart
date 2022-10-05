@@ -76,7 +76,9 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
                     left: 15,
                     right: 15,
                   ),
-                  child: const ButtonsAceptReject(),
+                  child: const ButtonsAceptReject(
+                    
+                  ),
                 ),
               ),
             ),

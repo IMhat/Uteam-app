@@ -44,12 +44,6 @@ class _ProgresTaskViewBody extends StatefulWidget {
 class _ProgresTaskViewBodyState extends State<_ProgresTaskViewBody> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: 400,
-        height: 900,
-        child: ProgresTask(task: widget.tasksService.selectedTask),
-      ),
-    );
+    return ProgresTask(task: widget.tasksService.selectedTask);
   }
 }

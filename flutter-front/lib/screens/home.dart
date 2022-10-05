@@ -174,17 +174,11 @@ class _HomePageUserState extends State<_UserHomeBody> {
                           ),
                         ],
                       ),
-                      Opacity(
-                        opacity: 0.7,
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 40, bottom: 5),
-                          height: 100,
-                          width: 100,
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Image.asset("assets/home.jpeg"),
-                          ),
-                        ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 40, bottom: 5),
+                        height: 100,
+                        width: 100,
+                        child: Image.asset("assets/home.jpeg"),
                       )
                     ],
                   ),

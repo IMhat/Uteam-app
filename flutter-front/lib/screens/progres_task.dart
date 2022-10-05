@@ -17,6 +17,8 @@ class _ProgresTaskState extends State<ProgresTask> {
   @override
   Widget build(BuildContext context) {
     final taskServiceProvider = Provider.of<TaskService>(context);
+    final taskForm = Provider.of<TaskFormProvider>(context);
+
     return Container(
       //decoration: _cardBorders(),
       child: Stack(
@@ -34,15 +36,13 @@ class _ProgresTaskState extends State<ProgresTask> {
             onTap: () {
               setState(() {
                 // widget.task.type = "Done";
-                // print("primer print");
+                // print("mundo");
                 // widget.task.type = "Done";
-                // print(widget.task);
-
                 // taskServiceProvider.updateTask(widget.task);
               });
-              print("mundo");
-              widget.task.type = "Done";
-              taskServiceProvider.updateTask(widget.task);
+
+              widget.task.type = "done";
+              taskServiceProvider.updateTask(taskForm.task.done);
             },
           ),
         ],
@@ -54,7 +54,7 @@ class _ProgresTaskState extends State<ProgresTask> {
 class _TaskProgres extends StatefulWidget {
   final String? title;
   final String? subTitle;
-  final String? type;
+  final dynamic type;
   final String? user;
   final dynamic points;
 
@@ -88,7 +88,7 @@ class _TaskProgresState extends State<_TaskProgres> {
     return ChangeNotifierProvider(
       create: (_) => taskServiceProvider,
       child: Scaffold(
-        //appBar: AppBar(),
+        appBar: AppBar(),
         backgroundColor: const Color.fromARGB(255, 218, 114, 110),
         body: SingleChildScrollView(
           child: Column(
@@ -129,7 +129,7 @@ class _TaskProgresState extends State<_TaskProgres> {
                 decoration: _cardBorders(),
                 margin: const EdgeInsetsDirectional.only(top: 10),
                 width: 500,
-                height: 650,
+                height: 680,
                 child: Container(
                   margin: const EdgeInsets.only(top: 30, bottom: 20),
                   width: 100,
@@ -321,11 +321,6 @@ class _TaskProgresState extends State<_TaskProgres> {
                                     widget.onTap();
                                   });
                                 },
-                                style: OutlinedButton.styleFrom(
-                                  backgroundColor:
-                                      const Color.fromARGB(255, 0, 130, 153),
-                                  elevation: 10,
-                                ),
                               ),
                             ),
                           ],
