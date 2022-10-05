@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 //import '../screens/image_screens.dart';
 import '../screens/initial_screen.dart';
 import '../screens/notification_screen.dart';
+import '../screens/progress_taskInprogress_view.dart';
 import '../screens/screens.dart';
 import '../widgets/task_detail.dart';
 
@@ -37,7 +38,12 @@ class AppRoutes {
         route: 'ProgresTaskView',
         icon: Icons.manage_search_outlined,
         name: 'Progreso Tarea',
-        screen: ProgresTaskView()),    
+        screen: ProgresTaskView()),
+    MenuOption(
+        route: 'ProgresTaskInprogressView',
+        icon: Icons.manage_search_outlined,
+        name: 'Progreso Tarea',
+        screen: ProgresTaskInprogressView()),
     MenuOption(
         route: 'Notification',
         icon: Icons.manage_search_outlined,

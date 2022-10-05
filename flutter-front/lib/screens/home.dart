@@ -225,7 +225,33 @@ class MyButtonNotification extends StatelessWidget {
   }
 }
 
+class MyButtonTask extends StatelessWidget {
+  const MyButtonTask({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    // The GestureDetector wraps the button.
+    return GestureDetector(
+      // When the child is tapped, show a snackbar.
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          'ManageTasks',
+        );
+      },
+      // The custom button
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+
+        child: const Icon(
+          Icons.arrow_forward,
+          color: Colors.red,
+        ),
+        //child: const Text('My Button'),
+      ),
+    );
+  }
+}
 
 // const Text("60/100"),
 //                           const SizedBox(

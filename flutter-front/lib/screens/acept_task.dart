@@ -71,15 +71,9 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody> {
                       BoxShadow(color: Colors.white, offset: Offset(5, 0))
                     ]),
                 child: Container(
-                  padding: const EdgeInsets.only(
-                    top: 0,
-                    left: 15,
-                    right: 15,
-                  ),
-                  child: const ButtonsAceptReject(
-                    
-                  ),
-                ),
+                    padding: const EdgeInsets.only(top: 5, left: 25, bottom: 5),
+                    child: ButtonsAceptReject(
+                        task: widget.tasksService.selectedTask)),
               ),
             ),
           ],

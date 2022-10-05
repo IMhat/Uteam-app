@@ -1,5 +1,7 @@
 import 'package:app_uteam/screens/home1.dart';
 import 'package:app_uteam/services/image_services.dart';
+import 'package:app_uteam/services/task_done_service.dart';
+import 'package:app_uteam/services/task_inprogress_service.dart';
 import 'package:app_uteam/services/transaction_services.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -29,6 +31,8 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => TaskService()),
+        ChangeNotifierProvider(create: (_) => TaskInprogressService()),
+        ChangeNotifierProvider(create: (_) => TaskDoneService()),
         ChangeNotifierProvider(create: (_) => WalletService()),
         ChangeNotifierProvider(create: (_) => TransactionService()),
         ChangeNotifierProvider(create: (_) => ProductService()),
