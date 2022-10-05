@@ -301,13 +301,10 @@ class _TaskProgresState extends State<_TaskProgres> {
                               height: 60,
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(
-                                    begin: AlignmentDirectional.topCenter,
-                                    end: Alignment.bottomCenter,
+                                    begin: AlignmentDirectional.topEnd,
                                     colors: [
                                       Color.fromARGB(255, 242, 133, 157),
-                                      Color.fromARGB(255, 242, 133, 157),
-                                      Color.fromARGB(255, 159, 131, 237),
-                                      Color.fromARGB(255, 97, 110, 224),
+                                      Color.fromARGB(255, 167, 79, 211),
                                     ]),
                                 borderRadius: BorderRadius.circular(10),
                               ),

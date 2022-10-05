@@ -62,7 +62,6 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
         child: Column(
           children: <Widget>[
             SizedBox(
-              height: 50,
               width: 250,
               child: Container(
                 margin: const EdgeInsets.only(top: 0),

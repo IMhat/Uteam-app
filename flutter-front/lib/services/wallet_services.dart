@@ -26,7 +26,8 @@ class WalletService extends ChangeNotifier {
 
   Future<List<Wallet>> loadWallet() async {
     isLoading = true;
-    final url = Uri.https(_baseUrl, '/api/wallet');
+    final url =
+        Uri.https(_baseUrl, "/api/wallet/search", {'searchQuery': 'david'});
     final resp = await http.get(url);
 
     final List<dynamic> walletMap = jsonDecode(resp.body);
