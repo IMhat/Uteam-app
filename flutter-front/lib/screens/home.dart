@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/user_form_provider.dart';
-import '../services/user_services.dart';
+import 'package:app_uteam/providers/wallet_form_provider.dart';
+import 'package:app_uteam/services/wallet_services.dart';
+
+import 'package:app_uteam/widgets/wallet_home_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,10 +15,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final userService = Provider.of<UserService>(context);
+    final WalletHomeService = Provider.of<WalletService>(context);
+
     return ChangeNotifierProvider(
-      create: (_) => UserFormProvider(userService.selectedUser),
-      child: _UserHomeBody(userService: userService),
+      create: (_) => WalletFormProvider(WalletHomeService.selectedWallet),
+      child: _UserHomeBody(walletHomeService: WalletHomeService),
     );
   }
 }
@@ -24,10 +27,10 @@ class _HomePageState extends State<HomePage> {
 class _UserHomeBody extends StatefulWidget {
   _UserHomeBody({
     Key? key,
-    required this.userService,
+    required this.walletHomeService,
   }) : super(key: key);
 
-  UserService userService;
+  WalletService walletHomeService;
   @override
   _HomePageUserState createState() => _HomePageUserState();
 }
@@ -56,52 +59,55 @@ class _HomePageUserState extends State<_UserHomeBody> {
                     Color.fromARGB(255, 165, 92, 179),
                     Color.fromARGB(255, 247, 90, 114)
                   ])),
-              height: 220,
+              height: 250,
               margin: const EdgeInsets.only(top: 0, bottom: 15),
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Row(
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        "Hello, Uteam",
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      Text(
-                        "Tenes 300 puntos",
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      // Container(
-                      //   margin: const EdgeInsets.only(top: 0, right: 25),
-                      //   width: 180,
-                      //   height: 150,
-                      //   child: ListView.builder(
-                      //     physics: const NeverScrollableScrollPhysics(),
-                      //     //itemCount: taskListProvider.tasks.length,
-                      //     itemCount: widget.userService.users.length,
-                      //     itemBuilder: (BuildContext context, int index) =>
-                      //         GestureDetector(
-                      //       onTap: () {
-                      //         widget.userService.selectedUser =
-                      //             widget.userService.users[index].copy();
-                      //         Navigator.pushNamed(
-                      //           context,
-                      //           'userPut',
-                      //         );
-                      //       },
-                      //       child: MyUserCard(
-                      //         user: widget.userService.users[index],
-                      //       ),
-                      //     ),
-                      //   ),
-                      // )
+                    children: [
+                      // Text(
+                      //  widget.walletHomeService.wallet.toString() ,
+                      //   style: TextStyle(
+                      //       fontSize: 30,
+                      //       fontWeight: FontWeight.bold,
+                      //       color: Colors.white),
+                      // ),
+                      // const Text(
+                      //   "Tenes 300 puntos",
+                      //   style: TextStyle(
+                      //       fontSize: 15,
+                      //       fontWeight: FontWeight.bold,
+                      //       color: Colors.white),
+                      // ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 10, right: 25),
+                        width: 280,
+                        height: 100,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          //itemCount: taskListProvider.tasks.length,
+                          itemCount: widget.walletHomeService.wallet.length,
+
+                          itemBuilder: (BuildContext context, int index) =>
+                              GestureDetector(
+                            onTap: () {
+                              widget.walletHomeService.selectedWallet =
+                                  widget.walletHomeService.wallet[index].copy();
+                              // Navigator.pushNamed(
+                              //   context,
+                              //   'AceptTasks',
+                              // );
+                            },
+                            child: WalletHomeCard(
+                              wallet: widget.walletHomeService.wallet[index],
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ],
@@ -133,13 +139,13 @@ class _HomePageUserState extends State<_UserHomeBody> {
               child: Container(
                 height: 110,
                 margin: const EdgeInsets.only(
-                    top: 150, left: 30, right: 30, bottom: 20),
+                    top: 150, left: 30, right: 30, bottom: 1),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
-                    color: Color.fromARGB(255, 250, 249, 249),
+                    color: const Color.fromARGB(255, 250, 249, 249),
                     boxShadow: const [
                       BoxShadow(
-                          color: Color(0xFFe8e88888888),
+                          color: Color.fromARGB(135, 136, 136, 136),
                           blurRadius: 10.0,
                           offset: Offset(0, 5)),
                       BoxShadow(

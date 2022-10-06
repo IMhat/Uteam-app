@@ -1,5 +1,9 @@
 import 'package:app_uteam/providers/task_form_provider.dart';
+
 import 'package:app_uteam/screens/backlog_screen.dart';
+import 'package:app_uteam/screens/inprogress_screen.dart';
+import 'package:app_uteam/screens/task_done_screen.dart';
+import 'package:app_uteam/services/task_inprogress_service.dart';
 
 import 'package:app_uteam/services/task_services.dart';
 import 'package:app_uteam/widgets/task_card.dart';
@@ -7,6 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../services/task_services.dart';
+
+import 'package:app_uteam/providers/task_inprogress_form_provider.dart';
+import 'package:app_uteam/services/task_inprogress_service.dart';
+import 'package:app_uteam/widgets/task_Inprogress_card.dart';
 
 class ManageTaskScreen extends StatefulWidget {
   const ManageTaskScreen({Key? key}) : super(key: key);
@@ -26,10 +34,14 @@ class _ManageTaskScreenState extends State<ManageTaskScreen> {
 
     //DBProvider.db.getTodasLasTasks().then((print));
     //DBProvider.db.deleteAllTasks();
+
     final tasksService = Provider.of<TaskService>(context);
+
     return ChangeNotifierProvider(
       create: (_) => TaskFormProvider(tasksService.selectedTask),
       child: _ManageTaskScreenBody(tasksService: tasksService),
+
+      //child: _TaskInprogressScreenBody(tasksService: tasksService),
     );
   }
 }
@@ -105,42 +117,44 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody>
               child: TabBarView(
             controller: controller,
             children: [
-              Text("data"),
-              Text("data2"),
-              Text("data3"),
+              Container(
+                margin: const EdgeInsets.only(top: 30, left: 20, bottom: 20),
+                color: Colors.white,
+                child: Center(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    //itemCount: taskListProvider.tasks.length,
+                    itemCount: widget.tasksService.tasks.length,
+
+                    itemBuilder: (BuildContext context, int index) =>
+                        GestureDetector(
+                      onTap: () {
+                        widget.tasksService.selectedTask =
+                            widget.tasksService.tasks[index].copy();
+                        Navigator.pushNamed(
+                          context,
+                          'AceptTasks',
+                        );
+                      },
+                      child: TaskCard(
+                        task: widget.tasksService.tasks[index],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                  margin: const EdgeInsets.only(top: 30, left: 20, bottom: 20),
+                  child: TaskInprogressScreen()),
+              Container(
+                  margin: const EdgeInsets.only(top: 30, left: 20, bottom: 20),
+                  child: TaskDoneScreen()),
             ],
           ))
         ],
       ),
-      // Container(
-      //   margin: const EdgeInsets.only(top: 30, left: 20, bottom: 20),
-      //   width: 350,
-      //   color: Colors.white,
-      //   child: Center(
-      //     child: ListView.builder(
-      //       shrinkWrap: true,
-      //       physics: const NeverScrollableScrollPhysics(),
-      //       scrollDirection: Axis.vertical,
-      //       //itemCount: taskListProvider.tasks.length,
-      //       itemCount: widget.tasksService.tasks.length,
-
-      //       itemBuilder: (BuildContext context, int index) =>
-      //           GestureDetector(
-      //         onTap: () {
-      //           widget.tasksService.selectedTask =
-      //               widget.tasksService.tasks[index].copy();
-      //           Navigator.pushNamed(
-      //             context,
-      //             'AceptTasks',
-      //           );
-      //         },
-      //         child: TaskCard(
-      //           task: widget.tasksService.tasks[index],
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
@@ -208,3 +222,6 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody>
 //     textAlign: TextAlign.center,
 //   ),
 // ),
+
+
+
