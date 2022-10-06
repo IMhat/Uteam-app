@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/user_form_provider.dart';
-import '../services/user_services.dart';
+import 'package:app_uteam/providers/wallet_form_provider.dart';
+import 'package:app_uteam/screens/transaction_screen.dart';
+import 'package:app_uteam/services/wallet_services.dart';
+
+import 'package:app_uteam/widgets/wallet_home_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,10 +16,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final userService = Provider.of<UserService>(context);
+    final WalletHomeService = Provider.of<WalletService>(context);
+
     return ChangeNotifierProvider(
-      create: (_) => UserFormProvider(userService.selectedUser),
-      child: _UserHomeBody(userService: userService),
+      create: (_) => WalletFormProvider(WalletHomeService.selectedWallet),
+      child: _UserHomeBody(walletHomeService: WalletHomeService),
     );
   }
 }
@@ -24,10 +28,10 @@ class _HomePageState extends State<HomePage> {
 class _UserHomeBody extends StatefulWidget {
   _UserHomeBody({
     Key? key,
-    required this.userService,
+    required this.walletHomeService,
   }) : super(key: key);
 
-  UserService userService;
+  WalletService walletHomeService;
   @override
   _HomePageUserState createState() => _HomePageUserState();
 }
@@ -83,21 +87,24 @@ class _HomePageUserState extends State<_UserHomeBody> {
                       //   width: 180,
                       //   height: 150,
                       //   child: ListView.builder(
+                      //     shrinkWrap: true,
                       //     physics: const NeverScrollableScrollPhysics(),
+                      //     scrollDirection: Axis.vertical,
                       //     //itemCount: taskListProvider.tasks.length,
-                      //     itemCount: widget.userService.users.length,
+                      //     itemCount: widget.walletHomeService.wallet.length,
+
                       //     itemBuilder: (BuildContext context, int index) =>
                       //         GestureDetector(
                       //       onTap: () {
-                      //         widget.userService.selectedUser =
-                      //             widget.userService.users[index].copy();
-                      //         Navigator.pushNamed(
-                      //           context,
-                      //           'userPut',
-                      //         );
+                      //         widget.walletHomeService.selectedWallet =
+                      //             widget.walletHomeService.wallet[index].copy();
+                      //         // Navigator.pushNamed(
+                      //         //   context,
+                      //         //   'AceptTasks',
+                      //         // );
                       //       },
-                      //       child: MyUserCard(
-                      //         user: widget.userService.users[index],
+                      //       child: WalletHomeCard(
+                      //         wallet: widget.walletHomeService.wallet[index],
                       //       ),
                       //     ),
                       //   ),
