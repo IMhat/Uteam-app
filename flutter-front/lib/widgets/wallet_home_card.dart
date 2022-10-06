@@ -10,25 +10,11 @@ class WalletHomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Container(
-        margin: const EdgeInsets.only(top: 25, left: 30, bottom: 50),
-        width: 500,
-        height: 100,
-        //decoration: _cardBorders(),
-        child: Stack(
-          alignment: Alignment.bottomLeft,
-          children: [
-            _UserDetails(
-              //title: taskListProvider.tasks[i].title,
-              // subTitle: taskListProvider.tasks[i].description,
-              name: wallet.username,
-              points: wallet.balance,
-            ),
-          ],
-        ),
-      ),
+    return _UserDetails(
+      //title: taskListProvider.tasks[i].title,
+      // subTitle: taskListProvider.tasks[i].description,
+      name: wallet.username,
+      points: wallet.balance,
     );
   }
 
@@ -52,68 +38,57 @@ class _UserDetails extends StatefulWidget {
 }
 
 class _UserDetailsState extends State<_UserDetails> {
-  final LinearGradient _gradient = const LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      colors: <Color>[
-        (Color(0xff7F00F0)),
-        Color.fromARGB(255, 165, 92, 179),
-        Color.fromARGB(255, 247, 90, 98)
-      ]);
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 50),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        width: 300,
-        height: 200,
-        decoration: const BoxDecoration(
-          color: Color(0xffCFBDF8),
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+    return Column(
+      children: [
+        Row(
           children: [
-            ShaderMask(
-              shaderCallback: (Rect rect) {
-                return _gradient.createShader(rect);
-              },
-              child: Text(
-                widget.name.toString(),
-                style: const TextStyle(
+            const Text(
+              "Hello,",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35,
+                  color: Colors.white),
+            ),
+            Text(
+              widget.name.toString(),
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35,
+                  color: Colors.white),
+            ),
+          ],
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 20),
+          child: Row(
+            children: [
+              const Text(
+                "Tienes ",
+                style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                    fontSize: 15,
                     color: Colors.white),
               ),
-            ),
-            ShaderMask(
-              shaderCallback: (Rect rect) {
-                return _gradient.createShader(rect);
-              },
-              child: Text(
+              Text(
                 widget.points.toString(),
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
                     color: Colors.white),
               ),
-            ),
-            ShaderMask(
-              shaderCallback: (Rect rect) {
-                return _gradient.createShader(rect);
-              },
-              child: const Text(
-                "Puntos",
+              const Text(
+                " puntos ",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 15,
                     color: Colors.white),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      ],
     );
   }
 

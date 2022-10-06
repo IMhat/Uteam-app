@@ -1,8 +1,11 @@
 import 'package:app_uteam/models/models.dart';
+import 'package:app_uteam/services/buyProduct_service.dart';
 import 'package:flutter/material.dart';
 import 'BigText.dart';
 import 'SmallText.dart';
 import 'icon_and_text_widget.dart';
+
+import 'package:app_uteam/widgets/my_globals.dart' as globals;
 
 class ProductDetailCard extends StatelessWidget {
   final Product product;
@@ -192,33 +195,51 @@ class _ProductDetailCardState extends State<_ProductDetailCard> {
                                         ]),
                                       ),
                                       Container(
-                                        width: 150,
-                                        height: 50,
-                                        padding: const EdgeInsets.only(
-                                            top: 5,
-                                            bottom: 20,
-                                            left: 40,
-                                            right: 10),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            color: const Color(0xff5D4FB1),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.grey[850]!
-                                                    .withOpacity(0.10),
-                                                offset: const Offset(-10, 10),
-                                                blurRadius: 10,
-                                              )
-                                            ]),
-                                        child: const Text(
-                                          "Canjear",
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      )
+                                          width: 150,
+                                          height: 50,
+                                          padding: const EdgeInsets.only(
+                                              top: 5,
+                                              bottom: 20,
+                                              left: 40,
+                                              right: 10),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: const Color(0xff5D4FB1),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.grey[850]!
+                                                      .withOpacity(0.10),
+                                                  offset: const Offset(-10, 10),
+                                                  blurRadius: 10,
+                                                )
+                                              ]),
+                                          child:
+                                              //  const Text(
+                                              //   "Canjear",
+                                              //   style: TextStyle(
+                                              //       fontSize: 20,
+                                              //       color: Colors.white,
+                                              //       fontWeight: FontWeight.bold),
+                                              // ),
+                                              FloatingActionButton(
+                                            child: const Icon(
+                                                Icons.approval_rounded),
+                                            onPressed: () async {
+                                              try {
+                                                BuyProductService()
+                                                    .saveBuyProductTransaction(
+                                                        widget.points,
+                                                        globals.username,
+                                                        widget.title);
+                                              } catch (message) {
+                                                print(BuyProductService()
+                                                    .saveBuyProductTransaction);
+                                              }
+
+                                              //  Navigator.of(context).pushNamed(succefullyBuy.route);
+                                            },
+                                          ))
                                     ],
                                   ),
                                 ),

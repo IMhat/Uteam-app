@@ -19,3 +19,4 @@ export 'package:app_uteam/screens/loading_screen.dart';
 export 'package:app_uteam/screens/image_screens.dart';
 export 'package:app_uteam/screens/home.dart';
 export 'package:app_uteam/screens/product_details.dart';
+export 'package:app_uteam/screens/product_indumentaria_details.dart';

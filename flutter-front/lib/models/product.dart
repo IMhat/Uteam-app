@@ -3,12 +3,12 @@ import 'dart:ffi';
 
 class Product {
   late String id;
-  late String title;
-  late String type;
-  late String productImage;
-  late String description;
-  late dynamic points;
-  late dynamic due;
+  late String? title;
+  late String? type;
+  late String? productImage;
+  late String? description;
+  late String? points;
+  late String? due;
   // late String createAt;
   Product(
     this.id,
