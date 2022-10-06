@@ -81,82 +81,94 @@ class _ManageTaskScreenBodyState extends State<_ManageTaskScreenBody>
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(width: 1, color: Colors.deepPurple))),
-            child: Material(
-              color: Colors.white,
-              child: TabBar(
-                controller: controller,
-                labelColor: Colors.black,
-                unselectedLabelColor: Colors.grey,
-                tabs: [
-                  Tab(
-                    child: Container(
-                      child: Text("Backlog"),
+      body: RefreshIndicator(
+        strokeWidth: 4,
+        displacement: 40.0,
+        backgroundColor: Colors.black,
+        onRefresh: _refresh,
+        child: Column(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(width: 1, color: Colors.deepPurple))),
+              child: Material(
+                color: Colors.white,
+                child: TabBar(
+                  controller: controller,
+                  labelColor: Colors.black,
+                  unselectedLabelColor: Colors.grey,
+                  tabs: [
+                    Tab(
+                      child: Container(
+                        child: Text("Backlog"),
+                      ),
                     ),
-                  ),
-                  Tab(
-                    child: Container(
-                      child: Text("In Progress"),
+                    Tab(
+                      child: Container(
+                        child: Text("In Progress"),
+                      ),
                     ),
-                  ),
-                  Tab(
-                    child: Container(
-                      child: Text("Done"),
+                    Tab(
+                      child: Container(
+                        child: Text("Done"),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded(
-              child: TabBarView(
-            controller: controller,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 30, left: 20, bottom: 20),
-                color: Colors.white,
-                child: Center(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    //itemCount: taskListProvider.tasks.length,
-                    itemCount: widget.tasksService.tasks.length,
+            Expanded(
+                child: TabBarView(
+              controller: controller,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 30, left: 20, bottom: 20),
+                  color: Colors.white,
+                  child: Center(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      //itemCount: taskListProvider.tasks.length,
+                      itemCount: widget.tasksService.tasks.length,
 
-                    itemBuilder: (BuildContext context, int index) =>
-                        GestureDetector(
-                      onTap: () {
-                        widget.tasksService.selectedTask =
-                            widget.tasksService.tasks[index].copy();
-                        Navigator.pushNamed(
-                          context,
-                          'AceptTasks',
-                        );
-                      },
-                      child: TaskCard(
-                        task: widget.tasksService.tasks[index],
+                      itemBuilder: (BuildContext context, int index) =>
+                          GestureDetector(
+                        onTap: () {
+                          widget.tasksService.selectedTask =
+                              widget.tasksService.tasks[index].copy();
+                          Navigator.pushNamed(
+                            context,
+                            'AceptTasks',
+                          );
+                        },
+                        child: TaskCard(
+                          task: widget.tasksService.tasks[index],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                  margin: const EdgeInsets.only(top: 30, left: 20, bottom: 20),
-                  child: TaskInprogressScreen()),
-              Container(
-                  margin: const EdgeInsets.only(top: 30, left: 20, bottom: 20),
-                  child: TaskDoneScreen()),
-            ],
-          ))
-        ],
+                Container(
+                    margin:
+                        const EdgeInsets.only(top: 30, left: 20, bottom: 20),
+                    child: TaskInprogressScreen()),
+                Container(
+                    margin:
+                        const EdgeInsets.only(top: 30, left: 20, bottom: 20),
+                    child: TaskDoneScreen()),
+              ],
+            ))
+          ],
+        ),
       ),
     );
   }
+}
+
+Future<void> _refresh() {
+  return Future.delayed(Duration(seconds: 0));
 }
 
 // Container(

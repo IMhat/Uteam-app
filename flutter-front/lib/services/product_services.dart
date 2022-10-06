@@ -19,7 +19,17 @@ class ProductService extends ChangeNotifier {
   Future<String> updateProduct(Product product) async {
     notifyListeners();
     final url = Uri.https(_baseUrl, '/api/products/${product.id}');
-    final resp = await http.put(url, body: product.toJson());
+    final resp = await http.put(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        // "title": product.title,
+      }),
+    );
+    //body: product.toJson());
+
     final decodeData = resp.body;
     final index = products.indexWhere((element) => element.id == product.id);
     products[index] = product;

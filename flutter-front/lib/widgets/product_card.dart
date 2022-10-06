@@ -42,7 +42,7 @@ class _ProductDetails extends StatefulWidget {
   final String? title;
   final String? productImage;
   final String? description;
-  final dynamic points;
+  final String? points;
 
   // final String? createAt;
 

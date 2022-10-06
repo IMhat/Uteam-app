@@ -244,9 +244,9 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
             ),
             const Divider(endIndent: 2),
             SizedBox(
-              height: 700,
               width: 350,
               child: ListView.builder(
+                shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 itemCount: widget.productsService.products.length,
