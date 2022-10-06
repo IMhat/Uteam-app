@@ -36,6 +36,7 @@ class _ButtonsAceptRejectState extends State<ButtonsAceptReject> {
 
         // widget.task.type = "done";
         // taskServiceProvider.updateTask(taskForm.task.done);
+        Navigator.of(context).pushNamed('ManageTasks');
       },
       onTapReject: () {
         setState(() {
@@ -43,6 +44,7 @@ class _ButtonsAceptRejectState extends State<ButtonsAceptReject> {
           //print("mundo");
           widget.task.type = "ToDo";
           taskServiceProvider.updateTask(widget.task);
+          Navigator.of(context).pushNamed('ManageTasks');
         });
 
         // widget.task.type = "done";
