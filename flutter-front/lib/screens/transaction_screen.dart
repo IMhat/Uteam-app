@@ -65,7 +65,7 @@ class _TransactionScreenBodyState extends State<_TransactionScreenBody> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
                   Text(
-                    "Mis Trasacciones",
+                    "Mis Ingresos",
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
                   )
                 ],

@@ -19,6 +19,7 @@ import 'package:app_uteam/services/user_services.dart';
 import 'package:app_uteam/themes/app_theme.dart';
 import 'package:provider/provider.dart';
 
+import 'services/productTransaction_service.dart';
 import 'services/wallet_services.dart';
 
 void main() => runApp(const AppState());
@@ -35,6 +36,7 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => TaskDoneService()),
         ChangeNotifierProvider(create: (_) => WalletService()),
         ChangeNotifierProvider(create: (_) => TransactionService()),
+        ChangeNotifierProvider(create: (_) => ProductTransactionService()),
         ChangeNotifierProvider(create: (_) => ProductService()),
         ChangeNotifierProvider(create: (_) => ProductIndumentariaService()),
         ChangeNotifierProvider(create: (_) => ProductCursosService()),

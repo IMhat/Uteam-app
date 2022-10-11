@@ -58,6 +58,7 @@ class _ProductDetailCard extends StatefulWidget {
     this.productImage,
     this.description,
     this.points,
+
     // this.createAt
   });
 
@@ -225,17 +226,13 @@ class _ProductDetailCardState extends State<_ProductDetailCard> {
                                               FloatingActionButton(
                                             child: const Icon(
                                                 Icons.approval_rounded),
-                                            onPressed: () async {
-                                              try {
-                                                BuyProductService()
-                                                    .saveBuyProductTransaction(
-                                                        widget.points,
-                                                        globals.username,
-                                                        widget.title);
-                                              } catch (message) {
-                                                print(BuyProductService()
-                                                    .saveBuyProductTransaction);
-                                              }
+                                            onPressed: () {
+                                              BuyProductService()
+                                                  .saveBuyProductTransaction(
+                                                widget.points,
+                                                globals.uss,
+                                                widget.title,
+                                              );
 
                                               //  Navigator.of(context).pushNamed(succefullyBuy.route);
                                             },
