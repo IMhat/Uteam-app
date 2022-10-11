@@ -90,14 +90,18 @@ class _TaskDetailsState extends State<_TaskDetails> {
                             color: const Color.fromARGB(255, 255, 251, 251)),
                         borderRadius: BorderRadius.circular(50)),
                   ),
-                  Text(
-                    widget.title.toString(),
-                    style: const TextStyle(
-                        fontSize: 20,
-                        color: Color.fromARGB(255, 7, 0, 0),
-                        fontWeight: FontWeight.bold),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  SizedBox(
+                    width: 150,
+                    height: 60,
+                    child: Text(
+                      widget.title.toString(),
+                      style: const TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 7, 0, 0),
+                          fontWeight: FontWeight.bold),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ],
               ),

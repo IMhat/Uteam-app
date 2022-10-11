@@ -1,3 +1,4 @@
+import 'package:app_uteam/services/wallet_services.dart';
 import 'package:flutter/material.dart';
 import 'package:app_uteam/providers/product_form_provider.dart';
 import 'package:app_uteam/services/product_services.dart';
@@ -24,6 +25,7 @@ class _AcercaDeState extends State<AcercaDe> {
     //DBProvider.db.getTodasLasTasks().then((print));
     //DBProvider.db.deleteAllTasks();
     final productsService = Provider.of<ProductService>(context);
+
     return ChangeNotifierProvider(
       create: (_) => ProductFormProvider(productsService.selectedProduct),
       child: _AcercaDeBody(productsService: productsService),
@@ -38,6 +40,7 @@ class _AcercaDeBody extends StatefulWidget {
   }) : super(key: key);
 
   ProductService productsService;
+
   @override
   State<_AcercaDeBody> createState() => _AcercaDeBodyState();
 }
@@ -51,8 +54,9 @@ class _AcercaDeBodyState extends State<_AcercaDeBody> {
       // ),
       body: Material(
         child: Center(
-          child: ProductDetailCard(product: widget.productsService.selectedProduct),
-        
+          child: ProductDetailCard(
+            product: widget.productsService.selectedProduct,
+          ),
         ),
       ),
       // floatingActionButton: FloatingActionButton(

@@ -27,7 +27,7 @@ class TransactionService extends ChangeNotifier {
   Future<List<Transaction>> loadTransaction() async {
     isLoading = true;
     final url = Uri.https(
-        _baseUrl, '/api/transaction/search', {'searchQuery': 'david'});
+        _baseUrl, '/api/transaction/task/search', {'searchQuery': 'david'});
     final resp = await http.get(url);
 
     final List<dynamic> walletMap = jsonDecode(resp.body);

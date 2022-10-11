@@ -1,4 +1,5 @@
 import 'package:app_uteam/providers/wallet_form_provider.dart';
+import 'package:app_uteam/screens/transaction_exchange_screen.dart';
 import 'package:app_uteam/screens/transaction_screen.dart';
 import 'package:app_uteam/services/wallet_services.dart';
 
@@ -126,7 +127,8 @@ class _WalletScreenBodyState extends State<_WalletScreenBody> {
                 ),
               ),
             ),
-            TransactionScreen()
+            TransactionScreen(),
+            ExchangeTransactionScreen(),
           ],
         ),
       ),

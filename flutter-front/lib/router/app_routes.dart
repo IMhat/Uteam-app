@@ -4,8 +4,11 @@ import 'package:app_uteam/screens/acept_task.dart';
 import 'package:app_uteam/screens/challenge_acept.dart';
 import 'package:app_uteam/screens/home.dart';
 import 'package:app_uteam/screens/my_task_screen.dart';
+import 'package:app_uteam/screens/product_cursos_details.dart';
 import 'package:app_uteam/screens/product_details.dart';
+import 'package:app_uteam/screens/product_indumentaria_details.dart';
 import 'package:app_uteam/screens/progres_task_view.dart';
+import 'package:app_uteam/screens/wallet_screens.dart';
 import 'package:flutter/material.dart';
 
 //import '../screens/image_screens.dart';
@@ -101,6 +104,16 @@ class AppRoutes {
         name: 'product_card',
         screen: AcercaDe()),
     MenuOption(
+        route: 'AcercaDeIndumentaria',
+        icon: Icons.home,
+        name: 'product_card',
+        screen: AcercaDeIndumentaria()),
+    MenuOption(
+        route: 'AcercaDeCursos',
+        icon: Icons.home,
+        name: 'product_card',
+        screen: AcercaDeCursos()),
+    MenuOption(
         route: 'login',
         icon: Icons.login_outlined,
         name: 'Pantalla de login',
@@ -152,6 +165,7 @@ class AppRoutes {
         icon: Icons.edit,
         name: 'Editar Usuarios',
         screen: const UserPutScreen()),
+
     MenuOption(
         route: 'home2',
         icon: Icons.app_registration,

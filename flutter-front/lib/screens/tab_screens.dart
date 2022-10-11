@@ -1,8 +1,11 @@
+import 'package:app_uteam/providers/product_form_provider.dart';
+import 'package:app_uteam/providers/wallet_form_provider.dart';
+import 'package:app_uteam/services/wallet_services.dart';
+import 'package:app_uteam/widgets/wallet_card.dart';
 import 'package:flutter/material.dart';
-import 'package:app_uteam/providers/user_form_provider.dart';
-import 'package:app_uteam/services/user_services.dart';
+
 import 'package:app_uteam/services/product_services.dart';
-import 'package:app_uteam/widgets/mi_user_card.dart';
+
 import 'package:app_uteam/widgets/product_card.dart';
 import 'package:provider/provider.dart';
 
@@ -16,15 +19,15 @@ class TabScreen extends StatefulWidget {
 class _TabScreenState extends State<TabScreen> {
   @override
   Widget build(BuildContext context) {
-    final userService = Provider.of<UserService>(context);
+    final walletService = Provider.of<WalletService>(context);
     final productsService = Provider.of<ProductService>(context);
 
     return ChangeNotifierProvider(
-      create: (_) => UserFormProvider(userService.selectedUser),
-      // (_) => ProductFormProvider(productsService.selectedProduct),
+      // create: (_) => WalletFormProvider(walletService.selectedWallet),
+      create: (_) => ProductFormProvider(productsService.selectedProduct),
 
       child: _TabScreenBody(
-          userService: userService, productsService: productsService),
+          walletService: walletService, productsService: productsService),
     );
   }
 }
@@ -43,11 +46,11 @@ class _TabScreenState extends State<TabScreen> {
 class _TabScreenBody extends StatefulWidget {
   _TabScreenBody({
     Key? key,
-    required this.userService,
+    required this.walletService,
     required this.productsService,
   }) : super(key: key);
 
-  UserService userService;
+  WalletService walletService;
   ProductService productsService;
   @override
   State<_TabScreenBody> createState() => _TabScreenBodyState();
@@ -106,23 +109,19 @@ class _TabScreenBodyState extends State<_TabScreenBody> {
                 Column(
                   children: <Widget>[
                     SizedBox(
-                        height: 90,
+                        height: 150,
                         width: 250,
                         child: Center(
                           child: ListView.builder(
-                            itemCount: widget.userService.users.length,
+                            itemCount: widget.walletService.wallet.length,
                             itemBuilder: (BuildContext context, int index) =>
                                 GestureDetector(
                               onTap: () {
-                                widget.userService.selectedUser =
-                                    widget.userService.users[index].copy();
-                                Navigator.pushNamed(
-                                  context,
-                                  'userPut',
-                                );
+                                widget.walletService.selectedWallet =
+                                    widget.walletService.wallet[index].copy();
                               },
-                              child: MyUserCard(
-                                user: widget.userService.users[index],
+                              child: WalletCard(
+                                wallet: widget.walletService.wallet[index],
                               ),
                             ),
                           ),

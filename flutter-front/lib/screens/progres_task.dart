@@ -36,8 +36,6 @@ class _ProgresTaskState extends State<ProgresTask> {
             onTap: () {
               setState(() {
                 widget.task.type = "done";
-                print("mundo");
-                widget.task.type = "done";
                 taskServiceProvider.updateTask(widget.task);
               });
 
