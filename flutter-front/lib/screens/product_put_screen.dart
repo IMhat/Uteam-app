@@ -3,6 +3,8 @@ import 'package:app_uteam/services/product_services.dart';
 import 'package:app_uteam/ui/input_decorations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../services/wallet_services.dart';
 //import 'package:app_uteam/providers/task_list_provider.dart';
 
 class ProductPutScreen extends StatefulWidget {
@@ -16,9 +18,10 @@ class _ProductPutScreenState extends State<ProductPutScreen> {
   @override
   Widget build(BuildContext context) {
     final productsService = Provider.of<ProductService>(context);
+    final walletService = Provider.of<WalletService>(context);
 
     return ChangeNotifierProvider(
-      create: (_) => ProductFormProvider(productsService.selectedProduct),
+      create: (_) => ProductFormProvider(productsService.selectedProduct,walletService.selectedWallet),
       child: _ProductPutScreenBody(productsService: productsService),
     );
   }

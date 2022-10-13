@@ -53,18 +53,37 @@ class BuyProductService extends ChangeNotifier {
     return transactions;
   }
 
-  Future<http.Response> saveBuyProductTransaction(
-      dynamic text, String? text2, String? text3) {
+  Future<http.Response> saveTransactions(
+    String text,
+    // String text2,
+    String? text3,
+    String? text4,
+  ) {
     return http.post(
       Uri.parse('https://smiley-appi.herokuapp.com/api/transaction/buyProduct'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(<String, String?>{
-        'amount': text,
-        'fromUsername': text2,
-        'summary': text3,
+      body: jsonEncode(<String, dynamic>{
+        'fromUsername': text,
+        'amount': text3,
+        'summary': text4,
       }),
     );
   }
+
+  // Future<http.Response> saveBuyProductTransaction(
+  //     String? text, dynamic text2, String? text3) {
+  //   return http.post(
+  //     Uri.parse('https://smiley-appi.herokuapp.com/api/transaction/buyProduct'),
+  //     headers: <String, String>{
+  //       'Content-Type': 'application/json; charset=UTF-8',
+  //     },
+  //     body: jsonEncode(<String, String?>{
+  //       "fromUsername": text,
+  //       "amount": text2,
+  //       "summary": text3
+  //     }),
+  //   );
+  // }
 }

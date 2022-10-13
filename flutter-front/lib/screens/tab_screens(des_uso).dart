@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../services/product_services.dart';
+import '../services/wallet_services.dart';
 
 class TabScreen extends StatefulWidget {
   TabScreen({Key? key}) : super(key: key);
@@ -30,8 +31,9 @@ class _TabScreenState extends State<TabScreen> {
     //DBProvider.db.getTodasLasTasks().then((print));
     //DBProvider.db.deleteAllTasks();
     final productsService = Provider.of<ProductService>(context);
+    final walletService = Provider.of<WalletService>(context);
     return ChangeNotifierProvider(
-      create: (_) => ProductFormProvider(productsService.selectedProduct),
+      create: (_) => ProductFormProvider(productsService.selectedProduct,  walletService.selectedWallet),
       child: _TabScreenBody(productsService: productsService),
     );
   }

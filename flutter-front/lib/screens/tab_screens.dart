@@ -24,7 +24,7 @@ class _TabScreenState extends State<TabScreen> {
 
     return ChangeNotifierProvider(
       // create: (_) => WalletFormProvider(walletService.selectedWallet),
-      create: (_) => ProductFormProvider(productsService.selectedProduct),
+      create: (_) => ProductFormProvider(productsService.selectedProduct,walletService.selectedWallet),
 
       child: _TabScreenBody(
           walletService: walletService, productsService: productsService),

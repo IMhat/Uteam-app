@@ -2,12 +2,15 @@
 import 'package:app_uteam/providers/product_form_provider.dart';
 import 'package:app_uteam/providers/product_list_provider.dart';
 import 'package:app_uteam/services/product_services.dart';
+import 'package:app_uteam/services/wallet_services.dart';
+
 import 'package:app_uteam/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 
 import '../services/product_services.dart';
+
 
 class PopularScreen extends StatefulWidget {
   PopularScreen({Key? key}) : super(key: key);
@@ -28,8 +31,9 @@ class _PopularScreenState extends State<PopularScreen> {
     //DBProvider.db.getTodasLasTasks().then((print));
     //DBProvider.db.deleteAllTasks();
     final productsService = Provider.of<ProductService>(context);
+    final walletService = Provider.of<WalletService>(context);
     return ChangeNotifierProvider(
-      create: (_) => ProductFormProvider(productsService.selectedProduct),
+      create: (_) => ProductFormProvider(productsService.selectedProduct,walletService.selectedWallet),
       child: _PopularScreenBody(productsService: productsService),
     );
   }

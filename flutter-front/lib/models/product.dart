@@ -7,7 +7,7 @@ class Product {
   late String? type;
   late String? productImage;
   late String? description;
-  late String? points;
+  late dynamic points;
   late String? due;
   // late String createAt;
   Product(

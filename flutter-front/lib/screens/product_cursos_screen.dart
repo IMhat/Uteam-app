@@ -28,9 +28,9 @@ class _ProductCursosScreenState extends State<ProductCursosScreen> {
     //DBProvider.db.getTodasLasTasks().then((print));
     //DBProvider.db.deleteAllTasks();
     final productCursosService = Provider.of<ProductCursosService>(context);
-
+    final walletService = Provider.of<WalletService>(context);
     return ChangeNotifierProvider(
-      create: (_) => ProductFormProvider(productCursosService.selectedProduct),
+      create: (_) => ProductFormProvider(productCursosService.selectedProduct, walletService.selectedWallet),
       child:
           _ProductCursosScreenBody(productCursosService: productCursosService),
     );

@@ -30,10 +30,11 @@ class _ProductIndumenariaScreenState extends State<ProductIndumenariaScreen> {
     //DBProvider.db.deleteAllTasks();
     final productIndumentariaService =
         Provider.of<ProductIndumentariaService>(context);
+        final walletService = Provider.of<WalletService>(context);
 
     return ChangeNotifierProvider(
       create: (_) =>
-          ProductFormProvider(productIndumentariaService.selectedProduct),
+          ProductFormProvider(productIndumentariaService.selectedProduct, walletService.selectedWallet),
       child: _ProductIndumenariaScreenBody(
           productIndumentariaService: productIndumentariaService),
     );

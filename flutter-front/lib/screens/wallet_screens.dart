@@ -125,16 +125,44 @@ class _WalletScreenBodyState extends State<_WalletScreenBody>
               color: Colors.white,
               child: TabBar(
                 controller: controller,
-                labelColor: Colors.black,
-                unselectedLabelColor: Colors.grey,
+                labelColor: Colors.white,
+                unselectedLabelColor: Colors.black,
                 tabs: [
                   Tab(
                     child: Container(
+                      padding: EdgeInsets.only(top: 8, left: 30),
+                      width: 150,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey[850]!.withOpacity(0.29),
+                              offset: const Offset(-10, 10),
+                              blurRadius: 10,
+                            )
+                          ]),
                       child: Text("Mis ingresos"),
                     ),
                   ),
                   Tab(
                     child: Container(
+                      padding: EdgeInsets.only(top: 8, left: 40),
+                      width: 150,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey[850]!.withOpacity(0.29),
+                              offset: const Offset(-10, 10),
+                              blurRadius: 10,
+                            )
+                          ]),
                       child: Text("Mis Gastos"),
                     ),
                   ),

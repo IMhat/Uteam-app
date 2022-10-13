@@ -103,16 +103,16 @@ class AppRoutes {
         icon: Icons.home,
         name: 'product_card',
         screen: AcercaDe()),
-    MenuOption(
-        route: 'AcercaDeIndumentaria',
-        icon: Icons.home,
-        name: 'product_card',
-        screen: AcercaDeIndumentaria()),
-    MenuOption(
-        route: 'AcercaDeCursos',
-        icon: Icons.home,
-        name: 'product_card',
-        screen: AcercaDeCursos()),
+    // MenuOption(
+    //     route: 'AcercaDeIndumentaria',
+    //     icon: Icons.home,
+    //     name: 'product_card',
+    //     screen: AcercaDeIndumentaria()),
+    // MenuOption(
+    //     route: 'AcercaDeCursos',
+    //     icon: Icons.home,
+    //     name: 'product_card',
+    //     screen: AcercaDeCursos()),
     MenuOption(
         route: 'login',
         icon: Icons.login_outlined,
